@@ -1,4 +1,4 @@
-import {getCustomers, insertCustomer} from "../models/customersModel.js"
+import {getCustomers, insertCustomer} from "../models/customerModel.js"
 
 //Retrieve Customers
 export const showCustomers = (req, res) => {
@@ -11,14 +11,14 @@ export const showCustomers = (req, res) => {
     })
 }
 
-//Create Customer
+// Create New Customer
 export const createCustomer = (req, res) => {
-    const data = req.body
+    const data = req.body;
     insertCustomer(data, (err, results) => {
-        if(err){
-            res.send(err)
-        } else{
-            res.json(results)
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
         }
-    })
+    });
 }
