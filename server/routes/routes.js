@@ -1,6 +1,7 @@
 import express from "express";
 import {showCustomers, createCustomer, updateCustomer, deleteCustomer, showCustomerByPhone} from "../controllers/customers.js"
 import {createInvoice, deleteInvoice, showInvoiceById, showInvoices, updateInvoice} from "../controllers/invoices.js";
+import { createProduct, deleteProduct, showProductById, showProducts, updateProduct } from "../controllers/products.js";
 const router = express.Router()
 
 //CRUD CUSTOMERS
@@ -44,18 +45,22 @@ router.put('/invoices/:invoiceID', updateInvoice);
 //CRUD PRODUCTS
 
 //Create New Product
-router.post('/products', createCustomer)
+router.post('/products', createProduct)
 
 //Retrieve All Products
-router.get('/products', showCustomers)
+router.get('/products', showProducts)
 
 //Retrieve One Product
-router.get('/products/:phoneNumber', showCustomerByPhone);
+router.get('/products/:productID', showProductById);
 
 //Update Product
-router.put('/products/:customerID', updateCustomer);
+router.put('/products/:productID', updateProduct);
 
 //Delete Product
-router.delete('/products/:customerID', deleteCustomer);
+router.delete('/products/:productID', deleteProduct);
+
+/*--------------------------------------------------------------------------------*/
+
+
 
 export default router

@@ -2,7 +2,7 @@ import db from "../config/database.js"
 
 //Create Invoice
 export const insertInvoice = (data, result) => {
-    db.query("INSERT INTO invoice VALUES ?", [data], (err, results) => {             
+    db.query("INSERT INTO invoice SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
