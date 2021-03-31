@@ -1,7 +1,7 @@
 import db from "../config/database.js"
 
 //Retrieve all Vendors
-export const getServices = (result) => {
+export const getVendor = (result) => {
     db.query("SELECT * FROM vendors", (err, results) => {             
         if(err) {
             console.log(err);
@@ -13,7 +13,7 @@ export const getServices = (result) => {
 }
 
 //Create Vendor
-export const insertService = (data, result) => {
+export const insertVendor = (data, result) => {
     db.query("INSERT INTO vendors VALUES ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -25,7 +25,7 @@ export const insertService = (data, result) => {
 }
 
 //Update Vendor
-export const updateService = (data, id, result) => {
+export const updateVendor = (data, id, result) => {
     db.query("UPDATE vendors SET Vendor_Name = ?, Products_ID = ? WHERE Vendors_ID = ?", [data.Vendor_Name, data.Products_ID, id], (err, results) => {             
         if(err) {
             console.log(err);
@@ -37,7 +37,7 @@ export const updateService = (data, id, result) => {
 }
 
 //Delete Vendor
-export const deleteService = (id, result) => {
+export const deleteVendor = (id, result) => {
     db.query("DELETE FROM vendors WHERE Vendors_ID = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
