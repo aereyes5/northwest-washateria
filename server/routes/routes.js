@@ -2,6 +2,7 @@ import express from "express";
 import {showCustomers, createCustomer, updateCustomer, deleteCustomer, showCustomerByPhone} from "../controllers/customers.js"
 import {createInvoice, deleteInvoice, showInvoiceById, showInvoices, updateInvoice} from "../controllers/invoices.js";
 import { createProduct, deleteProduct, showProductById, showProducts, updateProduct } from "../controllers/products.js";
+import { createService, deleteService, showServiceById, showServices, updateService } from "../controllers/services.js";
 const router = express.Router()
 
 //CRUD CUSTOMERS
@@ -61,6 +62,22 @@ router.delete('/products/:productID', deleteProduct);
 
 /*--------------------------------------------------------------------------------*/
 
+//CRUD SERVICES
+
+//Create New Service
+router.post('/services', createService)
+
+//Retrieve All Services
+router.get('/services', showServices)
+
+//Retrieve One Service
+router.get('/services/:serviceID', showServiceById);
+
+//Update Service
+router.put('/services/:serviceID', updateService);
+
+//Delete Service
+router.delete('/services/:serviceID', deleteService);
 
 
 export default router

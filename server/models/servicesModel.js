@@ -1,5 +1,18 @@
 import db from "../config/database.js"
 
+
+//Create Service
+export const insertService = (data, result) => {
+    db.query("INSERT INTO services SET ?", [data], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
 //Retrieve all Services
 export const getServices = (result) => {
     db.query("SELECT * FROM services", (err, results) => {             
@@ -12,21 +25,21 @@ export const getServices = (result) => {
     });   
 }
 
-//Create Service
-export const insertService = (data, result) => {
-    db.query("INSERT INTO services VALUES ?", [data], (err, results) => {             
+//Retrieve One Product
+export const getServiceById = (id, result) => {
+    db.query("SELECT * FROM services WHERE serviceID = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results);
+            result(null, results[0]);
         }
     });   
 }
 
 //Update Service
-export const updateService = (data, id, result) => {
-    db.query("UPDATE services SET Service_Name = ?, Service_Price = ? WHERE Services_ID = ?", [data.Service_Name, data.Service_Price, id], (err, results) => {             
+export const updateServiceById = (data, id, result) => {
+    db.query("UPDATE services SET serviceName = ?, servicePrice = ? WHERE serviceID = ?", [data.serviceName, data.servicePrice, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,8 +50,8 @@ export const updateService = (data, id, result) => {
 }
 
 //Delete Service
-export const deleteService = (id, result) => {
-    db.query("DELETE FROM services WHERE Services_ID = ?", [id], (err, results) => {             
+export const deleteServiceById = (id, result) => {
+    db.query("DELETE FROM services WHERE serviceID = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
