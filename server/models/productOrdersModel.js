@@ -1,7 +1,7 @@
 import db from "../config/database.js"
 
 //Retrieve all Product Orders
-export const getProducts = (result) => {
+export const getProductsOrder = (result) => {
     db.query("SELECT * FROM productorders", (err, results) => {             
         if(err) {
             console.log(err);
@@ -13,7 +13,7 @@ export const getProducts = (result) => {
 }
 
 //Create Product Order
-export const insertProduct = (data, result) => {
+export const insertProductOrder = (data, result) => {
     db.query("INSERT INTO productorders VALUES ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -25,7 +25,7 @@ export const insertProduct = (data, result) => {
 }
 
 //Delete Product Order
-export const deleteProduct = (id, result) => {
+export const deleteProductOrder = (id, result) => {
     db.query("DELETE FROM productorders WHERE ProductOrders_ID = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
