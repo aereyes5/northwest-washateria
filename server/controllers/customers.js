@@ -1,4 +1,18 @@
-import {getCustomers, insertCustomer} from "../models/customerModel.js"
+import {getCustomers, getCustomerByPhone, insertCustomer, updateCustomerById, deleteCustomerById} from "../models/customerModel.js"
+
+
+
+//Create New Customer
+export const createCustomer = (req, res) => {
+    const data = req.body;
+    insertCustomer(data, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
 
 //Retrieve Customers
 export const showCustomers = (req, res) => {
@@ -11,10 +25,34 @@ export const showCustomers = (req, res) => {
     })
 }
 
-// Create New Customer
-export const createCustomer = (req, res) => {
-    const data = req.body;
-    insertCustomer(data, (err, results) => {
+//Retrieve One Customer
+export const showCustomerByPhone = (req, res) => {
+    getCustomerByPhone(req.params.phoneNumber, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Update Customer
+export const updateCustomer = (req, res) => {
+    const data  = req.body;
+    const customerID    = req.params.customerID;
+    updateCustomerById(data, customerID, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Delete Customer
+export const deleteCustomer = (req, res) => {
+    const customerID = req.params.customerID;
+    deleteCustomerById(customerID, (err, results) => {
         if (err){
             res.send(err);
         }else{
