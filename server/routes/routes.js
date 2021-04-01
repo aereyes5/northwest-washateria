@@ -1,5 +1,6 @@
 import express from "express";
 import {showCustomers, createCustomer, updateCustomer, deleteCustomer, showCustomerByPhone} from "../controllers/customers.js"
+import { createEmployee, showEmployees, showEmployeeById, updateEmployee, deleteEmployee } from "../controllers/employees.js";
 import {createInvoice, deleteInvoice, showInvoiceById, showInvoices, updateInvoice} from "../controllers/invoices.js";
 import { createProduct, deleteProduct, showProductById, showProducts, updateProduct } from "../controllers/products.js";
 import { createService, deleteService, showServiceById, showServices, updateService } from "../controllers/services.js";
@@ -78,6 +79,25 @@ router.put('/services/:serviceID', updateService);
 
 //Delete Service
 router.delete('/services/:serviceID', deleteService);
+
+/*--------------------------------------------------------------------------------*/
+
+//CRUD EMPLOYEES
+
+//Create New Service
+router.post('/employees', createEmployee)
+
+//Retrieve All Services
+router.get('/employees', showEmployees)
+
+//Retrieve One Service
+router.get('/employees/:employeeID', showEmployeeById);
+
+//Update Service
+router.put('/employees/:employeeID', updateEmployee);
+
+//Delete Service
+router.delete('/employees/:employeeID', deleteEmployee);
 
 
 export default router

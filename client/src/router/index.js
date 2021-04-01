@@ -9,6 +9,7 @@ import Faq from '@/components/Faq'
 import Tickets from '@/components/Tickets'
 import Account from '@/components/Account'
 import Update from '@/components/Update'
+import Customers from '@components/Customers'
 
 
 Vue.use(Router)
@@ -62,6 +63,11 @@ export default new Router({
       path: '/update',
       name: 'Update',
       component: Update
+    },
+    {
+      path: '/customers',
+      name: 'Customers',
+      component: Customers
     }
     
     

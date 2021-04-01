@@ -13,6 +13,7 @@
         <b-nav-item  v-b-tooltip.hover.bottom title="Home" v-bind:to="'/'">Home</b-nav-item>
         <b-nav-item v-b-tooltip.hover.bottom title="Attractions" v-bind:to="'Attractions'">Attractions</b-nav-item>
         <b-nav-item v-b-tooltip.hover.bottom title="Tickets" v-bind:to="'Tickets'" v-if="userToken">Tickets</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Customers" v-bind:to="'Customers'">Customers</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
