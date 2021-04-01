@@ -2,6 +2,7 @@ import express from "express";
 import {showCustomers, createCustomer, updateCustomer, deleteCustomer, showCustomerByPhone} from "../controllers/customers.js"
 import { createEmployee, showEmployees, showEmployeeById, updateEmployee, deleteEmployee } from "../controllers/employees.js";
 import {createInvoice, deleteInvoice, showInvoiceById, showInvoices, updateInvoice} from "../controllers/invoices.js";
+import { createLogin, deleteLogin, showLoginById, showLogins, updateLogin } from "../controllers/login.js";
 import { createProduct, deleteProduct, showProductById, showProducts, updateProduct } from "../controllers/products.js";
 import { createService, deleteService, showServiceById, showServices, updateService } from "../controllers/services.js";
 const router = express.Router()
@@ -99,5 +100,23 @@ router.put('/employees/:employeeID', updateEmployee);
 //Delete Service
 router.delete('/employees/:employeeID', deleteEmployee);
 
+/*--------------------------------------------------------------------------------*/
+
+//CRUD LOGIN
+
+//Create New Service
+router.post('/login', createLogin)
+
+//Retrieve All Services
+router.get('/login', showLogins)
+
+//Retrieve One Service
+router.get('/login/:employeeID', showLoginById);
+
+//Update Service
+router.put('/login/:employeeID', updateLogin);
+
+//Delete Service
+router.delete('/login/:employeeID', deleteLogin);
 
 export default router
