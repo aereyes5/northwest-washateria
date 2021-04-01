@@ -1,7 +1,19 @@
 import db from "../config/database.js"
 
+//Create Vendor
+export const insertVendor = (data, result) => {
+    db.query("INSERT INTO vendors SET ?", [data], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
 //Retrieve all Vendors
-export const getVendor = (result) => {
+export const getVendors = (result) => {
     db.query("SELECT * FROM vendors", (err, results) => {             
         if(err) {
             console.log(err);
@@ -12,21 +24,21 @@ export const getVendor = (result) => {
     });   
 }
 
-//Create Vendor
-export const insertVendor = (data, result) => {
-    db.query("INSERT INTO vendors VALUES ?", [data], (err, results) => {             
+//Retrieve One Vendor
+export const getVendorByName = (vendorName, result) => {
+    db.query("SELECT * FROM vendors WHERE vendorName LIKE '%?%'", [vendorName], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results);
+            result(null, results[0]);
         }
     });   
 }
 
 //Update Vendor
-export const updateVendor = (data, id, result) => {
-    db.query("UPDATE vendors SET Vendor_Name = ?, Products_ID = ? WHERE Vendors_ID = ?", [data.Vendor_Name, data.Products_ID, id], (err, results) => {             
+export const updateVendorById = (data, id, result) => {
+    db.query("UPDATE vendors SET vendorName = ?, productID = ? WHERE vendorID = ?", [data.vendorName, data.productID, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,8 +49,8 @@ export const updateVendor = (data, id, result) => {
 }
 
 //Delete Vendor
-export const deleteVendor = (id, result) => {
-    db.query("DELETE FROM vendors WHERE Vendors_ID = ?", [id], (err, results) => {             
+export const deleteVendorById = (id, result) => {
+    db.query("DELETE FROM vendors WHERE vendorID = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

@@ -5,6 +5,7 @@ import {createInvoice, deleteInvoice, showInvoiceById, showInvoices, updateInvoi
 import { createLogin, deleteLogin, showLoginById, showLogins, updateLogin } from "../controllers/login.js";
 import { createProduct, deleteProduct, showProductById, showProducts, updateProduct } from "../controllers/products.js";
 import { createService, deleteService, showServiceById, showServices, updateService } from "../controllers/services.js";
+import { createVendor, deleteVendor, showVendorByName, showVendors, updateVendor } from "../controllers/vendors.js";
 const router = express.Router()
 
 //CRUD CUSTOMERS
@@ -85,38 +86,55 @@ router.delete('/services/:serviceID', deleteService);
 
 //CRUD EMPLOYEES
 
-//Create New Service
+//Create New Employee
 router.post('/employees', createEmployee)
 
-//Retrieve All Services
+//Retrieve All Employees
 router.get('/employees', showEmployees)
 
-//Retrieve One Service
+//Retrieve One Employee
 router.get('/employees/:employeeID', showEmployeeById);
 
-//Update Service
+//Update Employee
 router.put('/employees/:employeeID', updateEmployee);
 
-//Delete Service
+//Delete Employee
 router.delete('/employees/:employeeID', deleteEmployee);
 
 /*--------------------------------------------------------------------------------*/
 
 //CRUD LOGIN
 
-//Create New Service
+//Create New Login
 router.post('/login', createLogin)
 
-//Retrieve All Services
+//Retrieve All Logins
 router.get('/login', showLogins)
 
-//Retrieve One Service
+//Retrieve One Login
 router.get('/login/:employeeID', showLoginById);
 
-//Update Service
+//Update Login
 router.put('/login/:employeeID', updateLogin);
 
-//Delete Service
+//Delete Login
 router.delete('/login/:employeeID', deleteLogin);
+
+/*--------------------------------------------------------------------------------*/
+
+//Create New Vendor
+router.post('/vendors', createVendor)
+
+//Retrieve All Vendors
+router.get('/vendors', showVendors)
+
+//Retrieve One Vendor
+router.get('/vendors/:vendorName', showVendorByName);
+
+//Update Vendor
+router.put('/vendors/:vendorID', updateVendor);
+
+//Delete Vendor
+router.delete('/vendors/:vendorID', deleteVendor);
 
 export default router
