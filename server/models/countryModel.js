@@ -1,7 +1,7 @@
 import db from "../config/database.js"
 
 //Retrieve all Countries
-export const getCountry = (result) => {
+export const getCountries = (result) => {
     db.query("SELECT * FROM country", (err, results) => {             
         if(err) {
             console.log(err);
