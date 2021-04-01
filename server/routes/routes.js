@@ -27,7 +27,7 @@ router.delete('/customers/:customerID', deleteCustomer);
 
 /*--------------------------------------------------------------------------------*/
 
-//CRU INVOICES
+//CRUD INVOICES
 
 //Create New Invoice
 router.post('/invoices', createInvoice)
@@ -121,6 +121,8 @@ router.put('/login/:employeeID', updateLogin);
 router.delete('/login/:employeeID', deleteLogin);
 
 /*--------------------------------------------------------------------------------*/
+
+//CRUD VENDORS
 
 //Create New Vendor
 router.post('/vendors', createVendor)
