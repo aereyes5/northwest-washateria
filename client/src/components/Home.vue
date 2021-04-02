@@ -1,7 +1,7 @@
 <template >
 <div class="background">
 <div class="jumbo">
-  <b-jumbotron header="Welcome!" lead="Come and Visit Underwater Adventures Today!" style="width:80%">
+  <b-jumbotron header="What would you like to do?" lead="Select an option below" style="width:80%">
   </b-jumbotron>
 </div>
 </div>

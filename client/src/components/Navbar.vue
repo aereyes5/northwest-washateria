@@ -3,14 +3,14 @@
  <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
     <b-navbar-brand v-bind:to="'/'">
       <img src="@/assets/webLogo.png" width="50" height="30" class="d-inline-block align-top" alt="rollercoasterIcon">
-      Underwater Adventures
+      Northwest Washateria
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item  v-b-tooltip.hover.bottom title="Home" v-bind:to="'/'">Home</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Home" v-bind:to="'/'">Home</b-nav-item>
         <b-nav-item v-b-tooltip.hover.bottom title="Attractions" v-bind:to="'Attractions'">Attractions</b-nav-item>
         <b-nav-item v-b-tooltip.hover.bottom title="Tickets" v-bind:to="'Tickets'" v-if="userToken">Tickets</b-nav-item>
         <b-nav-item v-b-tooltip.hover.bottom title="Customers" v-bind:to="'Customers'">Customers</b-nav-item>
