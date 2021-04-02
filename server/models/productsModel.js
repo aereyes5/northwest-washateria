@@ -37,8 +37,8 @@ export const getProductById = (productID, result) => {
 }
 
 //Update Product
-export const updateProductById = (data, id, result) => {
-    db.query("UPDATE products SET productName = ?, productPrice = ? WHERE productID = ?", [data.productName, data.productPrice, id], (err, results) => {             
+export const updateProductById = (data, productID, result) => {
+    db.query("UPDATE products SET productName = ?, productPrice = ?, vendorID = ? WHERE productID = ?", [data.productName, data.productPrice, data.vendorID, productID], (err, results) => {             
         if(err) {
             console.log(err);4
             result(err, null);
@@ -49,8 +49,8 @@ export const updateProductById = (data, id, result) => {
 }
 
 //Delete Product
-export const deleteProductById = (id, result) => {
-    db.query("DELETE FROM products WHERE productID = ?", [id], (err, results) => {             
+export const deleteProductById = (productID, result) => {
+    db.query("DELETE FROM products WHERE productID = ?", [productID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

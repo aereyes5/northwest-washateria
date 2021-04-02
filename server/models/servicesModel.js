@@ -26,8 +26,8 @@ export const getServices = (result) => {
 }
 
 //Retrieve One Product
-export const getServiceById = (id, result) => {
-    db.query("SELECT * FROM services WHERE serviceID = ?", [id], (err, results) => {             
+export const getServiceById = (serviceID, result) => {
+    db.query("SELECT * FROM services WHERE serviceID = ?", [serviceID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -38,8 +38,8 @@ export const getServiceById = (id, result) => {
 }
 
 //Update Service
-export const updateServiceById = (data, id, result) => {
-    db.query("UPDATE services SET serviceName = ?, servicePrice = ? WHERE serviceID = ?", [data.serviceName, data.servicePrice, id], (err, results) => {             
+export const updateServiceById = (data, serviceID, result) => {
+    db.query("UPDATE services SET serviceName = ?, servicePrice = ? WHERE serviceID = ?", [data.serviceName, data.servicePrice, serviceID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -50,8 +50,8 @@ export const updateServiceById = (data, id, result) => {
 }
 
 //Delete Service
-export const deleteServiceById = (id, result) => {
-    db.query("DELETE FROM services WHERE serviceID = ?", [id], (err, results) => {             
+export const deleteServiceById = (serviceID, result) => {
+    db.query("DELETE FROM services WHERE serviceID = ?", [serviceID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

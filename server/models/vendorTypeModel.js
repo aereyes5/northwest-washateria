@@ -25,8 +25,8 @@ export const insertVendorType = (data, result) => {
 }
 
 //Update Vendor Status
-export const updateVendorType = (data, id, result) => {
-    db.query("UPDATE vendor_type SET vendorsID = ?, vendorStatusID = ?, vendorTypeName = ? WHERE vendorTypeID = ?", [data.vendorsID, data.vendorStatusID, data.vendorTypeName, id], (err, results) => {             
+export const updateVendorType = (data, vendorTypeID, result) => {
+    db.query("UPDATE vendor_type SET vendorTypeName = ? WHERE vendorTypeID = ?", [data.vendorTypeName, vendorTypeID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,8 +37,8 @@ export const updateVendorType = (data, id, result) => {
 }
 
 //Delete Vendor Status
-export const deleteVendorType = (id, result) => {
-    db.query("DELETE FROM vendor_type WHERE vendorTypeID = ?", [id], (err, results) => {             
+export const deleteVendorType = (vendorTypeID, result) => {
+    db.query("DELETE FROM vendor_type WHERE vendorTypeID = ?", [vendorTypeID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

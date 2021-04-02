@@ -37,8 +37,8 @@ export const getInvoiceById = (invoiceID, result) => {
 }
 
 //Update Invoice
-export const updateInvoiceById = (data, id, result) => {
-    db.query("UPDATE invoice SET customerID = ?, productsID = ?, servicesID = ?, invoiceDate = ?, productName = ?, productPrice = ?, productQuantity = ?, totalPrice = ? WHERE invoiceID = ?", [data.customerID, data.productsID, data.servicesID, data.invoiceDate, data.productName, data.productPrice, data.productQuantity, data.totalPrice, id], (err, results) => {             
+export const updateInvoiceById = (data, invoiceID, result) => {
+    db.query("UPDATE invoice SET invoiceDate = ?, employeeID = ?, customerID = ?, productsID = ?, productQuantity = ?, serviceID = ?, totalPrice = ?, invoiceStatusID = ? WHERE invoiceID = ?", [data.invoiceDate, data.employeeID, data.customerID, data.productsID, data.productQuantity, data.serviceID, data.totalPrice, data.invoiceStatusID, invoiceID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -49,8 +49,8 @@ export const updateInvoiceById = (data, id, result) => {
 }
 
 // //Delete Invoice
-// export const deleteInvoiceById = (id, result) => {
-//     db.query("DELETE FROM invoice WHERE invoiceID = ?", [id], (err, results) => {             
+// export const deleteInvoiceById = (invoiceID, result) => {
+//     db.query("DELETE FROM invoice WHERE invoiceID = ?", [invoiceID], (err, results) => {             
 //         if(err) {
 //             console.log(err);
 //             result(err, null);

@@ -39,7 +39,7 @@ export const getEmployeeById = (employeeID, result) => {
 
 // Update Employee
 export const updateEmployeeById = (data, employeeID, result) => {
-    db.query("UPDATE employees SET firstName = ?, lastName = ?, startDate = ?, endDate = ? WHERE employeeID = ?", [data.firstName, data.lastName, data.startDate, data.endDate, employeeID], (err, results) => {             
+    db.query("UPDATE employees SET firstName = ?, lastName = ?, startDate = ?, endDate = ?, position = ?, loginID = ? WHERE employeeID = ?", [data.firstName, data.lastName, data.startDate, data.endDate, data.position, data.loginID, employeeID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

@@ -26,8 +26,8 @@ export const getLogin = (result) => {
 }
 
 //Retrieve One Login
-export const getLoginById = (employeeID, result) => {
-    db.query("SELECT * FROM login WHERE employeeID = ?", [employeeID], (err, results) => {             
+export const getLoginById = (loginID, result) => {
+    db.query("SELECT * FROM login WHERE loginID = ?", [loginID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -38,8 +38,8 @@ export const getLoginById = (employeeID, result) => {
 }
 
 // Update Login
-export const updateLoginById = (data, employeeID, result) => {
-    db.query("UPDATE login SET username = ?, pswd = ?, access = ? WHERE employeeID = ?", [data.username, data.pswd, data.access, employeeID], (err, results) => {             
+export const updateLoginById = (data, loginID, result) => {
+    db.query("UPDATE login SET username = ?, pswd = ?, access = ? WHERE loginID = ?", [data.username, data.pswd, data.access, loginID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -50,8 +50,8 @@ export const updateLoginById = (data, employeeID, result) => {
 }
 
 // Delete Login
-export const deleteLoginById = (employeeID, result) => {
-    db.query("DELETE FROM login WHERE employeeID = ?", [employeeID], (err, results) => {             
+export const deleteLoginById = (loginID, result) => {
+    db.query("DELETE FROM login WHERE loginID = ?", [loginID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

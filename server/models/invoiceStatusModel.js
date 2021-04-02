@@ -25,8 +25,8 @@ export const insertInvoiceStatus = (data, result) => {
 }
 
 //Update Invoice Status
-export const updateInvoiceStatus = (data, id, result) => {
-    db.query("UPDATE invoice_status SET invoiceID = ?, paymentDescription = ?, invoiceStatus = ? WHERE invoiceStatusID = ?", [data.invoiceID, data.paymentDescription, data.invoiceStatus, id], (err, results) => {             
+export const updateInvoiceStatus = (data, invoiceStatusID, result) => {
+    db.query("UPDATE invoice_status SET paymentDescription = ?, invoiceStatus = ? WHERE invoiceStatusID = ?", [data.paymentDescription, data.invoiceStatus, invoiceStatusID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,8 +37,8 @@ export const updateInvoiceStatus = (data, id, result) => {
 }
 
 //Delete Invoice Status
-export const deleteInvoiceStatus = (id, result) => {
-    db.query("DELETE FROM invoice_status WHERE invoiceStatusID = ?", [id], (err, results) => {             
+export const deleteInvoiceStatus = (invoiceStatusID, result) => {
+    db.query("DELETE FROM invoice_status WHERE invoiceStatusID = ?", [invoiceStatusID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

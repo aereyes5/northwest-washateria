@@ -25,8 +25,8 @@ export const insertVendorStatus = (data, result) => {
 }
 
 //Update Vendor Status
-export const updateVendorStatus = (data, id, result) => {
-    db.query("UPDATE vendor_status SET vendorsID = ?, statusName = ? WHERE vendorStatusID = ?", [data.vendorsID, data.statusName, id], (err, results) => {             
+export const updateVendorStatus = (data, vendorStatusID, result) => {
+    db.query("UPDATE vendor_status SET statusName = ? WHERE vendorStatusID = ?", [data.statusName, vendorStatusID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,8 +37,8 @@ export const updateVendorStatus = (data, id, result) => {
 }
 
 //Delete Vendor Status
-export const deleteVendorStatus = (id, result) => {
-    db.query("DELETE FROM vendor_status WHERE vendorStatusID = ?", [id], (err, results) => {             
+export const deleteVendorStatus = (vendorStatusID, result) => {
+    db.query("DELETE FROM vendor_status WHERE vendorStatusID = ?", [vendorStatusID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

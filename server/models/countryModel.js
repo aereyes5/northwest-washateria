@@ -25,8 +25,8 @@ export const insertCountry = (data, result) => {
 }
 
 //Update Country
-export const updateCountry = (data, id, result) => {
-    db.query("UPDATE country SET vendorsID = ?, countryName = ? WHERE countryID = ?", [data.vendorsID, data.countryName, id], (err, results) => {             
+export const updateCountry = (data, countryID, result) => {
+    db.query("UPDATE country SET countryName = ? WHERE countryID = ?", [data.countryName, countryID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,8 +37,8 @@ export const updateCountry = (data, id, result) => {
 }
 
 //Delete Country
-export const deleteCountry = (id, result) => {
-    db.query("DELETE FROM country WHERE countryID = ?", [id], (err, results) => {             
+export const deleteCountry = (countryID, result) => {
+    db.query("DELETE FROM country WHERE countryID = ?", [countryID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

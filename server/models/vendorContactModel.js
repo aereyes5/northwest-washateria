@@ -25,8 +25,8 @@ export const getVendorContact = (result) => {
 }
 
 //Retrieve One Vendor
-export const getVendorById = (vendorID, result) => {
-    db.query("SELECT * FROM customers WHERE vendorID = ?", [vendorID], (err, results) => {             
+export const getVendorById = (vendorContactID, result) => {
+    db.query("SELECT * FROM customers WHERE vendorContactID = ?", [vendorContactID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,8 +37,8 @@ export const getVendorById = (vendorID, result) => {
 }
 
 //Update Vendor Contact
-export const updateVendorContactById = (data, id, result) => {
-    db.query("UPDATE vendor_contact SET vendorContactName = ?, phoneNumber = ?, email = ? WHERE vendorID = ?", [data.vendorContactName, data.phoneNumber, data.email, id], (err, results) => {             
+export const updateVendorContactById = (data, vendorContactID, result) => {
+    db.query("UPDATE vendor_contact SET vendorContactName = ?, phoneNumber = ?, email = ? WHERE vendorContactID = ?", [data.vendorContactName, data.phoneNumber, data.email, vendorContactID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -49,8 +49,8 @@ export const updateVendorContactById = (data, id, result) => {
 }
 
 //Delete Vendor Contact
-export const deleteVendorContactById = (id, result) => {
-    db.query("DELETE FROM vendor_contact WHERE vendorContactID = ?", [id], (err, results) => {             
+export const deleteVendorContactById = (vendorContactID, result) => {
+    db.query("DELETE FROM vendor_contact WHERE vendorContactID = ?", [vendorContactID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
