@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Home from '@/components/Home'
 import Registration from '@/components/Registration'
 import Attractions from '@/components/Attractions'
@@ -9,7 +10,8 @@ import Faq from '@/components/Faq'
 import Tickets from '@/components/Tickets'
 import Account from '@/components/Account'
 import Update from '@/components/Update'
-import Customers from '@components/Customers'
+import Customers from '@/components/Customers'
+import NewCustomer from '@/components/NewCustomer'
 
 
 Vue.use(Router)
@@ -68,8 +70,12 @@ export default new Router({
       path: '/customers',
       name: 'Customers',
       component: Customers
-    }
-    
+    },
+    {
+      path: '/newCustomer',
+      name: 'NewCustomer',
+      component: NewCustomer
+    }  
     
   ]
 })

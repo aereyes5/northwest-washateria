@@ -1,9 +1,11 @@
-import {insertCustomer, updateCustomerById, deleteCustomerById, getCustomers, getCustomerByPhone} from "../models/customerModel.js"
+import { insertVendorContact } from "../models/vendorContactModel.js"
+
+
 
 //Create New Customer
 export const createCustomer = (req, res) => {
     const data = req.body;
-    insertCustomer(data, (err, results) => {
+    insertVendorContact(data, (err, results) => {
         if (err){
             res.send(err);
         }else{

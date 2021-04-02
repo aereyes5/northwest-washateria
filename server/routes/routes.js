@@ -1,7 +1,7 @@
 import express from "express";
 import {showCustomers, createCustomer, updateCustomer, deleteCustomer, showCustomerByPhone} from "../controllers/customers.js"
 import { createEmployee, showEmployees, showEmployeeById, updateEmployee, deleteEmployee } from "../controllers/employees.js";
-import {createInvoice, deleteInvoice, showInvoiceById, showInvoices, updateInvoice} from "../controllers/invoices.js";
+import {createInvoice, showInvoiceById, showInvoices, updateInvoice} from "../controllers/invoices.js";
 import { createLogin, deleteLogin, showLoginById, showLogins, updateLogin } from "../controllers/login.js";
 import { createProduct, deleteProduct, showProductById, showProducts, updateProduct } from "../controllers/products.js";
 import { createService, deleteService, showServiceById, showServices, updateService } from "../controllers/services.js";

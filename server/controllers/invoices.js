@@ -1,4 +1,4 @@
-import {deleteInvoiceById, getInvoice, getInvoiceById, insertInvoice, updateInvoiceById} from "../models/invoiceModel.js"
+import {getInvoice, getInvoiceById, insertInvoice, updateInvoiceById} from "../models/invoiceModel.js"
 
 //Create New Invoice
 export const createInvoice = (req, res) => {
