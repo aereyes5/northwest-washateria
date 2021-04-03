@@ -67,9 +67,17 @@ class Services{
     //     })
     // } 
 
-
-    getCustomerByPhone(phoneNumber){
-        return axios.get(`${customerUrl}?phoneNumber=${phoneNumber}`)
+    //retrieve one customer by phone number
+    static getCustomerByPhone(phoneNumber){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${customerUrl}/${phoneNumber}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
     }
 }
 

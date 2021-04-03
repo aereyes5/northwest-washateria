@@ -25,7 +25,8 @@ export const showCustomers = (req, res) => {
 
 //Retrieve One Customer
 export const showCustomerByPhone = (req, res) => {
-    getCustomerByPhone(req.params.phoneNumber, (err, results) => {
+    const phoneNumber = req.params.phoneNumber;
+    getCustomerByPhone(phoneNumber, (err, results) => {
         if (err){
             res.send(err);
         }else{
