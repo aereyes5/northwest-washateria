@@ -2,16 +2,22 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '@/components/Home'
-import Registration from '@/components/Registration'
-import Attractions from '@/components/Attractions'
 import Purchases from '@/components/Purchases'
+import Orders from '@/components/Orders'
+import PurchaseHistory from '@/components/PurchaseHistory'
+import Invoices from '@/components/Invoices'
+import Products from '@/components/Products'
+import Services from '@/components/Services'
+import Vendors from '@/components/Vendors'
+import Customers from '@/components/Customers'
+import Employees from '@/components/Employees'
+import UserGuide from '@/components/UserGuide'
+import Registration from '@/components/Registration'
 import Login from '@/components/Login'
-import Faq from '@/components/Faq'
-import Tickets from '@/components/Tickets'
 import Account from '@/components/Account'
 import Update from '@/components/Update'
-import Customers from '@/components/Customers'
 import NewCustomer from '@/components/NewCustomer'
+// import asdfd from '@/components/asdfd'
 
 
 Vue.use(Router)
@@ -26,6 +32,56 @@ export default new Router({
       component: Home
     },
     {
+      path: '/purchases',
+      name: 'Purchases',
+      component: Purchases
+    },
+    {
+      path: '/orders',
+      name: 'Orders',
+      component: Orders
+    },
+    {
+      path: '/PurchaseHistory',
+      name: 'PurchaseHistory',
+      component: PurchaseHistory
+    },
+    {
+      path: '/Invoices',
+      name: 'Invoices',
+      component: Invoices
+    },
+    {
+      path: '/Products',
+      name: 'Products',
+      component: Products
+    },
+    {
+      path: '/Services',
+      name: 'Services',
+      component: Services
+    },
+    {
+      path: '/Vendors',
+      name: 'Vendors',
+      component: Vendors
+    },
+    {
+      path: '/Customers',
+      name: 'Customers',
+      component: Customers
+    },
+    {
+      path: '/Employees',
+      name: 'Employees',
+      component: Employees
+    },
+    {
+      path: '/userguide',
+      name: 'UserGuide',
+      component: UserGuide
+    },
+    {
       path: '/register',
       name: 'Registration',
       component: Registration
@@ -34,27 +90,6 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
-    },
-    
-    {
-      path: '/attractions',
-      name: 'Attractions',
-      component: Attractions
-    },
-    {
-      path: '/purchases',
-      name: 'Purchases',
-      component: Purchases
-    },
-    {
-      path: '/FAQ',
-      name: 'FAQ',
-      component: Faq
-    },
-    {
-      path: '/tickets',
-      name: 'Tickets',
-      component: Tickets
     },
     {
       path: '/account',
@@ -67,15 +102,14 @@ export default new Router({
       component: Update
     },
     {
-      path: '/customers',
-      name: 'Customers',
-      component: Customers
-    },
-    {
       path: '/newCustomer',
       name: 'NewCustomer',
       component: NewCustomer
-    }  
-    
+    }
+    // {
+    //   path: '/asdfg',
+    //   name: 'asdfg',
+    //   component: asdfg
+    // },
   ]
 })

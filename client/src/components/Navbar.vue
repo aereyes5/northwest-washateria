@@ -2,7 +2,7 @@
 <div>
  <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
     <b-navbar-brand v-bind:to="'/'">
-      <img src="@/assets/webLogo.png" width="50" height="30" class="d-inline-block align-top" alt="rollercoasterIcon">
+      <img src="@/assets/genlogo.png" width="30" height="30" class="d-inline-block align-top" alt="nwwashateriaIcon">
       Northwest Washateria
     </b-navbar-brand>
 
@@ -11,10 +11,16 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item v-b-tooltip.hover.bottom title="Home" v-bind:to="'/'">Home</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Attractions" v-bind:to="'Attractions'">Attractions</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Tickets" v-bind:to="'Tickets'" v-if="userToken">Tickets</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Purchases" v-bind:to="'Purchases'">Purchases</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Orders" v-bind:to="'Orders'">Orders</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="PurchaseHistory" v-bind:to="'PurchaseHistory'">PurchaseHistory</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Invoices" v-bind:to="'Invoices'">Invoices</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Products" v-bind:to="'Products'">Products</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Services" v-bind:to="'Services'">Services</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Vendors" v-bind:to="'Vendors'">Vendors</b-nav-item>
         <b-nav-item v-b-tooltip.hover.bottom title="Customers" v-bind:to="'Customers'">Customers</b-nav-item>
       </b-navbar-nav>
+        <b-nav-item v-b-tooltip.hover.bottom title="Employees" v-bind:to="'Employees'" v-if="userToken">Employees</b-nav-item>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
@@ -31,7 +37,7 @@
           <b-dropdown-item v-bind:to="'Home'" v-if="userToken" @click="logout">Sign Out</b-dropdown-item>
           <b-dropdown-item v-bind:to="'Login'" v-if="!userToken">Sign In</b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item v-bind:to="'FAQ'" v-b-tooltip.hover.bottom title="FAQ">
+        <b-nav-item v-bind:to="'UserGuide'" v-b-tooltip.hover.bottom title="User Guide">
             <b-icon  icon="question-circle" aria-label="User"></b-icon>
         </b-nav-item>
       </b-navbar-nav>
