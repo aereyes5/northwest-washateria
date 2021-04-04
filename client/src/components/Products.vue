@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import services from '../services'
 
 export default {
   name: "Products",
@@ -12,7 +13,7 @@ export default {
           fields: ['selected','productID','productName', 'productPrice', 'vendorID'],
           selectedMode: 'single',
           selected: [],
-          productName: null,
+          productID: null,
           status: "",
           status2: ""
       }
@@ -28,8 +29,8 @@ export default {
            this.selected = items
            console.log(items)
        },
-       getProductByName(){
-           if(this.productName == null){
+       getProductById(){
+           if(this.productId == null){
                this.status = "Please enter product name"
            }
            else{
