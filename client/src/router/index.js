@@ -17,8 +17,7 @@ import Login from '@/components/Login'
 import Account from '@/components/Account'
 import Update from '@/components/Update'
 import NewCustomer from '@/components/NewCustomer'
-// import asdfd from '@/components/asdfd'
-
+import UpdateCustomer from '@/components/UpdateCustomer'
 
 Vue.use(Router)
 
@@ -67,7 +66,7 @@ export default new Router({
       component: Vendors
     },
     {
-      path: '/Customers',
+      path: '/customers',
       name: 'Customers',
       component: Customers
     },
@@ -102,14 +101,16 @@ export default new Router({
       component: Update
     },
     {
-      path: '/newCustomer',
+      path: '/new-customer',
       name: 'NewCustomer',
       component: NewCustomer
+    },
+    {
+      path: '/update-customer',
+      name: 'UpdateCustomer',
+      component: UpdateCustomer
     }
-    // {
-    //   path: '/asdfg',
-    //   name: 'asdfg',
-    //   component: asdfg
-    // },
+
+    
   ]
 })

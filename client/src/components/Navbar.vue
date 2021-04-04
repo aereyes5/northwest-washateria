@@ -18,7 +18,7 @@
         <b-nav-item v-b-tooltip.hover.bottom title="Products" v-bind:to="'Products'">Products</b-nav-item>
         <b-nav-item v-b-tooltip.hover.bottom title="Services" v-bind:to="'Services'">Services</b-nav-item>
         <b-nav-item v-b-tooltip.hover.bottom title="Vendors" v-bind:to="'Vendors'">Vendors</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Customers" v-bind:to="'Customers'">Customers</b-nav-item>
+        <b-nav-item v-b-tooltip.hover.bottom title="Customers" v-bind:to="'/customers'">Customers</b-nav-item>
       </b-navbar-nav>
         <b-nav-item v-b-tooltip.hover.bottom title="Employees" v-bind:to="'Employees'" v-if="userToken">Employees</b-nav-item>
 

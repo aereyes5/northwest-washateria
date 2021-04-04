@@ -16,7 +16,7 @@ router.post('/customers', createCustomer)
 //Retrieve All Customers
 router.get('/customers', showCustomers)
 
-//Retrieve One Customer
+//Retrieve One Customer By Phone
 router.get('/customers/:phoneNumber', showCustomerByPhone);
 
 //Update Customer

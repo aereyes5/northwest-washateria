@@ -11,7 +11,8 @@
         </p>
 
 
-        <b-button v-bind:to="'NewCustomer'" variant="info">Add New</b-button>
+        <b-button v-bind:to="'NewCustomer'" variant="success">Add New</b-button>
+        <b-button variant="secondary" v-on:click="setPhoneNumber">Update</b-button>
         <b-button variant="danger" v-on:click="deleteCustomer">Delete</b-button>
 
         <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
@@ -105,8 +106,18 @@ export default {
             
         },
 
-        updateCustomer(){
+        setPhoneNumber(){
+            if(!Array.isArray(this.selected) || !this.selected.length){
+                this.status2 = "Please select a record to update";
+            }
+            else{
+                this.updateCustomer(this.selected[0].phoneNumber)
+            }
+        },
 
+        updateCustomer(phoneNumber){
+            this.$store.commit('customerPhoneNumber', {phoneNumber})
+            this.$router.push({name: 'UpdateCustomer'})
         }
     },
 

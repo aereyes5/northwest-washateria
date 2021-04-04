@@ -10,6 +10,9 @@ export const store = new Vuex.Store({
             token: null
             
         },
+        customer:{
+            phoneNumber: null
+        }
 
     },
     getters:{
@@ -21,6 +24,9 @@ export const store = new Vuex.Store({
         },
         getToken: state => {
             return state.user.token
+        },
+        getPhoneNumber: state => {
+            return state.customer.phoneNumber
         }
 
     },
@@ -32,6 +38,9 @@ export const store = new Vuex.Store({
         },
         logoutUser(state,{token}){
             state.user.token = token
+        },
+        customerPhoneNumber(state,{phoneNumber}){
+            state.customer.phoneNumber = phoneNumber
         }
 
     }

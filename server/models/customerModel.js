@@ -25,7 +25,7 @@ export const getCustomers = (result) => {
     })
 }
 
-//Retrieve One Customer
+//Retrieve One Customer By Phone
 export const getCustomerByPhone = (phoneNumber, result) => {
     db.query("SELECT * FROM customers WHERE phoneNumber = ?", [phoneNumber], (err, results) => {             
         if(err) {

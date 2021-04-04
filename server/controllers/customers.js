@@ -23,7 +23,7 @@ export const showCustomers = (req, res) => {
     })
 }
 
-//Retrieve One Customer
+//Retrieve One Customer By Phone
 export const showCustomerByPhone = (req, res) => {
     const phoneNumber = req.params.phoneNumber;
     getCustomerByPhone(phoneNumber, (err, results) => {

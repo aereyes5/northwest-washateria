@@ -49,23 +49,23 @@ class Services{
         })
     }
 
-    // //update customer
-    // static update(customer, id){
-    //     return new Promise(async (resolve, reject) => {
-    //         try{
-    //             const res = await axios.put(`${customerUrl}/${id}`, {
-    //                 firstName: customer.firstName,
-    //                 lastName: customer.lastName,
-    //                 phoneNumber: customer.phoneNumber,
-    //                 email: customer.email
-    //             })
-    //             const data = res.data
-    //             resolve (data)
-    //         }catch(error){
-    //             reject(`${error}`)
-    //         }
-    //     })
-    // } 
+    //update customer
+    static updateCustomer(customer){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.put(`${customerUrl}/${customer.customerID}`, {
+                    firstName: customer.firstName,
+                    lastName: customer.lastName,
+                    phoneNumber: customer.phoneNumber,
+                    email: customer.email
+                })
+                const data = res.data
+                resolve (data)
+            }catch(error){
+                reject(`${error}`)
+            }
+        })
+    } 
 
     //retrieve one customer by phone number
     static getCustomerByPhone(phoneNumber){
