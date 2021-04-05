@@ -105,7 +105,7 @@ export default {
        },
 
        updateProduct(productID){
-           this.$store.commit('productID', {productID})
+           this.$store.commit('pProductID', {productID})
            this.$router.push({name: 'UpdateProduct'})
        }
    },
