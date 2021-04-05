@@ -28,6 +28,7 @@
         ref="selectableTable"
         selectable
         @row-selected="onRowSelected"
+        sticky-header="775px"
         >
 
         </b-table>
