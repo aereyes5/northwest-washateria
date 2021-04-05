@@ -12,6 +12,9 @@ export const store = new Vuex.Store({
         },
         customer:{
             phoneNumber: null
+        },
+        product:{
+            productID: null
         }
 
     },
@@ -27,6 +30,9 @@ export const store = new Vuex.Store({
         },
         getPhoneNumber: state => {
             return state.customer.phoneNumber
+        },
+        getProductID: state => {
+            return state.product.productID
         }
 
     },
@@ -41,6 +47,10 @@ export const store = new Vuex.Store({
         },
         customerPhoneNumber(state,{phoneNumber}){
             state.customer.phoneNumber = phoneNumber
+        },
+        //Named pProductID bc of other variable productID
+        pProductID(state,{productID}){
+            state.product.productID = productID
         }
 
     }
