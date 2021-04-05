@@ -1,7 +1,6 @@
 <template>
     <div>
         <b-form @submit.prevent="addProduct">
-            <b-form-input v-model="product.productID" id="productID" disabled></b-form-input>
             <b-form-input v-model="product.productName" placeholder="Enter Product Name" id="productName"></b-form-input>
             <b-form-input v-model="product.productPrice" placeholder="Enter Product Price" id="productPrice"></b-form-input>
             <b-form-input v-model="product.vendorID" placeholder="Enter Phone Number" id="vendorID"></b-form-input>
@@ -17,7 +16,6 @@ export default {
     data(){
         return{
             product: {
-                productID: null,
                 productName: null,
                 productPrice: null,
                 vendorID: null
