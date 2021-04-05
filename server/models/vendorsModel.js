@@ -14,7 +14,8 @@ export const insertVendor = (data, result) => {
 
 //Retrieve all Vendors
 export const getVendors = (result) => {
-    db.query("SELECT * FROM vendors", (err, results) => {             
+    let sql = "SELECT vendors.vendorID, vendors.vendorName, vendor_type.vendorTypeName AS type, country.countryName AS country, vendor_contact.vendorContactName AS vendorContact, vendor_contact.phoneNumber, vendor_contact.email FROM vendors INNER JOIN vendor_type ON vendors.vendorTypeID = vendor_type.vendorTypeID INNER JOIN country ON vendors.countryID = country.countryID INNER JOIN vendor_contact ON vendors.vendorContactID = vendor_contact.vendorContactID"
+    db.query(sql, (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

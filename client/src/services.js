@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const customerUrl = 'http://localhost:3000/customers'
 const productUrl = 'http://localhost:3000/products'
+const vendorURL = 'http://localhost:3000/vendors'
 
 class Services{
     //CRUD Customers
@@ -161,6 +162,20 @@ class Services{
             }
         })
     }
+
+/*---------------------------------------------------------------------------------*/
+ //Get all vendors
+ static getVendors(){
+    return new Promise(async (resolve, reject) => {
+        try{
+            const res = await axios.get(`${vendorURL}`);
+            const data = res.data
+            resolve(data)
+        }catch(error) {
+            reject(`${error}`);
+        }
+    })
+}
 
 }
 
