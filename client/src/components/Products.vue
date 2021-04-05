@@ -1,6 +1,8 @@
 <template>
    <div>
-        <b-input-group class="mt-3">
+
+
+     <b-input-group class="mt-3">
             <b-form-input placeholder="Enter Product's ID number" v-model="productID"></b-form-input>
             <b-input-group-append>
             <b-button variant="primary" v-on:click="getProductByID">Search</b-button>
@@ -28,7 +30,6 @@
         selectable
         @row-selected="onRowSelected"
         >
-        <!-- Example scoped slot for select state illustrative purposes -->
         <template #cell(selected)="{ rowSelected }">
             <template v-if="rowSelected">
             <span aria-hidden="true">&check;</span>
@@ -39,20 +40,19 @@
             <span class="sr-only">Not selected</span>
             </template>
         </template>
-        </b-table>
+        </b-table> 
     </div>   
 </template>
 
 <script>
 import services from '../services'
-
 export default {
   name: "Products",
   data(){
       return{
           products: [],
           fields: ['selected','productID','productName', 'productPrice', 'vendorID'],
-          selectedMode: 'single',
+          selectMode: 'single',
           selected: [],
           productID: null,
           status: "",
@@ -82,7 +82,7 @@ export default {
            this.selected = items
            console.log(items)
        },
-       getProductById(){
+       getProductByID(){
            if(this.productID == null){
                this.status = "Please enter product name"
            }
