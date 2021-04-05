@@ -30,7 +30,7 @@
         ref="selectableTable"
         selectable
         @row-selected="onRowSelected"
-        sticky-header="775px"
+        sticky-header="83vh"
         >
 
         </b-table>
