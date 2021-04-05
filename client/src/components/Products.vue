@@ -60,7 +60,7 @@ export default {
       }
    },
    methods: {
-       getCustomers(){
+       getProducts(){
            services.getProducts().then(response => {
                this.products = response
                console.log(this.products)
