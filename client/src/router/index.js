@@ -18,6 +18,8 @@ import Account from '@/components/Account'
 import Update from '@/components/Update'
 import NewCustomer from '@/components/NewCustomer'
 import UpdateCustomer from '@/components/UpdateCustomer'
+import NewProduct from '@/components/NewProduct'
+import UpdateProduct from '@/components/updateProduct'
 
 Vue.use(Router)
 
@@ -109,6 +111,16 @@ export default new Router({
       path: '/update-customer',
       name: 'UpdateCustomer',
       component: UpdateCustomer
+    },
+    {
+      path: '/update-product',
+      name: 'UpdateProduct',
+      component: UpdateProduct
+    },
+    {
+      path:'/new-product',
+      name:'NewProduct',
+      component: NewProduct
     }
 
     

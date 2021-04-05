@@ -32,7 +32,7 @@ export default {
         },
         getProductByProductID(productID){
             try{
-                services.getProductByProductID(productID).then(response => {
+                services.getProductByID(productID).then(response => {
                     this.info = response
                     this.product.productID = this.info[0].productID;
                     this.product.productName = this.info[0].productName;

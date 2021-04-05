@@ -11,7 +11,7 @@
         </p>
 
 
-        <b-button v-bind:to="'NewProduct'" variant="success">Add New</b-button>
+        <b-button v-bind:to="'new-product'" variant="success">Add New</b-button>
         <b-button variant="secondary" v-on:click="setProductID">Update</b-button>
         <b-button variant="danger" v-on:click="deleteProduct">Delete</b-button>
 
