@@ -20,8 +20,31 @@
         <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
         {{status2}}
         </p>
-      
+
+
         <b-table
+        :items="products"
+        :fields="fields"
+        :select-mode="selectMode"
+        responsive="sm"
+        ref="selectableTable"
+        selectable
+        @row-selected="onRowSelected"
+        >
+        <!-- Example scoped slot for select state illustrative purposes -->
+        <template #cell(selected)="{ rowSelected }">
+            <template v-if="rowSelected">
+            <span aria-hidden="true">&check;</span>
+            <span class="sr-only">Selected</span>
+            </template>
+            <template v-else>
+            <span aria-hidden="true">&nbsp;</span>
+            <span class="sr-only">Not selected</span>
+            </template>
+        </template>
+        </b-table>
+      
+ <!--       <b-table
         :items="products"
         :fields="fields"
         :select-mode="selectMode"
@@ -40,7 +63,7 @@
             <span class="sr-only">Not selected</span>
             </template>
         </template>
-        </b-table> 
+        </b-table> -->
     </div>   
 </template>
 
@@ -68,6 +91,7 @@ export default {
                console.log(e);
            })
        },
+
        deleteProduct(){
            if(!Array.isArray(this.selected) || !this.selected.length){
                this.status2 = "Please select a record to delete";
@@ -78,13 +102,15 @@ export default {
                window.location.reload()
            }
        },
+
        onRowSelected(items){
            this.selected = items
            console.log(items)
        },
+
        getProductByID(){
            if(this.productID == null){
-               this.status = "Please enter product name"
+               this.status = "Please enter product ID"
            }
            else{
                this.status = "";
@@ -98,6 +124,7 @@ export default {
                }
            }
        },
+
        setProductID(){
            if(!Array.isArray(this.selected) || !this.selected.length){
                this.status2 = "Please select a record to update"
@@ -106,6 +133,7 @@ export default {
                this.updateProduct(this.selected[0].productID)
            }
        },
+
        updateProduct(productID){
            this.$store.commit('pProductID', {productID})
            this.$router.push({name: 'UpdateProduct'})

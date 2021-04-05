@@ -63,7 +63,7 @@ export default new Router({
       component: Services
     },
     {
-      path: '/Vendors',
+      path: '/vendors',
       name: 'Vendors',
       component: Vendors
     },

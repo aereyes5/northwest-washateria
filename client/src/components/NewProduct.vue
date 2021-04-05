@@ -26,7 +26,7 @@ export default {
         async addProduct(){
             try{
                 const newProduct = services.insertProduct(this.product).then(product => {
-                    this.$router.push({name: Products})
+                    this.$router.push({name: 'Products'})
                     return product
                 }).catch((error) => {
                     this.status = error
