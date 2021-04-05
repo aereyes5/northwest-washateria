@@ -4,6 +4,7 @@ const customerUrl = 'http://localhost:3000/customers'
 const productUrl = 'http://localhost:3000/products'
 const vendorURL = 'http://localhost:3000/vendors'
 const invoiceURL = 'http://localhost:3000/invoices'
+const employeeURL = 'http://localhost:3000/employees'
 
 class Services{
     //CRUD Customers
@@ -204,10 +205,93 @@ class Services{
         })
     }
 
+/*--------------------------------------------------------------------------------*/
 
+//CRUD Employees
+
+//Get all employees
+static getEmployees(){
+    return new Promise(async (resolve, reject) => {
+        try{
+            const res = await axios.get(`${productUrl}`)
+            const data = res.data 
+            resolve(data)
+        }catch(error) {
+            reject(`${error}`);
+        }
+    })
 }
 
+//Insert Employee
+static insertEmployee(employee){
+    return new Promise(async (resolve, reject) => {
+        try{
+            const res = await axios.post(`${employeeURL}`, {
+                employeeID: employee.employeeID,
+                firstName: employee.firstName,
+                lastName: employee.lastName,
+                startDate: employee.startDate,
+                endDate: employee.endDate,
+                position: employee.position,
+                loginID: employee.loginID
+            })
+            const data = res.data
+            console.log(data)
+            resolve(data)
+        }catch(error){
+            reject(`Unable to add new product\n${error}`);
+        }
+    })
+}
 
+//Delete Employee
+static deleteEmployee(employeeID){
+    return new Promise(async (resolve, reject) => {
+        try{
+            const res = await axios.delete(`${employeeURL}/${employeeID}`)
+            const data = res.data
+            resolve (data)
+        }catch(error){
+            reject(`${error}`)
+        }
+    })
+}
+
+//Update Employee
+static updateEmployee(employee){
+    return new Promise(async (resolve, reject) => {
+        try{
+            const res = await axios.put(`${employeeURL}/${employee.employeeID}`, {
+                employeeID: employee.employeeID,
+                firstName: employee.firstName,
+                lastName: employee.lastName,
+                startDate: employee.startDate,
+                endDate: employee.endDate,
+                position: employee.position,
+                loginID: employee.loginID
+            })
+            const data = res.data
+            resolve (data)
+        }catch(error){
+            reject(`${error}`)
+        }
+    })
+}
+
+//Get one employee by ID
+static getEmployeeByID(employeeID){
+    return new Promise(async (resolve, reject) => {
+        try{
+            const res = await axios.get(`${employeeURL}/${employeeID}`);
+            const data = res.data
+            resolve(data)
+        }catch(error) {
+            reject(`${error}`);
+        }
+    })
+}
+
+}
 
 
 
