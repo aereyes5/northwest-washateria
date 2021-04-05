@@ -3,6 +3,7 @@ import axios from 'axios'
 const customerUrl = 'http://localhost:3000/customers'
 const productUrl = 'http://localhost:3000/products'
 const vendorURL = 'http://localhost:3000/vendors'
+const invoiceURL = 'http://localhost:3000/invoices'
 
 class Services{
     //CRUD Customers
@@ -164,19 +165,50 @@ class Services{
     }
 
 /*---------------------------------------------------------------------------------*/
- //Get all vendors
- static getVendors(){
-    return new Promise(async (resolve, reject) => {
-        try{
-            const res = await axios.get(`${vendorURL}`);
-            const data = res.data
-            resolve(data)
-        }catch(error) {
-            reject(`${error}`);
-        }
-    })
-}
+    //Get all vendors
+    static getVendors(){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${vendorURL}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
+    static getVendorByName(vendorName){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${vendorURL}/${vendorName}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
+/*---------------------------------------------------------------------------------*/
+
+    static getInvoices(){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${invoiceURL}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
 
 }
+
+
+
+
 
 export default Services

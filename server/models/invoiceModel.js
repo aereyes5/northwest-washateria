@@ -14,12 +14,12 @@ export const insertInvoice = (data, result) => {
 
 //Retrieve all Invoices
 export const getInvoice = (result) => {
-    db.query("SELECT * FROM invoice", (err, results) => {             
+    db.query("call getInvoices()", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results);
+            result(null, results[0]);
         }
     });   
 }

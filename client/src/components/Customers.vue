@@ -11,6 +11,7 @@
         </p>
 
 
+        <b-button variant="primary" v-on:click="getCustomers">View All</b-button>
         <b-button v-bind:to="'new-customer'" variant="success">Add New</b-button>
         <b-button variant="secondary" v-on:click="setPhoneNumber">Update</b-button>
         <b-button variant="danger" v-on:click="deleteCustomer">Delete</b-button>
@@ -23,22 +24,12 @@
         :items="customers"
         :fields="fields"
         :select-mode="selectMode"
-        responsive="sm"
+        striped responsive="sm"
         ref="selectableTable"
         selectable
         @row-selected="onRowSelected"
         >
-        <!-- Example scoped slot for select state illustrative purposes -->
-        <template #cell(selected)="{ rowSelected }">
-            <template v-if="rowSelected">
-            <span aria-hidden="true">&check;</span>
-            <span class="sr-only">Selected</span>
-            </template>
-            <template v-else>
-            <span aria-hidden="true">&nbsp;</span>
-            <span class="sr-only">Not selected</span>
-            </template>
-        </template>
+
         </b-table>
     </div>
 
@@ -51,7 +42,7 @@ export default {
     data(){
         return{
             customers: [],
-            fields: ['selected', 'customerID','firstName', 'lastName', 'phoneNumber', 'email'],
+            fields: ['customerID','firstName', 'lastName', 'phoneNumber', 'email'],
             selectMode: 'single',
             selected: [],
             phoneNumber: null,
@@ -63,6 +54,7 @@ export default {
         getCustomers(){
             services.getCustomers().then(response => {
                 this.customers = response
+                this.phoneNumber = null;
                 console.log(this.customers)
             })
             .catch(e => {

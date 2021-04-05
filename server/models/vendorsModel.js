@@ -14,20 +14,21 @@ export const insertVendor = (data, result) => {
 
 //Retrieve all Vendors
 export const getVendors = (result) => {
-    let sql = "SELECT vendors.vendorID, vendors.vendorName, vendor_type.vendorTypeName AS type, country.countryName AS country, vendor_contact.vendorContactName AS vendorContact, vendor_contact.phoneNumber, vendor_contact.email FROM vendors INNER JOIN vendor_type ON vendors.vendorTypeID = vendor_type.vendorTypeID INNER JOIN country ON vendors.countryID = country.countryID INNER JOIN vendor_contact ON vendors.vendorContactID = vendor_contact.vendorContactID"
+    let sql = "call getAllVendors()"
     db.query(sql, (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results);
+            result(null, results[0]);
         }
     });   
 }
 
 //Retrieve One Vendor
 export const getVendorByName = (vendorName, result) => {
-    db.query("SELECT * FROM vendors WHERE vendorName LIKE '%?%'", [vendorName], (err, results) => {             
+    let sql = "call getVendorByName(?)"
+    db.query(sql, [vendorName], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -39,6 +40,7 @@ export const getVendorByName = (vendorName, result) => {
 
 //Update Vendor
 export const updateVendorById = (data, vendorID, result) => {
+    let sql = "update vendors join vendor_type on vendors.vendorTypeID = vendor_type.vendorTypeID join country on vendors.countryID = country.countryID join vendor_contact on vendors.vendorContactID = vendor_contact.vendorContactID set vendors.vendorName = ?, vendor_contact.vendorContactName = 'Dan Johnson' where vendors.vendorID = 1"
     db.query("UPDATE vendors SET vendorName = ?, vendorContactID = ?, vendorTypeID = ?, countryID = ? WHERE vendorID = ?", [data.vendorName, data.vendorContactID, data.vendorTypeID, data.countryID, vendorID], (err, results) => {             
         if(err) {
             console.log(err);

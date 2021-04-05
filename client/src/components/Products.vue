@@ -12,7 +12,7 @@
         {{status}}
         </p>
 
-
+        <b-button variant="primary" v-on:click="getProducts">View All</b-button>
         <b-button v-bind:to="'new-product'" variant="success">Add New</b-button>
         <b-button variant="secondary" v-on:click="setProductID">Update</b-button>
         <b-button variant="danger" v-on:click="deleteProduct">Delete</b-button>
@@ -26,44 +26,13 @@
         :items="products"
         :fields="fields"
         :select-mode="selectMode"
-        responsive="sm"
+        striped responsive="sm"
         ref="selectableTable"
         selectable
         @row-selected="onRowSelected"
         >
-        <!-- Example scoped slot for select state illustrative purposes -->
-        <template #cell(selected)="{ rowSelected }">
-            <template v-if="rowSelected">
-            <span aria-hidden="true">&check;</span>
-            <span class="sr-only">Selected</span>
-            </template>
-            <template v-else>
-            <span aria-hidden="true">&nbsp;</span>
-            <span class="sr-only">Not selected</span>
-            </template>
-        </template>
+
         </b-table>
-      
- <!--       <b-table
-        :items="products"
-        :fields="fields"
-        :select-mode="selectMode"
-        responsive="sm"
-        ref="selectableTable"
-        selectable
-        @row-selected="onRowSelected"
-        >
-        <template #cell(selected)="{ rowSelected }">
-            <template v-if="rowSelected">
-            <span aria-hidden="true">&check;</span>
-            <span class="sr-only">Selected</span>
-            </template>
-            <template v-else>
-            <span aria-hidden="true">&nbsp;</span>
-            <span class="sr-only">Not selected</span>
-            </template>
-        </template>
-        </b-table> -->
     </div>   
 </template>
 
@@ -74,7 +43,7 @@ export default {
   data(){
       return{
           products: [],
-          fields: ['selected','productID','productName', 'productPrice', 'vendorID'],
+          fields: ['productID','productName', 'productPrice', 'vendorID'],
           selectMode: 'single',
           selected: [],
           productID: null,
@@ -86,6 +55,7 @@ export default {
        getProducts(){
            services.getProducts().then(response => {
                this.products = response
+               this.productID = null
                console.log(this.products)
            }).catch(e => {
                console.log(e);
@@ -135,7 +105,7 @@ export default {
        },
 
        updateProduct(productID){
-           this.$store.commit('pProductID', {productID})
+           this.$store.commit('productID', {productID})
            this.$router.push({name: 'UpdateProduct'})
        }
    },
