@@ -213,7 +213,7 @@ class Services{
 static getEmployees(){
     return new Promise(async (resolve, reject) => {
         try{
-            const res = await axios.get(`${productUrl}`)
+            const res = await axios.get(`${employeeURL}`)
             const data = res.data 
             resolve(data)
         }catch(error) {
