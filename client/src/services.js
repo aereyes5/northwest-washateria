@@ -150,7 +150,7 @@ class Services{
     }
 
     //Get one product by ID
-    static getProductByProductID(productID){
+    static getProductByID(productID){
         return new Promise(async (resolve, reject) => {
             try{
                 const res = await axios.get(`${productUrl}/${productID}`);

@@ -3,7 +3,7 @@
         <b-input-group class="mt-3">
             <b-form-input placeholder="Enter Product's ID number" v-model="productID"></b-form-input>
             <b-input-group-append>
-            <b-button variant="primary" v-on:click="getProductByProductID">Search</b-button>
+            <b-button variant="primary" v-on:click="getProductByID">Search</b-button>
             </b-input-group-append>
         </b-input-group>
         <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
@@ -89,7 +89,7 @@ export default {
            else{
                this.status = "";
                try{
-                   services.getProductByProductID(this.productID).then(response => {
+                   services.getProductByID(this.productID).then(response => {
                        this.products = response
                        console.log(this.products)
                    })
