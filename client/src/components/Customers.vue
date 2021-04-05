@@ -11,7 +11,7 @@
         </p>
 
 
-        <b-button v-bind:to="'NewCustomer'" variant="success">Add New</b-button>
+        <b-button v-bind:to="'new-customer'" variant="success">Add New</b-button>
         <b-button variant="secondary" v-on:click="setPhoneNumber">Update</b-button>
         <b-button variant="danger" v-on:click="deleteCustomer">Delete</b-button>
 
