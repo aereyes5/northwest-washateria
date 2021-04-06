@@ -5,7 +5,7 @@
             <b-form-input v-model="employee.firstName" placeholder="Enter First Name" id="firstName"></b-form-input>
             <b-form-input v-model="employee.lastName" placeholder="Enter Last Name" id="lastName"></b-form-input>
             //Disabled/read-only start date to not be able to change, could change depending on what we need
-            <b-form-datepicker v-model="employee.startDate" placeholder="Enter Start Date" id="startDate" disabled readonly></b-form-datepicker>
+            <b-form-datepicker v-model="employee.startDate" placeholder="Enter Start Date" id="startDate" readonly="true"></b-form-datepicker>
             <b-form-datepicker v-model="employee.endDate" placeholder="Enter End Date" id="endDate"></b-form-datepicker>
             <b-form-input v-model="employee.postion" placeholder="Enter Postion" id="Position"></b-form-input>
             <b-form-input v-model="employee.loginID" placeholder="Enter LoginID" id="loginID"></b-form-input>
