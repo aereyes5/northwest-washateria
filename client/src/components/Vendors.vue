@@ -47,9 +47,7 @@
             <b-col sm="3" class="text-sm-right"><b>Email:</b></b-col>
             <b-col>{{ row.item.email }}</b-col>
           </b-row>
-          
-          <b-button  variant="secondary" size="sm" @click="row.toggleDetails">Edit</b-button>
-          <b-button variant="danger" size="sm" @click="row.toggleDetails">Delete</b-button>
+
 
         </b-card>
       </template>

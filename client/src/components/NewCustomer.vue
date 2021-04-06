@@ -7,6 +7,7 @@
         <b-form-input v-model="customer.email" placeholder="Enter Email"></b-form-input>
         <b-button variant="primary" type="submit">Submit</b-button>
     </b-form>
+            <b-button v-bind:to="'customers'" variant="primary" type="submit">Back</b-button>
   </div>
 </template>
 

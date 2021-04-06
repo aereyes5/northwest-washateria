@@ -11,16 +11,15 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item  v-bind:to="'/'">Home</b-nav-item>
-        <b-nav-item  v-bind:to="'Purchases'">Purchases</b-nav-item>
         <b-nav-item  v-bind:to="'Orders'">Orders</b-nav-item>
-        <b-nav-item  v-bind:to="'PurchaseHistory'">PurchaseHistory</b-nav-item>
         <b-nav-item  v-bind:to="'Invoices'">Invoices</b-nav-item>
         <b-nav-item v-bind:to="'Products'">Products</b-nav-item>
         <b-nav-item  v-bind:to="'Services'">Services</b-nav-item>
         <b-nav-item  v-bind:to="'Vendors'">Vendors</b-nav-item>
-        <b-nav-item  v-bind:to="'/customers'">Customers</b-nav-item>
+        <b-nav-item  v-bind:to="'Customers'">Customers</b-nav-item>
+        <b-nav-item  v-bind:to="'Employees'">Employees</b-nav-item>
+        <!-- <b-nav-item  v-bind:to="'Employees'" v-if="userToken">Employees</b-nav-item> -->
       </b-navbar-nav>
-        <b-nav-item v-b-tooltip.hover.bottom title="Employees" v-bind:to="'Employees'" v-if="userToken">Employees</b-nav-item>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
