@@ -15,6 +15,9 @@ export const store = new Vuex.Store({
         },
         product:{
             productID: null
+        },
+        employee:{
+            employeeID: null
         }
 
     },
@@ -33,6 +36,9 @@ export const store = new Vuex.Store({
         },
         getProductID: state => {
             return state.product.productID
+        },
+        getEmployeeID: state => {
+            return state.employee.employeeID
         }
 
     },
@@ -51,7 +57,10 @@ export const store = new Vuex.Store({
         //Named pProductID bc of other variable productID
         pProductID(state,{productID}){
             state.product.productID = productID
-        }
+        },
+        eEmployeeID(state,{employeeID}){
+            state.employee.employeeID = employeeID
+        } 
 
     }
 })
