@@ -1,4 +1,4 @@
-import { insertVendorContact } from "../models/vendorContactModel.js"
+import { getVendorContact, getVendorContactById, insertVendorContact, updateVendorContactById } from "../models/vendorContactModel.js"
 
 
 
@@ -14,9 +14,9 @@ export const createCustomer = (req, res) => {
     });
 }
 
-//Retrieve Customers
-export const showCustomers = (req, res) => {
-    getCustomers((err, results) => {
+//Retrieve Vendors
+export const showVendorContact = (req, res) => {
+    getVendorContact((err, results) => {
         if(err){
             res.send(err)
         } else{
@@ -25,9 +25,9 @@ export const showCustomers = (req, res) => {
     })
 }
 
-//Retrieve One Customer
-export const showCustomerByPhone = (req, res) => {
-    getCustomerByPhone(req.params.phoneNumber, (err, results) => {
+//Retrieve One Vendor
+export const showVendorContactByID = (req, res) => {
+    getVendorContactById(req.params.vendorContactID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -36,11 +36,11 @@ export const showCustomerByPhone = (req, res) => {
     });
 }
 
-//Update Customer
-export const updateCustomer = (req, res) => {
+//Update Vendor
+export const updateVendorContact = (req, res) => {
     const data  = req.body;
-    const customerID    = req.params.customerID;
-    updateCustomerById(data, customerID, (err, results) => {
+    const vendorContactID = req.params.vendorContactID;
+    updateVendorContactById(data, vendorContactID, (err, results) => {
         if (err){
             res.send(err);
         }else{

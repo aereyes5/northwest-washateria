@@ -22,6 +22,7 @@ import NewProduct from '@/components/NewProduct'
 import UpdateProduct from '@/components/updateProduct'
 import UpdateEmployee from '@/components/UpdateEmployee'
 import NewEmployee from '@/components/NewEmployee'  
+import UpdateVendor from '@/components/UpdateVendor'
 
 Vue.use(Router)
 
@@ -68,6 +69,11 @@ export default new Router({
       path: '/vendors',
       name: 'Vendors',
       component: Vendors
+    },
+    {
+      path: '/update_vendor',
+      name: 'UpdateVendor',
+      component: UpdateVendor
     },
     {
       path: '/customers',

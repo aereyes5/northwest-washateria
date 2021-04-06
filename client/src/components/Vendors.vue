@@ -11,12 +11,18 @@
         </p>
 
         <b-button variant="primary" v-on:click="getVendors">View All</b-button>
+        <b-button variant="secondary" v-on:click="setVendorID">Update</b-button>
+
 
 
          <b-table 
          :items="vendors" 
          :fields="fields"
+         :select-mode="selectMode"
          striped responsive="sm"
+         ref="selectableTable"
+         selectable
+         @row-selected="onRowSelected"
          >
       <template #cell(show_details)="row">
         <b-button size="sm" @click="row.toggleDetails" class="mr-2">
@@ -54,17 +60,24 @@
 <script>
 import services from '../services'
 export default {
-    name: 'Vendors',
+    name: "Vendors",
     data(){
         return{
             fields: ['vendorID', 'vendorName', 'type', 'country','show_details'],
             vendors: [],
             vendorName: null,
             status: "",
-            selectMode: 'single'
+            selectMode: 'single',
+            selected: [],
         }
     },
     methods: {
+
+        onRowSelected(items) {
+          this.selected = items
+          console.log(items)
+        },
+
         getVendors(){
             services.getVendors().then(response => {
                 this.vendors = response
@@ -90,6 +103,20 @@ export default {
             }
             
         },
+
+        setVendorID(){
+          if(!Array.isArray(this.selected) || !this.selected.length){
+                this.status2 = "Please select a record to update";
+            }
+          else{
+              this.updateVendor(this.selected[0].vendorID)
+          }
+        },
+        
+        updateVendor(vendorID){
+            this.$store.commit('setVendorID', {vendorID})
+            this.$router.push({name: 'UpdateVendor'})
+        }
     },
 
     created(){

@@ -5,6 +5,7 @@ const productUrl = 'http://localhost:3000/products'
 const vendorURL = 'http://localhost:3000/vendors'
 const invoiceURL = 'http://localhost:3000/invoices'
 const employeeURL = 'http://localhost:3000/employees'
+const countryURL = 'http://localhost:3000/countries'
 
 class Services{
     //CRUD Customers
@@ -191,6 +192,34 @@ class Services{
         })
     }
 
+    static getVendorByID(vendorID){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${vendorURL}/update/${vendorID}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
+    static updateVendor(vendor){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.put(`${vendorURL}/${vendorID.vendorID}`, {
+                    vendorName: vendor.vendorName
+                })
+                const data = res.data
+                resolve (data)
+            }catch(error){
+                reject(`${error}`)
+            }
+        })
+    }
+
+
+
 /*---------------------------------------------------------------------------------*/
 
     static getInvoices(){
@@ -291,8 +320,21 @@ static getEmployeeByID(employeeID){
     })
 }
 
-}
+/*---------------------------------------------------------------------------------*/
 
+    static getCountries(){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${countryURL}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
+}
 
 
 export default Services

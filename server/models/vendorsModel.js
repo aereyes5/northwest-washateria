@@ -38,6 +38,18 @@ export const getVendorByName = (vendorName, result) => {
     });   
 }
 
+export const getVendorByID = (vendorID, result) => {
+    let sql = "call getVendorByID(?)"
+    db.query(sql, [vendorID], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    });   
+}
+
 //Update Vendor
 export const updateVendorById = (data, vendorID, result) => {
     let sql = "update vendors join vendor_type on vendors.vendorTypeID = vendor_type.vendorTypeID join country on vendors.countryID = country.countryID join vendor_contact on vendors.vendorContactID = vendor_contact.vendorContactID set vendors.vendorName = ?, vendor_contact.vendorContactName = 'Dan Johnson' where vendors.vendorID = 1"

@@ -10,15 +10,21 @@ export const store = new Vuex.Store({
             token: null
             
         },
+        
         customer:{
             phoneNumber: null
         },
+        
         product:{
             productID: null
         },
         employee:{
             employeeID: null
+        },
+        vendor:{
+            vendorID: null
         }
+
 
     },
     getters:{
@@ -39,6 +45,9 @@ export const store = new Vuex.Store({
         },
         getEmployeeID: state => {
             return state.employee.employeeID
+        },
+        getVendorID: state => {
+            return state.vendor.vendorID
         }
 
     },
@@ -60,7 +69,10 @@ export const store = new Vuex.Store({
         },
         eEmployeeID(state,{employeeID}){
             state.employee.employeeID = employeeID
-        } 
+        }, 
+        setVendorID(state,{vendorID}){
+            state.vendor.vendorID = vendorID
+        }
 
     }
 })

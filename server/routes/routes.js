@@ -5,7 +5,9 @@ import {createInvoice, showInvoiceById, showInvoices, updateInvoice} from "../co
 import { createLogin, deleteLogin, showLoginById, showLogins, updateLogin } from "../controllers/login.js";
 import { createProduct, deleteProduct, showProductById, showProducts, updateProduct } from "../controllers/products.js";
 import { createService, deleteService, showServiceById, showServices, updateService } from "../controllers/services.js";
-import { createVendor, deleteVendor, showVendorByName, showVendors, updateVendor } from "../controllers/vendors.js";
+import { createVendor, deleteVendor, showVendorByID, showVendorByName, showVendors, updateVendor } from "../controllers/vendors.js";
+import { updateVendorContact, showVendorContactByID, showVendorContact } from "../controllers/vendorContact.js";
+import { showCountries, showCountryByName } from "../controllers/country.js";
 const router = express.Router()
 
 //CRUD CUSTOMERS
@@ -133,10 +135,28 @@ router.get('/vendors', showVendors)
 //Retrieve One Vendor
 router.get('/vendors/:vendorName', showVendorByName);
 
+router.get('/vendors/update/:vendorID', showVendorByID);
+
 //Update Vendor
 router.put('/vendors/:vendorID', updateVendor);
 
 //Delete Vendor
 router.delete('/vendors/:vendorID', deleteVendor);
+
+/*--------------------------------------------------------------------------------*/
+
+router.get('/vendor_contact', showVendorContact);
+
+//Retrieve One Vendor Contact
+router.get('/vendor_contact/:vendorContactID', showVendorContactByID);
+
+//Update Vendor Contact
+router.put('/vendor_contact/:vendorContactID', updateVendorContact);
+
+/*--------------------------------------------------------------------------------*/
+
+router.get('/countries', showCountries);
+
+router.get('/countries/:countryName', showCountryByName);
 
 export default router

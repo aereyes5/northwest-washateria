@@ -25,13 +25,13 @@ export const getVendorContact = (result) => {
 }
 
 //Retrieve One Vendor
-export const getVendorById = (vendorContactID, result) => {
-    db.query("SELECT * FROM customers WHERE vendorContactID = ?", [vendorContactID], (err, results) => {             
+export const getVendorContactById = (vendorContactID, result) => {
+    db.query("SELECT * FROM vendor_contact WHERE vendorContactID = ?", [vendorContactID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results[0]);
+            result(null, results);
         }
     });   
 }

@@ -1,4 +1,4 @@
-import { deleteVendorById, getVendorByName, getVendors, insertVendor, updateVendorById } from "../models/vendorsModel.js"
+import { deleteVendorById, getVendorByID, getVendorByName, getVendors, insertVendor, updateVendorById } from "../models/vendorsModel.js"
 
 
 
@@ -28,6 +28,16 @@ export const showVendors = (req, res) => {
 //Retrieve One Vendor
 export const showVendorByName = (req, res) => {
     getVendorByName(req.params.vendorName, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+export const showVendorByID = (req, res) => {
+    getVendorByID(req.params.vendorID, (err, results) => {
         if (err){
             res.send(err);
         }else{

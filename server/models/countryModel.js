@@ -2,7 +2,19 @@ import db from "../config/database.js"
 
 //Retrieve all Countries
 export const getCountries = (result) => {
-    db.query("SELECT * FROM country", (err, results) => {             
+    db.query("SELECT countryName FROM country", (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
+//Retrieve One Country
+export const getCountryByName = (countryName, result) => {
+    db.query("SELECT * FROM country WHERE countryName = ?", [countryName], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

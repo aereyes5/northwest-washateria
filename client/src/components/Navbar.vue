@@ -10,15 +10,15 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item v-b-tooltip.hover.bottom title="Home" v-bind:to="'/'">Home</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Purchases" v-bind:to="'Purchases'">Purchases</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Orders" v-bind:to="'Orders'">Orders</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="PurchaseHistory" v-bind:to="'PurchaseHistory'">PurchaseHistory</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Invoices" v-bind:to="'Invoices'">Invoices</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Products" v-bind:to="'Products'">Products</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Services" v-bind:to="'Services'">Services</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Vendors" v-bind:to="'Vendors'">Vendors</b-nav-item>
-        <b-nav-item v-b-tooltip.hover.bottom title="Customers" v-bind:to="'/customers'">Customers</b-nav-item>
+        <b-nav-item  v-bind:to="'/'">Home</b-nav-item>
+        <b-nav-item  v-bind:to="'Purchases'">Purchases</b-nav-item>
+        <b-nav-item  v-bind:to="'Orders'">Orders</b-nav-item>
+        <b-nav-item  v-bind:to="'PurchaseHistory'">PurchaseHistory</b-nav-item>
+        <b-nav-item  v-bind:to="'Invoices'">Invoices</b-nav-item>
+        <b-nav-item v-bind:to="'Products'">Products</b-nav-item>
+        <b-nav-item  v-bind:to="'Services'">Services</b-nav-item>
+        <b-nav-item  v-bind:to="'Vendors'">Vendors</b-nav-item>
+        <b-nav-item  v-bind:to="'/customers'">Customers</b-nav-item>
       </b-navbar-nav>
         <b-nav-item v-b-tooltip.hover.bottom title="Employees" v-bind:to="'Employees'" v-if="userToken">Employees</b-nav-item>
 
@@ -47,7 +47,6 @@
 </template>
 
 <script>
-import visitorServices from '../visitorServices'
 export default {
   name: "Navbar",
   data(){
