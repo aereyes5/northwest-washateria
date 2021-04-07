@@ -15,7 +15,7 @@ export const insertEmployee = (data, result) => {
 
 //Retrieve All Employees
 export const getEmployees = (result) => {
-    db.query("SELECT * FROM employees", (err, results) => {
+    db.query("call getEmployees()", (err, results) => {
         if(err){
             console.log(err)
             result(err, null)
@@ -27,7 +27,7 @@ export const getEmployees = (result) => {
 
 //Retrieve One Employee
 export const getEmployeeById = (employeeID, result) => {
-    db.query("SELECT * FROM employees WHERE employeeID = ?", [employeeID], (err, results) => {             
+    db.query("call getEmployeeByID(?)", [employeeID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

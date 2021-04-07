@@ -53,7 +53,7 @@ export default {
     methods: {
         getEmployees(){
             services.getEmployees().then(response => {
-                this.employees = response
+                this.employees = response[0]
                 this.employeeID = null
                 console.log(this.employees)
             }).catch(e => {
