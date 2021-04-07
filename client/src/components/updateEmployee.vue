@@ -6,7 +6,13 @@
             <b-form-input v-model="employee.lastName" placeholder="Enter Last Name" id="lastName"></b-form-input>
             <b-form-datepicker v-model="employee.endDate" placeholder="Enter End Date" id="endDate"></b-form-datepicker>
             <b-form-input v-model="employee.postion" placeholder="Enter Postion" id="Position"></b-form-input>
-            <b-form-input v-model="employee.loginID" placeholder="Enter LoginID" id="loginID"></b-form-input>
+            <b-form-input v-model="employee.username" placeholder="Enter Username" id="username"></b-form-input>
+            <b-form-input v-model="employee.pswd" placeholder="Enter Password" id="pswd"></b-form-input>
+            <b-form-select v-model="employee.access" placeholder="Enter Access" id="access">
+                <b-form-select-option value=null disabled>Please select an option</b-form-select-option>
+                <b-form-select-option value="Admin">Admin</b-form-select-option>
+                <b-form-select-option value="Employee">Employee</b-form-select-option>
+            </b-form-select>
             <b-button variant="primary" type="submit">Submit</b-button>
         </b-form>
     </div>
@@ -26,7 +32,10 @@ export default {
                 startDate: null,
                 endDate: null,
                 postion: null,
-                loginID: null
+                loginID: null,
+                username: null,
+                pswd: null,
+                access: null
             }
         }
     },

@@ -42,7 +42,7 @@ export default {
     data(){
         return{
             employees: [],
-            fields: ['employeeID', 'firstName', 'lastName', 'startDate', 'endDate', 'position', 'loginID'],
+            fields: ['firstName', 'lastName', 'startDate', 'endDate', 'position'],
             selectMode: 'single',
             selected: [],
             employeeID: null,
