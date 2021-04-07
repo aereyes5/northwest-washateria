@@ -1,45 +1,59 @@
-import {insertCustomer, updateCustomerById, deleteCustomerById, getCustomers, getCustomerByPhone} from "../models/customerModel.js"
+const Customers = require('../models/customerModel')
+
+module.exports = {
 
 //Create New Customer
-export const createCustomer = (req, res) => {
+createCustomer: (req, res) => {
     const data = req.body;
-    insertCustomer(data, (err, results) => {
+    Customers.insertCustomer(data, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Retrieve Customers
-export const showCustomers = (req, res) => {
-    getCustomers((err, results) => {
+showCustomers: (req, res) => {
+    Customers.getCustomers((err, results) => {
         if(err){
             res.send(err)
         } else{
             res.json(results)
         }
     })
-}
+},
 
 //Retrieve One Customer By Phone
-export const showCustomerByPhone = (req, res) => {
+showCustomerByPhone: (req, res) => {
     const phoneNumber = req.params.phoneNumber;
-    getCustomerByPhone(phoneNumber, (err, results) => {
+    Customers.getCustomerByPhone(phoneNumber, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Update Customer
-export const updateCustomer = (req, res) => {
+updateCustomer: (req, res) => {
     const data  = req.body;
     const customerID    = req.params.customerID;
-    updateCustomerById(data, customerID, (err, results) => {
+    Customers.updateCustomerById(data, customerID, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+},
+
+//Delete Customer
+deleteCustomer: (req, res) => {
+    const customerID = req.params.customerID;
+    Customers.deleteCustomerById(customerID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -47,15 +61,4 @@ export const updateCustomer = (req, res) => {
         }
     });
 }
-
-//Delete Customer
-export const deleteCustomer = (req, res) => {
-    const customerID = req.params.customerID;
-    deleteCustomerById(customerID, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
-        }
-    });
 }

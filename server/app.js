@@ -1,8 +1,7 @@
-import express from "express"
-import cors from "cors"
-import Router from "./routes/routes.js"
-
-const app = express()
+const express = require('express'),
+      cors = require('cors'),
+      Router = require('./routes/routes'),
+      app = express();
 
 app.use(express.json())
 app.use(express.urlencoded({

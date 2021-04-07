@@ -1,46 +1,58 @@
-import { getVendorContact, getVendorContactById, insertVendorContact, updateVendorContactById } from "../models/vendorContactModel.js"
+const VendorContact = require('../models/vendorContactModel')
 
-
+module.exports = {
 
 //Create New Customer
-export const createCustomer = (req, res) => {
+createCustomer: (req, res) => {
     const data = req.body;
-    insertVendorContact(data, (err, results) => {
+    VendorContact.insertVendorContact(data, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Retrieve Vendors
-export const showVendorContact = (req, res) => {
-    getVendorContact((err, results) => {
+showVendorContact: (req, res) => {
+    VendorContact.getVendorContact((err, results) => {
         if(err){
             res.send(err)
         } else{
             res.json(results)
         }
     })
-}
+},
 
 //Retrieve One Vendor
-export const showVendorContactByID = (req, res) => {
-    getVendorContactById(req.params.vendorContactID, (err, results) => {
+showVendorContactByID: (req, res) => {
+    VendorContact.getVendorContactById(req.params.vendorContactID, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Update Vendor
-export const updateVendorContact = (req, res) => {
+updateVendorContact: (req, res) => {
     const data  = req.body;
     const vendorContactID = req.params.vendorContactID;
-    updateVendorContactById(data, vendorContactID, (err, results) => {
+    VendorContact.updateVendorContactById(data, vendorContactID, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+},
+
+//Delete Customer
+deleteCustomer: (req, res) => {
+    const customerID = req.params.customerID;
+    VendorContact.deleteCustomerById(customerID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -48,15 +60,4 @@ export const updateVendorContact = (req, res) => {
         }
     });
 }
-
-//Delete Customer
-export const deleteCustomer = (req, res) => {
-    const customerID = req.params.customerID;
-    deleteCustomerById(customerID, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
-        }
-    });
 }

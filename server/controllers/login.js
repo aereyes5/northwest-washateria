@@ -1,46 +1,58 @@
-import { deleteLoginById, getLogin, getLoginById, insertLogin, updateLoginById } from "../models/loginModel.js"
+const Login = require('../models/loginModel')
 
-
+module.exports = {
 
 //Create New Login
-export const createLogin = (req, res) => {
+createLogin: (req, res) => {
     const data = req.body;
-    insertLogin(data, (err, results) => {
+    Login.insertLogin(data, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Retrieve Logins
-export const showLogins = (req, res) => {
-    getLogin((err, results) => {
+showLogins: (req, res) => {
+    Login.getLogin((err, results) => {
         if(err){
             res.send(err)
         } else{
             res.json(results)
         }
     })
-}
+},
 
 //Retrieve One Login
-export const showLoginById = (req, res) => {
-    getLoginById(req.params.employeeID, (err, results) => {
+showLoginById: (req, res) => {
+    Login.getLoginById(req.params.employeeID, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Update Login
-export const updateLogin = (req, res) => {
+updateLogin: (req, res) => {
     const data  = req.body;
     const employeeID    = req.params.employeeID;
-    updateLoginById(data, employeeID, (err, results) => {
+    Login.updateLoginById(data, employeeID, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+},
+
+//Delete Login
+deleteLogin: (req, res) => {
+    const employeeID = req.params.employeeID;
+    Login.deleteLoginById(employeeID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -48,15 +60,4 @@ export const updateLogin = (req, res) => {
         }
     });
 }
-
-//Delete Login
-export const deleteLogin = (req, res) => {
-    const employeeID = req.params.employeeID;
-    deleteLoginById(employeeID, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
-        }
-    });
 }

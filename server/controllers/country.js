@@ -1,29 +1,30 @@
-import { getCountries, getCountryByName } from "../models/countryModel.js"
+const Countries = require('../models/countryModel')
 
+module.exports = {
 
 //Retrieve 
-export const showCountries = (req, res) => {
-    getCountries((err, results) => {
+showCountries: (req, res) => {
+    Countries.getCountries((err, results) => {
         if(err){
             res.send(err)
         } else{
             res.json(results)
         }
     })
-}
+},
 
 //Retrieve One country
-export const showCountryByName = (req, res) => {
+showCountryByName: (req, res) => {
     const countryName = req.params.countryName;
-    getCountryByName(countryName, (err, results) => {
+    Countries.getCountryByName(countryName, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
-    });
+    })
 }
 
-
+}
 
 

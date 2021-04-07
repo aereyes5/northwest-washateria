@@ -1,7 +1,9 @@
-import db from "../config/database.js"
+const db = require('../config/database')
+
+module.exports = {
 
 //Retrieve all Vendor Status
-export const getVendorStatus = (result) => {
+getVendorStatus: (result) => {
     db.query("SELECT * FROM vendor_status", (err, results) => {             
         if(err) {
             console.log(err);
@@ -10,10 +12,10 @@ export const getVendorStatus = (result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Create Vendor Status
-export const insertVendorStatus = (data, result) => {
+insertVendorStatus: (data, result) => {
     db.query("INSERT INTO vendor_status VALUES ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -22,10 +24,10 @@ export const insertVendorStatus = (data, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Update Vendor Status
-export const updateVendorStatus = (data, vendorStatusID, result) => {
+updateVendorStatus: (data, vendorStatusID, result) => {
     db.query("UPDATE vendor_status SET statusName = ? WHERE vendorStatusID = ?", [data.statusName, vendorStatusID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -34,10 +36,10 @@ export const updateVendorStatus = (data, vendorStatusID, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Delete Vendor Status
-export const deleteVendorStatus = (vendorStatusID, result) => {
+deleteVendorStatus: (vendorStatusID, result) => {
     db.query("DELETE FROM vendor_status WHERE vendorStatusID = ?", [vendorStatusID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -46,4 +48,5 @@ export const deleteVendorStatus = (vendorStatusID, result) => {
             result(null, results);
         }
     });   
+}
 }

@@ -1,44 +1,58 @@
-import { deleteProductById, getProductById, getProducts, insertProduct, updateProductById } from "../models/productsModel.js"
+const Products = require('../models/productsModel')
+
+module.exports = {
 
 //Create New Product
-export const createProduct = (req, res) => {
+createProduct: (req, res) => {
     const data = req.body;
-    insertProduct(data, (err, results) => {
+    Products.insertProduct(data, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Retrieve Products
-export const showProducts = (req, res) => {
-    getProducts((err, results) => {
+showProducts: (req, res) => {
+    Products.getProducts((err, results) => {
         if(err){
             res.send(err)
         } else{
             res.json(results)
         }
     })
-}
+},
 
 //Retrieve One Product
-export const showProductById = (req, res) => {
-    getProductById(req.params.productID, (err, results) => {
+showProductById: (req, res) => {
+    Products.getProductById(req.params.productID, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Update Product
-export const updateProduct = (req, res) => {
+updateProduct: (req, res) => {
     const data  = req.body;
     const productID    = req.params.productID;
-    updateProductById(data, productID, (err, results) => {
+    Products.updateProductById(data, productID, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+},
+
+//Delete Product
+deleteProduct: (req, res) => {
+    const productID = req.params.productID;
+    Products.deleteProductById(productID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -46,15 +60,4 @@ export const updateProduct = (req, res) => {
         }
     });
 }
-
-//Delete Product
-export const deleteProduct = (req, res) => {
-    const productID = req.params.productID;
-    deleteProductById(productID, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
-        }
-    });
 }

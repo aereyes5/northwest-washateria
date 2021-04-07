@@ -1,8 +1,9 @@
-import db from "../config/database.js"
+const db = require('../config/database')
 
+module.exports = {
 
 //Create Service
-export const insertService = (data, result) => {
+insertService: (data, result) => {
     db.query("INSERT INTO services SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -11,10 +12,10 @@ export const insertService = (data, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Retrieve all Services
-export const getServices = (result) => {
+getServices: (result) => {
     db.query("SELECT * FROM services", (err, results) => {             
         if(err) {
             console.log(err);
@@ -23,10 +24,10 @@ export const getServices = (result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Retrieve One Product
-export const getServiceById = (serviceID, result) => {
+getServiceById: (serviceID, result) => {
     db.query("SELECT * FROM services WHERE serviceID = ?", [serviceID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -35,10 +36,10 @@ export const getServiceById = (serviceID, result) => {
             result(null, results[0]);
         }
     });   
-}
+},
 
 //Update Service
-export const updateServiceById = (data, serviceID, result) => {
+updateServiceById: (data, serviceID, result) => {
     db.query("UPDATE services SET serviceName = ?, servicePrice = ? WHERE serviceID = ?", [data.serviceName, data.servicePrice, serviceID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -47,10 +48,10 @@ export const updateServiceById = (data, serviceID, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Delete Service
-export const deleteServiceById = (serviceID, result) => {
+deleteServiceById: (serviceID, result) => {
     db.query("DELETE FROM services WHERE serviceID = ?", [serviceID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -59,4 +60,5 @@ export const deleteServiceById = (serviceID, result) => {
             result(null, results);
         }
     });   
+}
 }

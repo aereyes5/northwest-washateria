@@ -1,7 +1,9 @@
-import db from "../config/database.js"
+const db = require('../config/database')
+
+module.exports = {
 
 //Retrieve all Invoice Status
-export const getInvoiceStatus = (result) => {
+getInvoiceStatus: (result) => {
     db.query("SELECT * FROM invoice_status", (err, results) => {             
         if(err) {
             console.log(err);
@@ -10,10 +12,10 @@ export const getInvoiceStatus = (result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Create Invoice Status
-export const insertInvoiceStatus = (data, result) => {
+insertInvoiceStatus: (data, result) => {
     db.query("INSERT INTO invoice_status VALUES ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -22,10 +24,10 @@ export const insertInvoiceStatus = (data, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Update Invoice Status
-export const updateInvoiceStatus = (data, invoiceStatusID, result) => {
+updateInvoiceStatus: (data, invoiceStatusID, result) => {
     db.query("UPDATE invoice_status SET paymentDescription = ?, invoiceStatus = ? WHERE invoiceStatusID = ?", [data.paymentDescription, data.invoiceStatus, invoiceStatusID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -34,10 +36,10 @@ export const updateInvoiceStatus = (data, invoiceStatusID, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Delete Invoice Status
-export const deleteInvoiceStatus = (invoiceStatusID, result) => {
+deleteInvoiceStatus: (invoiceStatusID, result) => {
     db.query("DELETE FROM invoice_status WHERE invoiceStatusID = ?", [invoiceStatusID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -46,4 +48,5 @@ export const deleteInvoiceStatus = (invoiceStatusID, result) => {
             result(null, results);
         }
     });   
+}
 }

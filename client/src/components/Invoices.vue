@@ -20,10 +20,18 @@
         {{status2}}
         </p> -->
       
+        <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
+
+        <b-button v-bind:to="'new-employee'" variant="success">Add New</b-button>
+        <b-button variant="secondary" v-on:click="setEmployeeID">Update</b-button>
+        <b-button variant="danger" v-on:click="deleteEmployee">Delete</b-button>
+
         <b-table 
          :items="invoices" 
          :fields="fields"
+         :filter="filter"
          striped responsive="sm"
+         hover
          >
       <template #cell(show_details)="row">
         <b-button size="sm" @click="row.toggleDetails" class="mr-2">
@@ -73,7 +81,8 @@ export default {
             'status', 'show_details'],
             selectMode: 'single',
             selected: [],
-            status2: ""
+            status2: "",
+            filter:""
         }
     },
     

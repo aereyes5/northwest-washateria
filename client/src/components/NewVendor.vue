@@ -1,9 +1,8 @@
 <template>
     <div>
-        <b-form @submit.prevent="updateVendor">
-        <b-form-input v-model="vendor.vendorID" id="vendorID" disabled></b-form-input>
+        <b-form @submit.prevent="insertVendor">
         <b-form-input v-model="vendor.vendorName" placeholder="Vendor Name" id="vendorName"></b-form-input>
-        <b-form-select v-model="vendor.type" placeholder="--Select One--" id="type">
+        <b-form-select v-model="vendor.type" placeholder="Vendor Type" id="type">
                 <b-form-select-option value=null disabled>Vendor Type</b-form-select-option>
                 <b-form-select-option value="Supplier">Supplier</b-form-select-option>
                 <b-form-select-option value="Company">Company</b-form-select-option>
@@ -17,9 +16,10 @@
             text-field="countryName"
             disabled-field="notEnabled"
             ></b-form-select>
+                
 
         <!-- <b-form-input v-model="vendor.country" placeholder="Country" id="country"></b-form-input> -->
-        <b-form-input v-model="vendor.vendorContact" placeholder="Vendor Contact" id="vendorContact"></b-form-input>
+        <b-form-input v-model="vendor.vendorContact" placeholder="Vendor Contact Name" id="vendorContact"></b-form-input>
         <b-form-input v-model="vendor.phoneNumber" placeholder="Phone Number" id="phoneNumber"></b-form-input>
         <b-form-input v-model="vendor.email" placeholder="Email" id="email"></b-form-input>
         <b-button variant="primary" type="submit">Submit</b-button>
@@ -31,7 +31,7 @@
 <script>
 import services from '../services'
 export default {
-    name: "UpdateVendor",
+    name: "NewVendor",
     data(){
         return{
             info:[],
@@ -45,6 +45,7 @@ export default {
                 email: null,
             },
             countries:[],
+           
             
         }
     },
@@ -84,8 +85,8 @@ export default {
     },
 
     mounted(){
-        this.getCountries()
         this.findVendor()
+        this.getCountries()
     }
 }
 </script>

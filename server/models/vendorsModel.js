@@ -1,7 +1,9 @@
-import db from "../config/database.js"
+const db = require('../config/database')
+
+module.exports = {
 
 //Create Vendor
-export const insertVendor = (data, result) => {
+insertVendor: (data, result) => {
     db.query("INSERT INTO vendors SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -10,10 +12,10 @@ export const insertVendor = (data, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Retrieve all Vendors
-export const getVendors = (result) => {
+getVendors: (result) => {
     let sql = "call getAllVendors()"
     db.query(sql, (err, results) => {             
         if(err) {
@@ -23,10 +25,10 @@ export const getVendors = (result) => {
             result(null, results[0]);
         }
     });   
-}
+},
 
 //Retrieve One Vendor
-export const getVendorByName = (vendorName, result) => {
+getVendorByName: (vendorName, result) => {
     let sql = "call getVendorByName(?)"
     db.query(sql, [vendorName], (err, results) => {             
         if(err) {
@@ -36,9 +38,9 @@ export const getVendorByName = (vendorName, result) => {
             result(null, results[0]);
         }
     });   
-}
+},
 
-export const getVendorByID = (vendorID, result) => {
+getVendorByID: (vendorID, result) => {
     let sql = "call getVendorByID(?)"
     db.query(sql, [vendorID], (err, results) => {             
         if(err) {
@@ -48,10 +50,10 @@ export const getVendorByID = (vendorID, result) => {
             result(null, results[0]);
         }
     });   
-}
+},
 
 //Update Vendor
-export const updateVendorById = (data, vendorID, result) => {
+updateVendorById: (data, vendorID, result) => {
     let sql = "update vendors join vendor_type on vendors.vendorTypeID = vendor_type.vendorTypeID join country on vendors.countryID = country.countryID join vendor_contact on vendors.vendorContactID = vendor_contact.vendorContactID set vendors.vendorName = ?, vendor_contact.vendorContactName = 'Dan Johnson' where vendors.vendorID = 1"
     db.query("UPDATE vendors SET vendorName = ?, vendorContactID = ?, vendorTypeID = ?, countryID = ? WHERE vendorID = ?", [data.vendorName, data.vendorContactID, data.vendorTypeID, data.countryID, vendorID], (err, results) => {             
         if(err) {
@@ -61,10 +63,10 @@ export const updateVendorById = (data, vendorID, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Delete Vendor
-export const deleteVendorById = (vendorID, result) => {
+deleteVendorById: (vendorID, result) => {
     db.query("DELETE FROM vendors WHERE vendorID = ?", [vendorID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -73,4 +75,5 @@ export const deleteVendorById = (vendorID, result) => {
             result(null, results);
         }
     });   
+}
 }

@@ -1,46 +1,58 @@
-import { deleteEmployeeById, getEmployeeById, getEmployees, insertEmployee, updateEmployeeById } from "../models/employeesModel.js"
+const Employees = require('../models/employeesModel')
 
-
+module.exports = {
 
 //Create New Employee
-export const createEmployee = (req, res) => {
+createEmployee: (req, res) => {
     const data = req.body;
-    insertEmployee(data, (err, results) => {
+    Employees.insertEmployee(data, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Retrieve Employees
-export const showEmployees = (req, res) => {
-    getEmployees((err, results) => {
+showEmployees: (req, res) => {
+    Employees.getEmployees((err, results) => {
         if(err){
             res.send(err)
         } else{
             res.json(results)
         }
     })
-}
+},
 
 //Retrieve One Employee
-export const showEmployeeById = (req, res) => {
-    getEmployeeById(req.params.employeeID, (err, results) => {
+showEmployeeById: (req, res) => {
+    Employees.getEmployeeById(req.params.employeeID, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Update Employee
-export const updateEmployee = (req, res) => {
+updateEmployee: (req, res) => {
     const data  = req.body;
     const employeeID    = req.params.employeeID;
-    updateEmployeeById(data, employeeID, (err, results) => {
+    Employees.updateEmployeeById(data, employeeID, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+},
+
+//Delete Employee
+deleteEmployee: (req, res) => {
+    const employeeID = req.params.employeeID;
+    Employees.deleteEmployeeById(employeeID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -48,15 +60,4 @@ export const updateEmployee = (req, res) => {
         }
     });
 }
-
-//Delete Employee
-export const deleteEmployee = (req, res) => {
-    const employeeID = req.params.employeeID;
-    deleteEmployeeById(employeeID, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
-        }
-    });
 }

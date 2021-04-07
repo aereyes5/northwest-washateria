@@ -1,44 +1,46 @@
-import {getInvoice, getInvoiceById, insertInvoice, updateInvoiceById} from "../models/invoiceModel.js"
+const Invoices = require('../models/invoiceModel')
+
+module.exports = {
 
 //Create New Invoice
-export const createInvoice = (req, res) => {
+createInvoice: (req, res) => {
     const data = req.body;
-    insertInvoice(data, (err, results) => {
+    Invoices.insertInvoice(data, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Retrieve Invoices
-export const showInvoices = (req, res) => {
-    getInvoice((err, results) => {
+showInvoices: (req, res) => {
+    Invoices.getInvoice((err, results) => {
         if(err){
             res.send(err)
         } else{
             res.json(results)
         }
     })
-}
+},
 
 //Retrieve One Invoice
-export const showInvoiceById = (req, res) => {
-    getInvoiceById(req.params.invoiceID, (err, results) => {
+showInvoiceById: (req, res) => {
+    Invoices.getInvoiceById(req.params.invoiceID, (err, results) => {
         if (err){
             res.send(err);
         }else{
             res.json(results);
         }
     });
-}
+},
 
 //Update Invoice
-export const updateInvoice = (req, res) => {
+updateInvoice: (req, res) => {
     const data  = req.body;
     const invoiceID    = req.params.invoiceID;
-    updateInvoiceById(data, invoiceID, (err, results) => {
+    Invoices.updateInvoiceById(data, invoiceID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -58,3 +60,5 @@ export const updateInvoice = (req, res) => {
 //         }
 //     });
 // }
+
+}

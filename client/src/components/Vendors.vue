@@ -1,27 +1,30 @@
 <template>
     <div>
-        <b-input-group class="mt-3">
+        <!-- <b-input-group class="mt-3">
             <b-form-input placeholder="Search by vendor name..." v-model="vendorName"></b-form-input>
             <b-input-group-append>
             <b-button variant="primary" v-on:click="getVendorByName">Search</b-button>
             </b-input-group-append>
-        </b-input-group>
+        </b-input-group> -->
+
+        <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
         {{status}}
         </p>
 
-        <b-button variant="primary" v-on:click="getVendors">View All</b-button>
+        <b-button variant="success" v-bind:to="'new-vendor'">Add New</b-button>
         <b-button variant="secondary" v-on:click="setVendorID">Update</b-button>
-
 
 
          <b-table 
          :items="vendors" 
          :fields="fields"
          :select-mode="selectMode"
+         :filter="filter"
          striped responsive="sm"
          ref="selectableTable"
          selectable
+         hover
          @row-selected="onRowSelected"
          >
       <template #cell(show_details)="row">
@@ -61,12 +64,13 @@ export default {
     name: "Vendors",
     data(){
         return{
-            fields: ['vendorID', 'vendorName', 'type', 'country','show_details'],
+            fields: ['vendorName', 'type', 'country','show_details'],
             vendors: [],
             vendorName: null,
             status: "",
             selectMode: 'single',
             selected: [],
+            filter:""
         }
     },
     methods: {
@@ -114,7 +118,8 @@ export default {
         updateVendor(vendorID){
             this.$store.commit('setVendorID', {vendorID})
             this.$router.push({name: 'UpdateVendor'})
-        }
+        },
+
     },
 
     created(){

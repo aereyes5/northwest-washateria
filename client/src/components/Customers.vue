@@ -1,17 +1,21 @@
 <template>
   <div>
-        <b-input-group class="mt-3">
+        <!-- <b-input-group class="mt-3">
             <b-form-input placeholder="Enter Customer's Phone Number" v-model="phoneNumber"></b-form-input>
             <b-input-group-append>
             <b-button variant="primary" v-on:click="getCustomerByPhone">Search</b-button>
             </b-input-group-append>
-        </b-input-group>
+        </b-input-group> -->
+
+
+        <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
+
+        
         <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
         {{status}}
         </p>
 
 
-        <b-button variant="primary" v-on:click="getCustomers">View All</b-button>
         <b-button v-bind:to="'new-customer'" variant="success">Add New</b-button>
         <b-button variant="secondary" v-on:click="setPhoneNumber">Update</b-button>
         <b-button variant="danger" v-on:click="deleteCustomer">Delete</b-button>
@@ -24,9 +28,11 @@
         :items="customers"
         :fields="fields"
         :select-mode="selectMode"
+        :filter="filter"
         striped responsive="sm"
         ref="selectableTable"
         selectable
+        hover
         @row-selected="onRowSelected"
         sticky-header="83vh"
         >
@@ -43,12 +49,13 @@ export default {
     data(){
         return{
             customers: [],
-            fields: ['customerID','firstName', 'lastName', 'phoneNumber', 'email'],
+            fields: ['firstName', 'lastName', 'phoneNumber', 'email'],
             selectMode: 'single',
             selected: [],
             phoneNumber: null,
             status: "",
-            status2: ""
+            status2: "",
+            filter:""
         }
     },
     methods: {

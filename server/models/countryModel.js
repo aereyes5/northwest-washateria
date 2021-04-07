@@ -1,7 +1,9 @@
-import db from "../config/database.js"
+const db = require('../config/database')
+
+module.exports = {
 
 //Retrieve all Countries
-export const getCountries = (result) => {
+getCountries: (result) => {
     db.query("SELECT * FROM country", (err, results) => {             
         if(err) {
             console.log(err);
@@ -10,10 +12,10 @@ export const getCountries = (result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Retrieve One Country
-export const getCountryByName = (countryName, result) => {
+getCountryByName: (countryName, result) => {
     db.query("SELECT * FROM country WHERE countryName = ?", [countryName], (err, results) => {             
         if(err) {
             console.log(err);
@@ -22,10 +24,10 @@ export const getCountryByName = (countryName, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Create Country
-export const insertCountry = (data, result) => {
+insertCountry: (data, result) => {
     db.query("INSERT INTO country VALUES ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -34,10 +36,10 @@ export const insertCountry = (data, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Update Country
-export const updateCountry = (data, countryID, result) => {
+updateCountry: (data, countryID, result) => {
     db.query("UPDATE country SET countryName = ? WHERE countryID = ?", [data.countryName, countryID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -46,10 +48,10 @@ export const updateCountry = (data, countryID, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Delete Country
-export const deleteCountry = (countryID, result) => {
+deleteCountry: (countryID, result) => {
     db.query("DELETE FROM country WHERE countryID = ?", [countryID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -58,4 +60,6 @@ export const deleteCountry = (countryID, result) => {
             result(null, results);
         }
     });   
+}
+
 }

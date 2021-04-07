@@ -1,8 +1,9 @@
-import db from "../config/database.js"
+const db = require('../config/database')
 
+module.exports = {
 
 //Create Customer
-export const insertCustomer = (data, result) => {
+insertCustomer: (data, result) => {
     db.query("INSERT INTO customers SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -11,10 +12,10 @@ export const insertCustomer = (data, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Retrieve All Customers
-export const getCustomers = (result) => {
+getCustomers: (result) => {
     db.query("SELECT * FROM customers", (err, results) => {
         if(err){
             console.log(err)
@@ -23,10 +24,10 @@ export const getCustomers = (result) => {
             result(null, results)
         }
     })
-}
+},
 
 //Retrieve One Customer By Phone
-export const getCustomerByPhone = (phoneNumber, result) => {
+getCustomerByPhone: (phoneNumber, result) => {
     db.query("SELECT * FROM customers WHERE phoneNumber = ?", [phoneNumber], (err, results) => {             
         if(err) {
             console.log(err);
@@ -35,10 +36,10 @@ export const getCustomerByPhone = (phoneNumber, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 // Update Customer
-export const updateCustomerById = (data, customerID, result) => {
+updateCustomerById: (data, customerID, result) => {
     db.query("UPDATE customers SET firstName = ?, lastName = ?, phoneNumber = ?, email = ? WHERE customerID = ?", [data.firstName, data.lastName, data.phoneNumber, data.email, customerID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -47,10 +48,10 @@ export const updateCustomerById = (data, customerID, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 // Delete Customer
-export const deleteCustomerById = (customerID, result) => {
+deleteCustomerById: (customerID, result) => {
     db.query("DELETE FROM customers WHERE customerID = ?", [customerID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -59,4 +60,7 @@ export const deleteCustomerById = (customerID, result) => {
             result(null, results);
         }
     });   
+}
+
+
 }

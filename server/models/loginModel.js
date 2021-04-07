@@ -1,8 +1,9 @@
-import db from "../config/database.js"
+const db = require('../config/database')
 
+module.exports = {
 
 //Create Login
-export const insertLogin = (data, result) => {
+insertLogin: (data, result) => {
     db.query("INSERT INTO login SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -11,10 +12,10 @@ export const insertLogin = (data, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Retrieve All Logins
-export const getLogin = (result) => {
+getLogin: (result) => {
     db.query("SELECT * FROM login", (err, results) => {
         if(err){
             console.log(err)
@@ -23,10 +24,10 @@ export const getLogin = (result) => {
             result(null, results)
         }
     })
-}
+},
 
 //Retrieve One Login
-export const getLoginById = (loginID, result) => {
+getLoginById: (loginID, result) => {
     db.query("SELECT * FROM login WHERE loginID = ?", [loginID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -35,10 +36,10 @@ export const getLoginById = (loginID, result) => {
             result(null, results[0]);
         }
     });   
-}
+},
 
 // Update Login
-export const updateLoginById = (data, loginID, result) => {
+updateLoginById: (data, loginID, result) => {
     db.query("UPDATE login SET username = ?, pswd = ?, access = ? WHERE loginID = ?", [data.username, data.pswd, data.access, loginID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -47,10 +48,10 @@ export const updateLoginById = (data, loginID, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 // Delete Login
-export const deleteLoginById = (loginID, result) => {
+deleteLoginById: (loginID, result) => {
     db.query("DELETE FROM login WHERE loginID = ?", [loginID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -59,4 +60,6 @@ export const deleteLoginById = (loginID, result) => {
             result(null, results);
         }
     });   
+}
+
 }

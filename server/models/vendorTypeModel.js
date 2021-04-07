@@ -1,7 +1,9 @@
-import db from "../config/database.js"
+const db = require('../config/database')
+
+module.exports = {
 
 //Retrieve all Vendor Status
-export const getVendorType = (result) => {
+getVendorType: (result) => {
     db.query("SELECT * FROM vendor_type", (err, results) => {             
         if(err) {
             console.log(err);
@@ -10,10 +12,10 @@ export const getVendorType = (result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Create Vendor Status
-export const insertVendorType = (data, result) => {
+insertVendorType: (data, result) => {
     db.query("INSERT INTO vendor_type VALUES ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
@@ -22,10 +24,10 @@ export const insertVendorType = (data, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Update Vendor Status
-export const updateVendorType = (data, vendorTypeID, result) => {
+updateVendorType: (data, vendorTypeID, result) => {
     db.query("UPDATE vendor_type SET vendorTypeName = ? WHERE vendorTypeID = ?", [data.vendorTypeName, vendorTypeID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -34,10 +36,10 @@ export const updateVendorType = (data, vendorTypeID, result) => {
             result(null, results);
         }
     });   
-}
+},
 
 //Delete Vendor Status
-export const deleteVendorType = (vendorTypeID, result) => {
+deleteVendorType: (vendorTypeID, result) => {
     db.query("DELETE FROM vendor_type WHERE vendorTypeID = ?", [vendorTypeID], (err, results) => {             
         if(err) {
             console.log(err);
@@ -46,4 +48,5 @@ export const deleteVendorType = (vendorTypeID, result) => {
             result(null, results);
         }
     });   
+}
 }

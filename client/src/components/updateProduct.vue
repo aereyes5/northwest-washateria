@@ -3,8 +3,8 @@
         <b-form @submit.prevent="updateProduct">
             <b-form-input v-model="product.productID" id="productID" disabled></b-form-input>
             <b-form-input v-model="product.productName" placeholder="Enter Product Name" id="productName"></b-form-input>
-            <b-form-input v-model="product.productPrice" placeholder="Enter Product Price" id="productPrice"></b-form-input>
-            <b-form-input v-model="product.vendorID" placeholder="Enter VendorID" id="vendorID"></b-form-input>
+            <b-form-input v-model="product.price" placeholder="Enter Product Price" id="productPrice"></b-form-input>
+            <b-form-input v-model="product.vendor" placeholder="Enter Vendor" id="vendorID"></b-form-input>
             <b-button variant="primary" type="submit">Submit</b-button>
         </b-form>
     </div>
@@ -20,8 +20,8 @@ export default {
             product:{
                 productID: null,
                 productName: null,
-                productPrice: null,
-                vendorID: null
+                price: null,
+                vendor: null
             }
         }
     },
@@ -33,11 +33,11 @@ export default {
         getProductByProductID(productID){
             try{
                 services.getProductByID(productID).then(response => {
-                    this.info = response
+                    this.info = response[0]
                     this.product.productID = this.info[0].productID;
                     this.product.productName = this.info[0].productName;
-                    this.product.productPrice = this.info[0].productPrice;
-                    this.product.vendorID = this.info[0].vendorID;
+                    this.product.price = this.info[0].price;
+                    this.product.vendor = this.info[0].vendor;
                 })
             }catch(err){
                 console.log(err)

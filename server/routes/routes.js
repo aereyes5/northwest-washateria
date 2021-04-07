@@ -1,47 +1,47 @@
-import express from "express";
-import {showCustomers, createCustomer, updateCustomer, deleteCustomer, showCustomerByPhone} from "../controllers/customers.js"
-import { createEmployee, showEmployees, showEmployeeById, updateEmployee, deleteEmployee } from "../controllers/employees.js";
-import {createInvoice, showInvoiceById, showInvoices, updateInvoice} from "../controllers/invoices.js";
-import { createLogin, deleteLogin, showLoginById, showLogins, updateLogin } from "../controllers/login.js";
-import { createProduct, deleteProduct, showProductById, showProducts, updateProduct } from "../controllers/products.js";
-import { createService, deleteService, showServiceById, showServices, updateService } from "../controllers/services.js";
-import { createVendor, deleteVendor, showVendorByID, showVendorByName, showVendors, updateVendor } from "../controllers/vendors.js";
-import { updateVendorContact, showVendorContactByID, showVendorContact } from "../controllers/vendorContact.js";
-import { showCountries, showCountryByName } from "../controllers/country.js";
-const router = express.Router()
+const express = require('express'),
+Customers = require('../controllers/customers'),
+Employees = require('../controllers/employees'),
+Invoices = require('../controllers/invoices'),
+Login = require('../controllers/login'),
+Products = require('../controllers/products'),
+Services = require('../controllers/services'),
+Vendors = require('../controllers/vendors'),
+VendorContact = require('../controllers/vendorContact'),
+Countries = require('../controllers/country');
+router = new express.Router()
 
 //CRUD CUSTOMERS
 
 //Create New Customer
-router.post('/customers', createCustomer)
+router.post('/customers', Customers.createCustomer)
 
 //Retrieve All Customers
-router.get('/customers', showCustomers)
+router.get('/customers', Customers.showCustomers)
 
 //Retrieve One Customer By Phone
-router.get('/customers/:phoneNumber', showCustomerByPhone);
+router.get('/customers/:phoneNumber', Customers.showCustomerByPhone);
 
 //Update Customer
-router.put('/customers/:customerID', updateCustomer);
+router.put('/customers/:customerID', Customers.updateCustomer);
 
 //Delete Customer
-router.delete('/customers/:customerID', deleteCustomer);
+router.delete('/customers/:customerID', Customers.deleteCustomer);
 
 /*--------------------------------------------------------------------------------*/
 
 //CRUD INVOICES
 
 //Create New Invoice
-router.post('/invoices', createInvoice)
+router.post('/invoices', Invoices.createInvoice)
 
 //Retrieve All Invoices
-router.get('/invoices', showInvoices)
+router.get('/invoices', Invoices.showInvoices)
 
 //Retrieve One Invoice
-router.get('/invoices/:invoiceID', showInvoiceById);
+router.get('/invoices/:invoiceID', Invoices.showInvoiceById);
 
 //Update Invoice
-router.put('/invoices/:invoiceID', updateInvoice);
+router.put('/invoices/:invoiceID', Invoices.updateInvoice);
 
 // //Delete Invoice
 // router.delete('/invoices/:invoiceID', deleteInvoice);
@@ -51,112 +51,112 @@ router.put('/invoices/:invoiceID', updateInvoice);
 //CRUD PRODUCTS
 
 //Create New Product
-router.post('/products', createProduct)
+router.post('/products', Products.createProduct)
 
 //Retrieve All Products
-router.get('/products', showProducts)
+router.get('/products', Products.showProducts)
 
 //Retrieve One Product
-router.get('/products/:productID', showProductById);
+router.get('/products/:productID', Products.showProductById);
 
 //Update Product
-router.put('/products/:productID', updateProduct);
+router.put('/products/:productID', Products.updateProduct);
 
 //Delete Product
-router.delete('/products/:productID', deleteProduct);
+router.delete('/products/:productID', Products.deleteProduct);
 
 /*--------------------------------------------------------------------------------*/
 
 //CRUD SERVICES
 
 //Create New Service
-router.post('/services', createService)
+router.post('/services', Services.createService)
 
 //Retrieve All Services
-router.get('/services', showServices)
+router.get('/services', Services.showServices)
 
 //Retrieve One Service
-router.get('/services/:serviceID', showServiceById);
+router.get('/services/:serviceID', Services.showServiceById);
 
 //Update Service
-router.put('/services/:serviceID', updateService);
+router.put('/services/:serviceID', Services.updateService);
 
 //Delete Service
-router.delete('/services/:serviceID', deleteService);
+router.delete('/services/:serviceID', Services.deleteService);
 
 /*--------------------------------------------------------------------------------*/
 
 //CRUD EMPLOYEES
 
 //Create New Employee
-router.post('/employees', createEmployee)
+router.post('/employees', Employees.createEmployee)
 
 //Retrieve All Employees
-router.get('/employees', showEmployees)
+router.get('/employees', Employees.showEmployees)
 
 //Retrieve One Employee
-router.get('/employees/:employeeID', showEmployeeById);
+router.get('/employees/:employeeID', Employees.showEmployeeById);
 
 //Update Employee
-router.put('/employees/:employeeID', updateEmployee);
+router.put('/employees/:employeeID', Employees.updateEmployee);
 
 //Delete Employee
-router.delete('/employees/:employeeID', deleteEmployee);
+router.delete('/employees/:employeeID', Employees.deleteEmployee);
 
 /*--------------------------------------------------------------------------------*/
 
 //CRUD LOGIN
 
 //Create New Login
-router.post('/login', createLogin)
+router.post('/login', Login.createLogin)
 
 //Retrieve All Logins
-router.get('/login', showLogins)
+router.get('/login', Login.showLogins)
 
 //Retrieve One Login
-router.get('/login/:employeeID', showLoginById);
+router.get('/login/:employeeID', Login.showLoginById);
 
 //Update Login
-router.put('/login/:employeeID', updateLogin);
+router.put('/login/:employeeID', Login.updateLogin);
 
 //Delete Login
-router.delete('/login/:employeeID', deleteLogin);
+router.delete('/login/:employeeID', Login.deleteLogin);
 
 /*--------------------------------------------------------------------------------*/
 
 //CRUD VENDORS
 
 //Create New Vendor
-router.post('/vendors', createVendor)
+router.post('/vendors', Vendors.createVendor)
 
 //Retrieve All Vendors
-router.get('/vendors', showVendors)
+router.get('/vendors', Vendors.showVendors)
 
 //Retrieve One Vendor
-router.get('/vendors/:vendorName', showVendorByName);
+router.get('/vendors/:vendorName', Vendors.showVendorByName);
 
-router.get('/vendors/update/:vendorID', showVendorByID);
+router.get('/vendors/update/:vendorID', Vendors.showVendorByID);
 
 //Update Vendor
-router.put('/vendors/:vendorID', updateVendor);
+router.put('/vendors/:vendorID', Vendors.updateVendor);
 
 //Delete Vendor
-router.delete('/vendors/:vendorID', deleteVendor);
+router.delete('/vendors/:vendorID', Vendors.deleteVendor);
 
 /*--------------------------------------------------------------------------------*/
 
-router.get('/vendor_contact', showVendorContact);
+router.get('/vendor_contact', VendorContact.showVendorContact);
 
 //Retrieve One Vendor Contact
-router.get('/vendor_contact/:vendorContactID', showVendorContactByID);
+router.get('/vendor_contact/:vendorContactID', VendorContact.showVendorContactByID);
 
 //Update Vendor Contact
-router.put('/vendor_contact/:vendorContactID', updateVendorContact);
+router.put('/vendor_contact/:vendorContactID', VendorContact.updateVendorContact);
 
 /*--------------------------------------------------------------------------------*/
 
-router.get('/countries', showCountries);
+router.get('/countries', Countries.showCountries);
 
-router.get('/countries/:countryName', showCountryByName);
+router.get('/countries/:countryName', Countries.showCountryByName);
 
-export default router
+module.exports = router

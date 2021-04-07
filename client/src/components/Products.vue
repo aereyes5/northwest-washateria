@@ -1,18 +1,17 @@
 <template>
    <div>
-
-
-     <b-input-group class="mt-3">
+     <!-- <b-input-group class="mt-3">
             <b-form-input placeholder="Enter Product's ID number" v-model="productID"></b-form-input>
             <b-input-group-append>
             <b-button variant="primary" v-on:click="getProductByID">Search</b-button>
             </b-input-group-append>
-        </b-input-group>
+        </b-input-group> -->
+        <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
+        
         <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
         {{status}}
         </p>
 
-        <b-button variant="primary" v-on:click="getProducts">View All</b-button>
         <b-button v-bind:to="'new-product'" variant="success">Add New</b-button>
         <b-button variant="secondary" v-on:click="setProductID">Update</b-button>
         <b-button variant="danger" v-on:click="deleteProduct">Delete</b-button>
@@ -26,9 +25,11 @@
         :items="products"
         :fields="fields"
         :select-mode="selectMode"
+        :filter="filter"
         striped responsive="sm"
         ref="selectableTable"
         selectable
+        hover
         @row-selected="onRowSelected"
         sticky-header="83vh"
         >
@@ -44,18 +45,19 @@ export default {
   data(){
       return{
           products: [],
-          fields: ['productID','productName', 'productPrice', 'vendorID'],
+          fields: ['productName', 'price', 'vendor'],
           selectMode: 'single',
           selected: [],
           productID: null,
           status: "",
-          status2: ""
+          status2: "",
+          filter:""
       }
    },
    methods: {
        getProducts(){
            services.getProducts().then(response => {
-               this.products = response
+               this.products = response[0]
                this.productID = null
                console.log(this.products)
            }).catch(e => {

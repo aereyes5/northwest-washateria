@@ -1,4 +1,4 @@
-import mysql from "mysql2"
+const mysql = require('mysql2')
 
 const db = mysql.createPool({
     host     : 'us-cdbr-east-03.cleardb.com',
@@ -7,4 +7,4 @@ const db = mysql.createPool({
     database : 'heroku_511310a7e136d98'
 })
 
-export default db;
+module.exports = db;
