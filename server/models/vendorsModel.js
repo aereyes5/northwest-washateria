@@ -4,7 +4,7 @@ module.exports = {
 
 //Create Vendor
 insertVendor: (data, result) => {
-    db.query("INSERT INTO vendors SET ?", [data], (err, results) => {             
+    db.query("call insertVendor(?,?,?,?,?,?)", [data.vendorName, data.vendorType, data.countryName, data.vendorContactName, data.phoneNumber, data.email], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -53,9 +53,8 @@ getVendorByID: (vendorID, result) => {
 },
 
 //Update Vendor
-updateVendorById: (data, vendorID, result) => {
-    let sql = "update vendors join vendor_type on vendors.vendorTypeID = vendor_type.vendorTypeID join country on vendors.countryID = country.countryID join vendor_contact on vendors.vendorContactID = vendor_contact.vendorContactID set vendors.vendorName = ?, vendor_contact.vendorContactName = 'Dan Johnson' where vendors.vendorID = 1"
-    db.query("UPDATE vendors SET vendorName = ?, vendorContactID = ?, vendorTypeID = ?, countryID = ? WHERE vendorID = ?", [data.vendorName, data.vendorContactID, data.vendorTypeID, data.countryID, vendorID], (err, results) => {             
+updateVendorById: (data, result) => {
+    db.query("call updateVendor(?,?,?,?,?,?,?)", [data.vendorID, data.vendorName, data.type, data.country, data.vendorContact, data.phoneNumber, data.email], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -67,7 +66,7 @@ updateVendorById: (data, vendorID, result) => {
 
 //Delete Vendor
 deleteVendorById: (vendorID, result) => {
-    db.query("DELETE FROM vendors WHERE vendorID = ?", [vendorID], (err, results) => {             
+    db.query("call deleteVendor(?)", [vendorID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

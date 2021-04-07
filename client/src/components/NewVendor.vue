@@ -36,7 +36,6 @@ export default {
         return{
             info:[],
             vendor:{
-                vendorID: null,
                 vendorName: null,
                 type: null,
                 country: null,
@@ -51,41 +50,30 @@ export default {
     },
 
     methods: {
-        findVendor(){
-            this.vendor.vendorID = this.$store.getters.getVendorID
-            this.getVendorByID(this.vendor.vendorID)
-
-        },
-
-        getVendorByID(vendorID){
-            try{
-                services.getVendorByID(vendorID).then(response => {
-                    this.info = response
-                    this.vendor.vendorID = this.info[0].vendorID;
-                    this.vendor.vendorName = this.info[0].vendorName;
-                    this.vendor.type = this.info[0].type;
-                    this.vendor.country = this.info[0].country;
-                    this.vendor.vendorContact = this.info[0].vendorContact;
-                    this.vendor.phoneNumber = this.info[0].phoneNumber;
-                    this.vendor.email = this.info[0].email;
-                    console.log(this.info)
-                    
-                })
-                }catch(err){
-                    console.log(err)
-                }
-        },
 
         getCountries(){
             services.getCountries().then(response => {
             this.countries = response
             console.log(this.countries)
             })
+        },
+
+        async insertVendor(){
+            try{
+                services.insertVendor(this.vendor).then(vendor => {
+                    this.$router.push({name: 'Vendors'})
+                    return vendor
+                }).catch((error) => {
+                    this.status = error
+                })
+            }catch(error){
+                this.status = error
+            }
         }
+
     },
 
     mounted(){
-        this.findVendor()
         this.getCountries()
     }
 }

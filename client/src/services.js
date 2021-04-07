@@ -207,8 +207,15 @@ class Services{
     static updateVendor(vendor){
         return new Promise(async (resolve, reject) => {
             try{
-                const res = await axios.put(`${vendorURL}/${vendorID.vendorID}`, {
-                    vendorName: vendor.vendorName
+                const res = await axios.put(`${vendorURL}/${vendor.vendorID}`, {
+                    vendorID: vendor.vendorID,
+                    vendorName: vendor.vendorName,
+                    type: vendor.type,
+                    country: vendor.country,
+                    vendorContact: vendor.vendorContact,
+                    phoneNumber: vendor.phoneNumber,
+                    email: vendor.email
+
                 })
                 const data = res.data
                 resolve (data)
@@ -217,6 +224,40 @@ class Services{
             }
         })
     }
+
+    static insertVendor(vendor){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.post(`${vendorURL}`, {
+                    vendorName: vendor.vendorName,
+                    vendorType: vendor.type,
+                    countryName: vendor.country,
+                    vendorContactName: vendor.vendorContact,
+                    phoneNumber: vendor.phoneNumber,
+                    email: vendor.email
+
+                })
+                const data = res.data
+                console.log(data)
+                resolve(data)
+            }catch(error){
+                reject(`Unable to add new product\n${error}`);
+            }
+        })
+    }
+
+    static deleteVendor(vendorID){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.delete(`${vendorURL}/${vendorID}`)
+                const data = res.data
+                resolve (data)
+            }catch(error){
+                reject(`${error}`)
+            }
+        })
+    }
+
 
 
 

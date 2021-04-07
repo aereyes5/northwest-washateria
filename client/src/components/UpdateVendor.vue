@@ -80,6 +80,12 @@ export default {
             this.countries = response
             console.log(this.countries)
             })
+        },
+
+        updateVendor(){
+            services.updateVendor(this.vendor)
+            this.$router.push({name: 'Vendors'})
+
         }
     },
 

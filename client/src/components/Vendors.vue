@@ -14,6 +14,7 @@
 
         <b-button variant="success" v-bind:to="'new-vendor'">Add New</b-button>
         <b-button variant="secondary" v-on:click="setVendorID">Update</b-button>
+        <b-button variant="danger" v-on:click="deleteVendor">Delete</b-button>
 
 
          <b-table 
@@ -108,7 +109,7 @@ export default {
 
         setVendorID(){
           if(!Array.isArray(this.selected) || !this.selected.length){
-                this.status2 = "Please select a record to update";
+                this.status = "Please select a record to update";
             }
           else{
               this.updateVendor(this.selected[0].vendorID)
@@ -119,6 +120,18 @@ export default {
             this.$store.commit('setVendorID', {vendorID})
             this.$router.push({name: 'UpdateVendor'})
         },
+
+        deleteVendor(){
+            if(!Array.isArray(this.selected) || !this.selected.length){
+                this.status = "Please select a record to delete";
+            }
+            else{
+                this.status = "";
+                services.deleteVendor(this.selected[0].vendorID)
+                window.location.reload()
+            }
+            
+        }
 
     },
 
