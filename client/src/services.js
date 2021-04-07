@@ -222,6 +222,8 @@ class Services{
 
 /*---------------------------------------------------------------------------------*/
 
+    //CRUD Invoices 
+
     static getInvoices(){
         return new Promise(async (resolve, reject) => {
             try{

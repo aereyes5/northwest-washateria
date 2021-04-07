@@ -42,7 +42,7 @@ export default {
     data(){
         return{
             employees: [],
-            fields: ['employeeID', 'firstName', 'lastName', 'startDate', 'endDate', 'postion', 'loginID'],
+            fields: ['employeeID', 'firstName', 'lastName', 'startDate', 'endDate', 'position', 'loginID'],
             selectMode: 'single',
             selected: [],
             employeeID: null,
@@ -61,7 +61,7 @@ export default {
             })
         },
 
-        deleteProduct(){
+        deleteEmployee(){
             if(!Array.isArray(this.selected) || !this.selected.length){
                 this.status2 = "Please select a record to delete";
             }

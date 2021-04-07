@@ -4,9 +4,7 @@
             <b-form-input v-model="employee.firstName" placeholder="Enter First Name" id="firstName"></b-form-input>
             <b-form-input v-model="employee.lastName" placeholder="Enter Last Name" id="lastName"></b-form-input>
             <b-form-datepicker v-model="employee.startDate" placeholder="Enter Start Date" id="startDate"></b-form-datepicker>
-            <b-form-datepicker v-model="employee.endDate" placeholder="Enter End Date" id="endDate" :disabled="true"></b-form-datepicker>
-            <b-form-input v-model="employee.postion" placeholder="Enter Postion" id="Position"></b-form-input>
-            <b-form-input v-model="employee.loginID" placeholder="Enter LoginID" id="loginID"></b-form-input>
+            <b-form-input v-model="employee.postion" placeholder="Enter Postion" id="position"></b-form-input>
             <b-button variant="primary" type="submit">Submit</b-button>
         </b-form>
     </div>
