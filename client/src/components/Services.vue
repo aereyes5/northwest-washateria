@@ -99,7 +99,7 @@ export default {
         },
 
         updateService(serviceID){
-            this.$store.commit('setServiceID', {serviceID})
+            this.$store.commit('sServiceID', {serviceID})
             this.$router.push({name: 'UpdateService'})
         }
     },
