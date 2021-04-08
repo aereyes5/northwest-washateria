@@ -442,6 +442,18 @@ static getEmployeeByID(employeeID){
         })
     }
 
+    //Get service by ID
+    static getServiceByID(serviceID){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${servicesURL}/${serviceID}`);
+                const data = res.data
+                resolve(data)
+            }catch(error){
+                reject(`${error}`)
+            }
+        })
+    }
 }
 
 

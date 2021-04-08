@@ -23,6 +23,9 @@ export const store = new Vuex.Store({
         },
         vendor:{
             vendorID: null
+        },
+        service:{
+            serviceID: null
         }
 
 
@@ -48,6 +51,9 @@ export const store = new Vuex.Store({
         },
         getVendorID: state => {
             return state.vendor.vendorID
+        },
+        getServiceID: state => {
+            return state.service.serviceID
         }
 
     },
@@ -72,6 +78,9 @@ export const store = new Vuex.Store({
         }, 
         setVendorID(state,{vendorID}){
             state.vendor.vendorID = vendorID
+        },
+        sServiceID(state,{serviceID}){
+            state.service.serviceID = serviceID
         }
 
     }

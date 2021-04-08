@@ -72,7 +72,6 @@ export default {
             this.selected = items
             console.log(items)
         },
-        //Possibly change to name for search services?
         getServiceByID(){
             if(this.serviceID == null){
                 this.status = "Please enter service ID"
@@ -101,7 +100,7 @@ export default {
 
         updateService(serviceID){
             this.$store.commit('sServiceID', {serviceID})
-            this.$router.push({name: 'UdateService'})
+            this.$router.push({name: 'UpdateService'})
         }
     },
     created(){
