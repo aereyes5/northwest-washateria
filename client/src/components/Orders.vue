@@ -2,21 +2,19 @@
     <div>
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         
+
+
+        <b-button v-bind:to="'new-order'" variant="success">Add New</b-button>
+        <!-- <b-button variant="secondary" v-on:click="setProductID">Update</b-button>
+        <b-button variant="danger" v-on:click="deleteProduct">Cancel</b-button> -->
+
         <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
         {{status}}
         </p>
 
-        <b-button v-bind:to="'new-order'" variant="success">Add New</b-button>
-        <b-button variant="secondary" v-on:click="setProductID">Update</b-button>
-        <b-button variant="danger" v-on:click="deleteProduct">Cancel</b-button>
-
-        <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
-        {{status2}}
-        </p>
-
 
         <b-table
-        :items="order"
+        :items="orders"
         :fields="fields"
         :select-mode="selectMode"
         :filter="filter"
@@ -24,7 +22,6 @@
         ref="selectableTable"
         selectable
         hover
-        @row-selected="onRowSelected"
         sticky-header="83vh"
         >
 
@@ -38,7 +35,7 @@ export default {
     name: "Orders",
     data(){
         return{
-          products: [],
+          orders: [],
           fields: ['date', 'product', 'quantity', 'total', 'vendor', 'status'],
           selectMode: 'single',
           selected: [],
@@ -50,14 +47,17 @@ export default {
 
     methods:{
         getOrders(){
-           services.getProducts().then(response => {
-               this.products = response[0]
-               this.productID = null
-               console.log(this.products)
+           services.getOrders().then(response => {
+               this.orders = response[0]
+               this.orderID = null
+               console.log(this.orders)
            }).catch(e => {
                console.log(e);
            })
        },
+    },
+    created(){
+        this.getOrders()
     }
 }
 

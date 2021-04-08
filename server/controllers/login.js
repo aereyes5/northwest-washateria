@@ -16,7 +16,7 @@ createLogin: (req, res) => {
 
 //Retrieve Logins
 showLogins: (req, res) => {
-    Login.getLogin((err, results) => {
+    Login.getLogins((err, results) => {
         if(err){
             res.send(err)
         } else{

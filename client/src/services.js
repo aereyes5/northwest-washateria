@@ -8,8 +8,22 @@ const employeeURL = 'http://localhost:3000/employees'
 const countryURL = 'http://localhost:3000/countries'
 const servicesURL = 'http://localhost:3000/services'
 const orderURL = 'http://localhost:3000/orders'
+const loginURL = 'http://localhost:3000/login'
 
 class Services{
+    static getLogins(){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${loginURL}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+    /*--------------------------------------------------------------------------------*/
+
     //CRUD Customers
 
     //Get all customers

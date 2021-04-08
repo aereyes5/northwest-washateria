@@ -7,9 +7,15 @@ Products = require('../controllers/products'),
 Services = require('../controllers/services'),
 Vendors = require('../controllers/vendors'),
 VendorContact = require('../controllers/vendorContact'),
-Orders = require('../controllers/orders')
+Orders = require('../controllers/orders'),
 Countries = require('../controllers/country');
 router = new express.Router()
+
+
+//LOGIN
+router.get('/login', Login.showLogins)
+
+/*--------------------------------------------------------------------------------*/
 
 //CRUD CUSTOMERS
 
@@ -56,6 +62,8 @@ router.post('/products', Products.createProduct)
 
 //Retrieve All Products
 router.get('/products', Products.showProducts)
+
+router.get('/products/productNames', Products.showProductNames)
 
 //Retrieve One Product
 router.get('/products/:productID', Products.showProductById);
@@ -163,7 +171,10 @@ router.get('/countries/:countryName', Countries.showCountryByName);
 /*--------------------------------------------------------------------------------*/
 
 //Retrieve All Product Orders
-router.get('/oders', Vendors.showVendors)
+router.get('/orders', Orders.showOrders);
+
+router.post('/orders', Orders.createOrders)
+
 
 
 

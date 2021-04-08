@@ -4,7 +4,7 @@ module.exports = {
 
 //Retrieve all Product Orders
 getProductOrders: (result) => {
-    db.query("SELECT * FROM productorders", (err, results) => {             
+    db.query("call getProductOrders()", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -16,7 +16,7 @@ getProductOrders: (result) => {
 
 //Create Product Order
 insertProductOrder: (data, result) => {
-    db.query("INSERT INTO productorders VALUES ?", [data], (err, results) => {             
+    db.query("call insertProductOrder(?,?,?,?)", [data.product, data.quantity, data.total, data.vendor], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

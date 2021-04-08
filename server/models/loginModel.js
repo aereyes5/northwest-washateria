@@ -15,7 +15,7 @@ insertLogin: (data, result) => {
 },
 
 //Retrieve All Logins
-getLogin: (result) => {
+getLogins: (result) => {
     db.query("SELECT * FROM login", (err, results) => {
         if(err){
             console.log(err)

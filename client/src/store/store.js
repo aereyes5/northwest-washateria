@@ -5,9 +5,10 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state:{
         user:{
-            email: null,
+            loginID: null,
+            username: null,
             password: null,
-            token: null
+            access: null
             
         },
         
@@ -32,7 +33,7 @@ export const store = new Vuex.Store({
     },
     getters:{
         isValidUser: state =>{
-            return (state.user.token) ? true: false
+            return (state.user.loginID) ? true: false
         },
         getAccountInfo: state => {
             return state.user.email
@@ -58,13 +59,14 @@ export const store = new Vuex.Store({
 
     },
     mutations:{
-        loginUser(state, {email, password, token}){
-            state.user.token = token
-            state.user.email = email
+        loginUser(state, {loginID, username, password, access}){
+            state.user.loginID = loginID
+            state.user.username = username
             state.user.password = password
+            state.user.access = access
         },
-        logoutUser(state,{token}){
-            state.user.token = token
+        logoutUser(state,{loginID}){
+            state.user.loginID = loginID
         },
         customerPhoneNumber(state,{phoneNumber}){
             state.customer.phoneNumber = phoneNumber

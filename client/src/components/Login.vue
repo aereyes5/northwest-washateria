@@ -3,14 +3,14 @@
  <b-container class="back">
 <br>
  <h1><span style="text-decoration:underline">Login</span></h1><br>  
-  <b-form @submit.prevent="login">
-    <label for="text-email" >Email:</label>
-    <b-form-input type="email" id="text-email" v-model="user.email" placeholder="Please Enter Email"></b-form-input><br>
+  
+    <label for="text-email" >Username:</label>
+    <b-form-input type="email" id="text-email" v-model="user.username" placeholder="Please Enter Username"></b-form-input><br>
     <label for="text-password" >Password:</label>
-    <b-form-input type="password" id="text-password" autocomplete="on" v-model="user.password" placeholder="Please Enter Password"></b-form-input>
-    <p>Don't have an account? Register <b-link v-bind:to="'/register'">here</b-link></p>
-    <b-button variant="primary" type="submit">Login</b-button>
-   </b-form>
+    <b-form-input type="password" id="text-password" v-model="user.password" placeholder="Please Enter Password"></b-form-input>
+    <br>
+    <b-button variant="primary" v-on:click="login">Login</b-button>
+   
       </b-container>
    <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
      {{status}}
@@ -19,59 +19,72 @@
 </template>
 
 <script>
-import visitorServices from '../visitorServices'
+import services from '../services'
 export default {
   name: "Login",
   data(){
     return{
       user:{
-        email: null,
+        username: null,
         password: null,
-        token: null
+        loginID: null,
+        access: null,
       },
-      status: null
+      status: null,
+      allUsers:[]
     }
   },
   methods: {
-    async login(){
-      try{
-        const visitorFound = visitorServices.login(this.user).then(visitor => {
-          this.status = null
-          console.log(visitorFound)
-          this.storeToken(visitor.foundVisitor.email,visitor.foundVisitor.password, visitor.token)
-          this.$router.push('/')
-          return visitor
-        }).catch((error) => {
-          console.log(error)
-          this.status = error
-        })
-       
-      }catch(error){
-        console.log(error)
-        this.status = error
-      }
 
+      getLogins(){
+            services.getLogins().then(response => {
+                this.allUsers = response
+                console.log(this.allUsers)
+            })
+            .catch(e => {
+                console.log(e);
+            });
+        },
+
+      login(){
+        for(var i = 0; i < this.allUsers.length; i++){
+          if((this.user.username == this.allUsers[i].username) && (this.user.password == this.allUsers[i].pswd)){
+            this.user.loginID = this.allUsers[i].loginID
+            this.user.access = this.allUsers[i].access
+            this.storeUser(this.user.loginID, this.user.username, this.user.password, this.user.access)
+            this.$router.push({name: 'Home'})
+          }
+          }
+          if((this.user.loginID == null) && (this.user.access == null)){
+            this.status = "Invalid Credentials. Please try again."
+        }
+      },
+
+
+
+    storeUser(loginID, username, password, access){
+      this.$store.commit('loginUser', {loginID, username, password, access})
     },
-    storeToken(email, password, token){
-      this.$store.commit('loginUser', {email, password, token})
-    },
+
 
 
   },  
   computed:{
-    userToken(){
+    userVerified(){
       return this.$store.getters.isValidUser
     }
   },
   mounted(){
-    if(this.userToken == true){
-      this.user = this.$store.getters.isValidUser
-      this.email = this.$store.getters.getAccountInfo
-      this.token = this.$store.getters.getToken
-      console.log(this.user)
-      console.log(this.email)
-      console.log(this.token)
-    }
+    this.getLogins()
+
+    // if(this.userToken == true){
+    //   this.user = this.$store.getters.isValidUser
+    //   this.email = this.$store.getters.getAccountInfo
+    //   this.token = this.$store.getters.getToken
+    //   console.log(this.user)
+    //   console.log(this.email)
+    //   console.log(this.token)
+    // }
   }
 
 }
@@ -86,3 +99,4 @@ label{
   margin-top: 12%
 }
 </style>
+

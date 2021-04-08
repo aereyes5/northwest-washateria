@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Purchases from '@/components/Purchases'
 import Orders from '@/components/Orders'
+import NewOrder from '@/components/NewOrder'
 import PurchaseHistory from '@/components/PurchaseHistory'
 import Invoices from '@/components/Invoices'
 import Products from '@/components/Products'
@@ -26,6 +27,7 @@ import UpdateVendor from '@/components/UpdateVendor'
 import NewVendor from '@/components/NewVendor'
 import NewService from '@/components/NewService'
 import UpdateService from '@/components/updateService'
+import NewInvoice from '@/components/NewInvoice'
 
 
 Vue.use(Router)
@@ -35,7 +37,7 @@ export default new Router({
   hash: false,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'Home',
       component: Home
     },
@@ -50,14 +52,24 @@ export default new Router({
       component: Orders
     },
     {
+      path: '/new-order',
+      name: 'NewOrder',
+      component: NewOrder
+    },
+    {
       path: '/PurchaseHistory',
       name: 'PurchaseHistory',
       component: PurchaseHistory
     },
     {
-      path: '/Invoices',
+      path: '/invoices',
       name: 'Invoices',
       component: Invoices
+    },
+    {
+      path: '/new-invoice',
+      name: 'NewInvoice',
+      component: NewInvoice
     },
     {
       path: '/Products',
@@ -105,7 +117,7 @@ export default new Router({
       component: Registration
     },
     {
-      path: '/login',
+      path: '/',
       name: 'Login',
       component: Login
     },

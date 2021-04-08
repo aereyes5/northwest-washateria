@@ -1,11 +1,11 @@
-const Products = require('../models/productsModel')
+const Orders = require('../models/productOrdersModel')
 
 module.exports = {
 
 //Create New Product
-createProduct: (req, res) => {
+createOrders: (req, res) => {
     const data = req.body;
-    Products.insertProduct(data, (err, results) => {
+    Orders.insertProductOrder(data, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -15,19 +15,8 @@ createProduct: (req, res) => {
 },
 
 //Retrieve Products
-showProducts: (req, res) => {
-    Products.getProducts((err, results) => {
-        if(err){
-            res.send(err)
-        } else{
-            res.json(results)
-        }
-    })
-},
-
-//Retrieve Products
-showProductNames: (req, res) => {
-    Products.getProductNames((err, results) => {
+showOrders: (req, res) => {
+    Orders.getProductOrders((err, results) => {
         if(err){
             res.send(err)
         } else{
@@ -37,8 +26,8 @@ showProductNames: (req, res) => {
 },
 
 //Retrieve One Product
-showProductById: (req, res) => {
-    Products.getProductById(req.params.productID, (err, results) => {
+showOrderById: (req, res) => {
+    Orders.getOrdersById(req.params.orderID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -48,10 +37,10 @@ showProductById: (req, res) => {
 },
 
 //Update Product
-updateProduct: (req, res) => {
+updateOrder: (req, res) => {
     const data  = req.body;
-    const productID    = req.params.productID;
-    Products.updateProductById(data, productID, (err, results) => {
+    const orderID    = req.params.orderID;
+    Orders.updateProductOrderById(data, orderID, (err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -61,9 +50,9 @@ updateProduct: (req, res) => {
 },
 
 //Delete Product
-deleteProduct: (req, res) => {
+deleteOrder: (req, res) => {
     const productID = req.params.productID;
-    Products.deleteProductById(productID, (err, results) => {
+    Orders.deleteProductOrder(productID, (err, results) => {
         if (err){
             res.send(err);
         }else{

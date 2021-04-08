@@ -26,6 +26,7 @@ getProducts: (result) => {
     });   
 },
 
+
 //Retrieve One Product
 getProductById: (productID, result) => {
     db.query("call getProductByID(?)", [productID], (err, results) => {             

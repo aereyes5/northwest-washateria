@@ -1,36 +1,20 @@
 <template>
     <div>
-  <!--      <b-input-group class="mt-3">
-            <b-form-input placeholder="Enter Customer's Phone Number" v-model="phoneNumber"></b-form-input>
-            <b-input-group-append>
-            <b-button variant="primary" v-on:click="getCustomerByPhone">Search</b-button>
-            </b-input-group-append>
-        </b-input-group>
-        <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
-        {{status}}
-        </p>
-
-
-        <b-button variant="primary" v-on:click="getCustomers">View All</b-button>
-        <b-button v-bind:to="'new-customer'" variant="success">Add New</b-button>
-        <b-button variant="secondary" v-on:click="setPhoneNumber">Update</b-button>
-        <b-button variant="danger" v-on:click="deleteCustomer">Delete</b-button>
-
-        <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
-        {{status2}}
-        </p> -->
       
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
 
-        <b-button v-bind:to="'new-employee'" variant="success">Add New</b-button>
-        <b-button variant="secondary" v-on:click="setEmployeeID">Update</b-button>
-        <b-button variant="danger" v-on:click="deleteEmployee">Delete</b-button>
+        <b-button v-bind:to="'new-invoice'" variant="success">Add New</b-button>
+        <!-- <b-button variant="secondary" v-on:click="setEmployeeID">Update</b-button>
+        <b-button variant="danger" v-on:click="deleteEmployee">Delete</b-button> -->
 
         <b-table 
          :items="invoices" 
          :fields="fields"
          :filter="filter"
+         :select-mode="selectMode"
          striped responsive="sm"
+         ref="selectableTable"
+         selectable
          hover
          >
       <template #cell(show_details)="row">
