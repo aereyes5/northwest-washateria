@@ -13,7 +13,7 @@
 <script>
 import services from '../services'
 export default {
-    name: 'UpdateService',
+    name: 'updateService',
     data(){
         return{
             info: [],
@@ -32,10 +32,11 @@ export default {
         getServiceByServiceID(serviceID){
             try{
                 services.getServiceByID(serviceID).then(response => {
-                    this.info = response[0]
-                    this.service.serviceID = this.info[0].serviceID;
-                    this.service.serviceName = this.info[0].serviceName;
-                    this.service.servicePrice = this.info[0].servicePrice;
+                    this.info = response
+                    this.service.serviceID = this.info.serviceID;
+                    this.service.serviceName = this.info.serviceName;
+                    this.service.servicePrice = this.info.servicePrice;
+                    console.log(this.info)
                 })
             }catch(err){
                 console.log(err)

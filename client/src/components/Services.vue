@@ -33,14 +33,14 @@
 <script>
 import services from '../services'
 export default {
-    name: 'Employees',
+    name: 'Services',
     data(){
         return{
             services: [],
             fields: ['serviceName', 'servicePrice'],
             selectMode: 'single',
             selected: [],
-            employeeID: null,
+            serviceID: null,
             status: "",
             status2: "",
             filter: ""
@@ -51,7 +51,6 @@ export default {
             services.getServices().then(response => {
                 this.services = response
                 this.serviceID = null
-                console.log(this.employees)
             }).catch(e => {
                 console.log(e);
             })
