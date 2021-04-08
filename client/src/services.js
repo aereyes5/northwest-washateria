@@ -6,6 +6,7 @@ const vendorURL = 'http://localhost:3000/vendors'
 const invoiceURL = 'http://localhost:3000/invoices'
 const employeeURL = 'http://localhost:3000/employees'
 const countryURL = 'http://localhost:3000/countries'
+const servicesURL = 'http://localhost:3000/services'
 
 class Services{
     //CRUD Customers
@@ -311,7 +312,7 @@ static insertEmployee(employee){
             console.log(data)
             resolve(data)
         }catch(error){
-            reject(`Unable to add new product\n${error}`);
+            reject(`Unable to add new employee\n${error}`);
         }
     })
 }
@@ -322,7 +323,7 @@ static deleteEmployee(employeeID){
         try{
             const res = await axios.delete(`${employeeURL}/${employeeID}`)
             const data = res.data
-            resolve (data)
+            resolve(data)
         }catch(error){
             reject(`${error}`)
         }
@@ -343,7 +344,7 @@ static updateEmployee(employee){
                 loginID: employee.loginID
             })
             const data = res.data
-            resolve (data)
+            resolve(data)
         }catch(error){
             reject(`${error}`)
         }
@@ -376,8 +377,73 @@ static getEmployeeByID(employeeID){
             }
         })
     }
+/*---------------------------------------------------------------------------------*/
+
+//CRUD Services
+
+    //Get all services
+    static getServices(){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${servicesURL}`)
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`)
+            }
+        })
+    }
+
+    //Insert Service
+    static insertService(service){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.post(`${servicesURL}`, {
+                    serviceID: service.serviceID,
+                    serviceName: service.serviceName,
+                    servicePrice: service.servicePrice
+                })
+                const data = res.data
+                console.log(data)
+                resolve(data)
+            }catch(error){
+                reject(`Unable to add new service\n${error}`)
+            }
+        })
+    }
+
+    //Delete Service
+    static deleteService(serviceID){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.delete(`${servicesURL}/${serviceID}`)
+                const data = res.data
+                resolve(data)
+            }catch(error){
+                reject(`${error}`)
+            }
+        })
+    }
+
+    //Update Service
+    static updateService(service){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.put(`${servicesURL}/${service.serviceID}`, {
+                    serviceID: service.serviceID,
+                    serviceName: service.serviceName,
+                    servicePrice: service.servicePrice
+                })
+                const data = (res).data
+                resolve(data)
+            }catch(error){
+                reject(`${error}`)
+            }
+        })
+    }
 
 }
+
 
 
 export default Services
