@@ -37,7 +37,7 @@ export default {
     data(){
         return{
             services: [],
-            fields: ['serviceID', 'serviceName', 'servicePrice'],
+            fields: ['serviceName', 'servicePrice'],
             selectMode: 'single',
             selected: [],
             employeeID: null,

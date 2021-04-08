@@ -43,10 +43,6 @@
             <b-col>{{ row.item.lastName }}</b-col>
           </b-row>
 
-
-          
-          <b-button  variant="secondary" size="sm" @click="row.toggleDetails">Edit</b-button>
-
         </b-card>
       </template>
     </b-table>
@@ -62,7 +58,7 @@ export default {
             invoices: [],
             fields: ['date','customerFirstName', 'customerLastName', 'phoneNumber', 'product',
             'productPrice', 'quantity', 'service', 'servicePrice', 'totalPrice', 'paymentMethod',
-            'status', 'show_details'],
+            'show_details'],
             selectMode: 'single',
             selected: [],
             status2: "",

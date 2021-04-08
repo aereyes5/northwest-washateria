@@ -11,13 +11,13 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item  v-bind:to="'/home'" v-if="userVerified">Home</b-nav-item>
-        <b-nav-item  v-bind:to="'Orders'" v-if="userVerified">Orders</b-nav-item>
-        <b-nav-item  v-bind:to="'Invoices'" v-if="userVerified">Invoices</b-nav-item>
         <b-nav-item v-bind:to="'Products'" v-if="userVerified">Products</b-nav-item>
         <b-nav-item  v-bind:to="'Services'" v-if="userVerified">Services</b-nav-item>
-        <b-nav-item  v-bind:to="'Vendors'" v-if="userVerified">Vendors</b-nav-item>
         <b-nav-item  v-bind:to="'Customers'" v-if="userVerified">Customers</b-nav-item>
-        <b-nav-item  v-bind:to="'Employees'" v-if="userVerified">Employees</b-nav-item>
+        <b-nav-item  v-bind:to="'Invoices'" v-if="userVerified">Invoices</b-nav-item>
+        <b-nav-item  v-bind:to="'Employees'" v-if="userVerified && userAccess=='Admin'">Employees</b-nav-item>
+        <b-nav-item  v-bind:to="'Vendors'" v-if="userVerified && userAccess=='Admin'">Vendors</b-nav-item>
+        <b-nav-item  v-bind:to="'Orders'" v-if="userVerified && userAccess=='Admin'">Orders</b-nav-item>
         <!-- <b-nav-item  v-bind:to="'Employees'" v-if="userToken">Employees</b-nav-item> -->
       </b-navbar-nav>
 
@@ -46,7 +46,7 @@ export default {
   name: "Navbar",
   data(){
     return{
-
+      
 
     };
   },
@@ -62,6 +62,9 @@ export default {
   computed:{
     userVerified(){
       return this.$store.getters.isValidUser
+    },
+    userAccess(){
+      return this.$store.getters.getUserAccess
     }
   },
 

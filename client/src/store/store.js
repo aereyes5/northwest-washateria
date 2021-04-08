@@ -35,6 +35,9 @@ export const store = new Vuex.Store({
         isValidUser: state =>{
             return (state.user.loginID) ? true: false
         },
+        getUserAccess: state =>{
+            return (state.user.access)
+        },
         getAccountInfo: state => {
             return state.user.email
         },
