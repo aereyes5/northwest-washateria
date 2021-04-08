@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-form @submit.prevent="updateService">
-            <b-form-input v-model="service.serviceName" id="serviceID" disabled></b-form-input>
+            <b-form-input v-model="service.serviceID" id="serviceID" disabled></b-form-input>
             <b-form-input v-model="service.serviceName" placeholder="Enter Service Name" id="serviceName"></b-form-input>
             <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price" id="servicePrice"></b-form-input>
             <b-button variant="primary" type="submit">Submit</b-button>
