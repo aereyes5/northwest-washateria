@@ -32,7 +32,7 @@ export default {
         getServiceByServiceID(serviceID){
             try{
                 services.getServiceByID(serviceID).then(response => {
-                    this.info = response
+                    this.info = response[0]
                     this.service.serviceID = this.info[0].serviceID;
                     this.service.serviceName = this.info[0].serviceName;
                     this.service.servicePrice = this.info[0].servicePrice;

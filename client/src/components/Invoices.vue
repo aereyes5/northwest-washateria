@@ -5,7 +5,7 @@
 
         <b-button v-bind:to="'new-invoice'" variant="success">Add New</b-button>
         <b-button variant="secondary" v-on:click="setInvoiceID">Update</b-button>
-        <!-- <b-button variant="danger" v-on:click="deleteEmployee">Delete</b-button> -->
+        <b-button variant="danger" v-on:click="deleteInvoice">Delete</b-button>
 
         <b-table 
          :items="invoices" 
