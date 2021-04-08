@@ -7,6 +7,7 @@ Products = require('../controllers/products'),
 Services = require('../controllers/services'),
 Vendors = require('../controllers/vendors'),
 VendorContact = require('../controllers/vendorContact'),
+Orders = require('../controllers/orders')
 Countries = require('../controllers/country');
 router = new express.Router()
 
@@ -158,5 +159,12 @@ router.put('/vendor_contact/:vendorContactID', VendorContact.updateVendorContact
 router.get('/countries', Countries.showCountries);
 
 router.get('/countries/:countryName', Countries.showCountryByName);
+
+/*--------------------------------------------------------------------------------*/
+
+//Retrieve All Product Orders
+router.get('/oders', Vendors.showVendors)
+
+
 
 module.exports = router

@@ -3,7 +3,7 @@ const db = require('../config/database')
 module.exports = {
 
 //Retrieve all Product Orders
-getProductsOrder: (result) => {
+getProductOrders: (result) => {
     db.query("SELECT * FROM productorders", (err, results) => {             
         if(err) {
             console.log(err);

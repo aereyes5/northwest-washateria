@@ -7,6 +7,7 @@ const invoiceURL = 'http://localhost:3000/invoices'
 const employeeURL = 'http://localhost:3000/employees'
 const countryURL = 'http://localhost:3000/countries'
 const servicesURL = 'http://localhost:3000/services'
+const orderURL = 'http://localhost:3000/orders'
 
 class Services{
     //CRUD Customers
@@ -96,6 +97,19 @@ class Services{
         return new Promise(async (resolve, reject) => {
             try{
                 const res = await axios.get(`${productUrl}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
+    //Get all products
+    static getProductNames(){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${productUrl}/productNames`);
                 const data = res.data
                 resolve(data)
             }catch(error) {
@@ -454,8 +468,40 @@ static getEmployeeByID(employeeID){
             }
         })
     }
+/*---------------------------------------------------------------------------------*/
+
+//CRUD Orders
+static getOrders(){
+    return new Promise(async (resolve, reject) => {
+        try{
+            const res = await axios.get(`${orderURL}`)
+            const data = res.data
+            resolve(data)
+        }catch(error) {
+            reject(`${error}`)
+        }
+    })
+}
+
+static insertOrder(order){
+    return new Promise(async (resolve, reject) => {
+        try{
+            const res = await axios.post(`${orderURL}`, {
+                vendor: order.vendorName,
+                product: order.productName,
+                quantity: order.quantity,
+                total: order.total
+            })
+            const data = res.data
+            console.log(data)
+            resolve(data)
+        }catch(error){
+            reject(`Unable to add new product\n${error}`);
+        }
+    })
 }
 
 
+}
 
 export default Services
