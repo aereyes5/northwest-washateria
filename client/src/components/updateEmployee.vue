@@ -16,6 +16,7 @@
             </b-form-select>
             <b-button variant="primary" type="submit">Submit</b-button>
         </b-form>
+        <b-button v-bind:to="'Employees'" variant="primary">Back</b-button>
     </div>
 </template>
 

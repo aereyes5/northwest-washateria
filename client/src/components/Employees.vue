@@ -108,7 +108,7 @@ export default {
         },
 
         updateEmployee(employeeID){
-            this.$store.commit('eEmployeeID', {employeeID})
+            this.$store.commit('setEmployeeID', {employeeID})
             this.$router.push({name: 'UpdateEmployee'})
         }
     },

@@ -6,6 +6,7 @@
             <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price" id="servicePrice"></b-form-input>
             <b-button variant="primary" type="submit">Submit</b-button>
         </b-form>
+        <b-button v-bind:to="'Services'" variant="primary">Back</b-button>
     </div>
 </template>
 
@@ -31,10 +32,10 @@ export default {
         getServiceByServiceID(serviceID){
             try{
                 services.getServiceByID(serviceID).then(response => {
-                    this.info = response[0]
+                    this.info = response
                     this.service.serviceID = this.info[0].serviceID;
                     this.service.serviceName = this.info[0].serviceName;
-                    this.service.serverPrice = this.info[0].serverPrice;
+                    this.service.servicePrice = this.info[0].servicePrice;
                 })
             }catch(err){
                 console.log(err)

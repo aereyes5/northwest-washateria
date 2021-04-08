@@ -4,8 +4,8 @@
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
 
         <b-button v-bind:to="'new-invoice'" variant="success">Add New</b-button>
-        <!-- <b-button variant="secondary" v-on:click="setEmployeeID">Update</b-button>
-        <b-button variant="danger" v-on:click="deleteEmployee">Delete</b-button> -->
+        <b-button variant="secondary" v-on:click="setInvoiceID">Update</b-button>
+        <!-- <b-button variant="danger" v-on:click="deleteEmployee">Delete</b-button> -->
 
         <b-table 
          :items="invoices" 
@@ -70,8 +70,58 @@ export default {
         getInvoices(){
             services.getInvoices().then(response => {
                 this.invoices = response
+                this.invoiceID = null
                 console.log(this.invoices)
+            }).catch(e => {
+                console.log(e);
             })
+        },
+
+        deleteInvoice(){
+            if(!Array.isArray(this.selected) || !this.selected.length){
+                this.status2 = "Please select a record to delete";
+            }
+            else{
+                this.status2 = "";
+                services.deleteInvoice(this.selected[0].invoiceID)
+                window.location.reload()
+            }
+        },
+
+        onRowSelected(items){
+            this.selected = items
+            console.log(items)
+        },
+
+        getInvoiceByID(){
+            if(this.invoiceID == null){
+                this.status = "Please enter employee ID"
+            }
+            else{
+                this.status = "";
+                try{
+                    services.getInvoiceByID(this.invoiceID).then(response => {
+                        this.employees = response
+                        console.log(this.employees)
+                    })
+                }catch(err){
+                    console.log(err)
+                }
+            }
+        },
+
+        setInvoiceID(){
+            if(!Array.isArray(this.selected) || !this.selected.length){
+                this.status2 = "Please select a record to update"
+            }
+            else{
+                this.updateInvoice(this.selected[0].invoiceID)
+            }
+        },
+
+        updateInvoice(invoiceID){
+            this.$store.commit('setInvoiceID', {invoiceID})
+            this.$router.push({name: 'UpdateInvoices'})
         }
     },
 

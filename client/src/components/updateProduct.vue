@@ -7,6 +7,7 @@
             <b-form-input v-model="product.vendor" placeholder="Enter Vendor" id="vendorID"></b-form-input>
             <b-button variant="primary" type="submit">Submit</b-button>
         </b-form>
+        <b-button v-bind:to="'Products'" variant="primary">Back</b-button>
     </div>
 </template>
 

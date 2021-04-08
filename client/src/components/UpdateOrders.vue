@@ -1,11 +1,13 @@
 <template>
     <div>
-        <b-form @submit.prevent="updateCustomer">
-        <b-form-input v-model="customer.customerID" id="customerID" disabled></b-form-input>
-        <b-form-input v-model="customer.firstName" placeholder="Enter First Name" id="firstName"></b-form-input>
-        <b-form-input v-model="customer.lastName" placeholder="Enter Last Name" id="lastName"></b-form-input>
-        <b-form-input v-model="customer.phoneNumber" placeholder="Enter Phone Number" id="phoneNumber"></b-form-input>
-        <b-form-input v-model="customer.email" placeholder="Enter Email" id="email"></b-form-input>
+        <b-form @submit.prevent="UpdateOrder">
+        <b-form-input v-model="customer.customerID" id="productOrderID" disabled></b-form-input>
+        <b-form-input v-model="customer.firstName" placeholder="Enter First Name" id="orderDate"></b-form-input>
+        <b-form-input v-model="customer.lastName" placeholder="Enter Last Name" id="productID"></b-form-input>
+        <b-form-input v-model="customer.phoneNumber" placeholder="Enter Phone Number" id="orderQuantity"></b-form-input>
+        <b-form-input v-model="customer.email" placeholder="Enter Email" id="orderTotalPrice"></b-form-input>
+        <b-form-input v-model="customer.email" placeholder="Enter Email" id="vendorID"></b-form-input>
+        <b-form-input v-model="customer.email" placeholder="Enter Email" id="vendorStatusID"></b-form-input>
         <b-button variant="primary" type="submit">Submit</b-button>
     </b-form>
             <b-button v-bind:to="'customers'" variant="primary" type="submit">Back</b-button>
@@ -15,17 +17,21 @@
 <script>
 import services from '../services'
 export default {
-    name: 'UpdateCustomer',
+    name: 'UpdateOrders',
     data(){
         return{
             info:[],
-            customer:{
-                customerID: null,
-                firstName: null,
-                lastName: null,
-                phoneNumber: null,
-                email: null
+            orders:{
+                productOrderID: null,
+                orderDate: null,
+                productID: null,
+                orderQuantity: null,
+                orderTotalPrice: null,
+                vendorID: null,
+                vendorStatusID: null
             }
+            
+
         }
     },
     
