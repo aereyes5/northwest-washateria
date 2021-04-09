@@ -8,7 +8,10 @@ export const store = new Vuex.Store({
             loginID: null,
             username: null,
             password: null,
-            access: null
+            access: null,
+            firstName: null,
+            lastName: null,
+            employeeID: null
             
         },
         
@@ -41,6 +44,15 @@ export const store = new Vuex.Store({
         getUserAccess: state =>{
             return (state.user.access)
         },
+        getEmployeeFirstName: state =>{
+            return (state.user.firstName)
+        },
+        getEmployeeLastName: state =>{
+            return (state.user.lastName)
+        },
+        getEmployeeIDByLogin: state =>{
+            return (state.user.employeeID)
+        },
         getAccountInfo: state => {
             return state.user.email
         },
@@ -68,11 +80,14 @@ export const store = new Vuex.Store({
 
     },
     mutations:{
-        loginUser(state, {loginID, username, password, access}){
+        loginUser(state, {loginID, username, password, access, firstName, lastName, employeeID}){
             state.user.loginID = loginID
             state.user.username = username
             state.user.password = password
             state.user.access = access
+            state.user.firstName = firstName
+            state.user.lastName = lastName
+            state.user.employeeID = employeeID
         },
         logoutUser(state,{loginID}){
             state.user.loginID = loginID

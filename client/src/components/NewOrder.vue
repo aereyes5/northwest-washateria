@@ -29,7 +29,6 @@ export default {
     name: "NewOrder",
     data(){
         return{
-            info:[],
             order:{
                 vendorName: null,
                 productName: null,

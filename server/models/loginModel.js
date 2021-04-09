@@ -28,7 +28,7 @@ getLogins: (result) => {
 
 //Retrieve One Login
 getLoginById: (loginID, result) => {
-    db.query("SELECT * FROM login WHERE loginID = ?", [loginID], (err, results) => {             
+    db.query("call getEmployeeByLoginID(?)", [loginID], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

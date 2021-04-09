@@ -8,12 +8,15 @@ Services = require('../controllers/services'),
 Vendors = require('../controllers/vendors'),
 VendorContact = require('../controllers/vendorContact'),
 Orders = require('../controllers/orders'),
+Status = require('../controllers/invoiceStatus'),
 Countries = require('../controllers/country');
 router = new express.Router()
 
 
 //LOGIN
 router.get('/login', Login.showLogins)
+
+router.get('/login/:loginID', Login.showLoginById)
 
 /*--------------------------------------------------------------------------------*/
 
@@ -49,6 +52,8 @@ router.get('/invoices/:invoiceID', Invoices.showInvoiceById);
 
 //Update Invoice
 router.put('/invoices/:invoiceID', Invoices.updateInvoice);
+
+router.get('/invoiceStatus', Status.showInvoiceStatus)
 
 // //Delete Invoice
 // router.delete('/invoices/:invoiceID', deleteInvoice);

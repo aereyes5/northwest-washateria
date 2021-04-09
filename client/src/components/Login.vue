@@ -29,6 +29,9 @@ export default {
         password: null,
         loginID: null,
         access: null,
+        firstName: null,
+        lastName: null,
+        employeeID: null
       },
       status: null,
       allUsers:[]
@@ -36,10 +39,17 @@ export default {
   },
   methods: {
 
+      getEmployee(){
+        services.getEmployeeByLoginID(this.loginID).then(response => {
+            this.firstName = response.firstName
+            this.lastName = response.lastName
+            this.employeeID = response.employeeID
+        })
+      },
+
       getLogins(){
             services.getLogins().then(response => {
                 this.allUsers = response
-                console.log(this.allUsers)
             })
             .catch(e => {
                 console.log(e);
@@ -51,7 +61,8 @@ export default {
           if((this.user.username == this.allUsers[i].username) && (this.user.password == this.allUsers[i].pswd)){
             this.user.loginID = this.allUsers[i].loginID
             this.user.access = this.allUsers[i].access
-            this.storeUser(this.user.loginID, this.user.username, this.user.password, this.user.access)
+            this.getEmployee()
+            this.storeUser(this.user.loginID, this.user.username, this.user.password, this.user.access, this.user.firstName, this.user.lastName, this.user.employeeID)
             this.$router.push({name: 'Home'})
           }
           }
@@ -76,15 +87,6 @@ export default {
   },
   mounted(){
     this.getLogins()
-
-    // if(this.userToken == true){
-    //   this.user = this.$store.getters.isValidUser
-    //   this.email = this.$store.getters.getAccountInfo
-    //   this.token = this.$store.getters.getToken
-    //   console.log(this.user)
-    //   console.log(this.email)
-    //   console.log(this.token)
-    // }
   }
 
 }

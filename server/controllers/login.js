@@ -27,7 +27,7 @@ showLogins: (req, res) => {
 
 //Retrieve One Login
 showLoginById: (req, res) => {
-    Login.getLoginById(req.params.employeeID, (err, results) => {
+    Login.getLoginById(req.params.loginID, (err, results) => {
         if (err){
             res.send(err);
         }else{

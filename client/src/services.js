@@ -9,12 +9,25 @@ const countryURL = 'http://localhost:3000/countries'
 const servicesURL = 'http://localhost:3000/services'
 const orderURL = 'http://localhost:3000/orders'
 const loginURL = 'http://localhost:3000/login'
+const invoiceStatusURL = 'http://localhost:3000/invoiceStatus'
 
 class Services{
     static getLogins(){
         return new Promise(async (resolve, reject) => {
             try{
                 const res = await axios.get(`${loginURL}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
+    static getEmployeeByLoginID(loginID){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${loginURL}/${loginID}`);
                 const data = res.data
                 resolve(data)
             }catch(error) {
@@ -298,6 +311,18 @@ class Services{
         return new Promise(async (resolve, reject) => {
             try{
                 const res = await axios.get(`${invoiceURL}`);
+                const data = res.data
+                resolve(data)
+            }catch(error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
+    static getInvoiceStatus(){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${invoiceStatusURL}`);
                 const data = res.data
                 resolve(data)
             }catch(error) {
