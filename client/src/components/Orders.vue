@@ -5,7 +5,7 @@
 
 
         <b-button class="darkmode-ignore" v-bind:to="'new-order'" variant="success">Add New</b-button>
-        <b-button class="darkmode-ignore" variant="secondary" v-on:click="setProductID">Update</b-button>
+        <b-button class="darkmode-ignore" variant="secondary" v-on:click="setOrderID">Update</b-button>
         <!-- <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteProduct">Cancel</b-button> -->
 
         <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
