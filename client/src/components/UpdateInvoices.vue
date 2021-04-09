@@ -13,9 +13,9 @@
             <b-form-input v-model="invoice.servicePrice" placeholder="Enter First Name" id="servicePrice"></b-form-input>
             <b-form-input v-model="invoice.totalPrice" placeholder="Enter First Name" id="totalPrice"></b-form-input>
             <b-form-input v-model="invoice.paymentMethod" placeholder="Enter First Name" id="paymentMethod"></b-form-input>
-            <b-button variant="primary" type="submit">Submit</b-button>
+            <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
         </b-form>
-        <b-button v-bind:to="'Invoices'" variant="primary">Back</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'Invoices'" variant="primary">Cancel</b-button>
     </div>
 </template>
 

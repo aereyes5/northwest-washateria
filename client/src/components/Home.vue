@@ -1,7 +1,7 @@
 <template >
 <div class="background">
 <div class="jumbo">
-  <b-jumbotron header="What would you like to do?" lead="Select an option below:" style="width:80%">
+  <b-jumbotron header="Welcome back %user%!" lead="Select an option below:" style="width:80%">
   </b-jumbotron>
 </div>
 </div>
@@ -21,6 +21,7 @@ export default {
 
 <style scoped>
 .jumbo{
+  font-family: 'Gilroy', Helvetica, Arial, sans-serif;
   margin-left: 15%;
   margin-top: 15%;
   

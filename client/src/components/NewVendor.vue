@@ -22,9 +22,9 @@
         <b-form-input v-model="vendor.vendorContact" placeholder="Vendor Contact Name" id="vendorContact"></b-form-input>
         <b-form-input v-model="vendor.phoneNumber" placeholder="Phone Number" id="phoneNumber"></b-form-input>
         <b-form-input v-model="vendor.email" placeholder="Email" id="email"></b-form-input>
-        <b-button variant="primary" type="submit">Submit</b-button>
+        <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
         </b-form>
-        <b-button v-bind:to="'vendors'" variant="primary">Back</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'vendors'" variant="primary">Cancel</b-button>
     </div>
 </template>
 
