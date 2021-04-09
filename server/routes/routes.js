@@ -1,15 +1,15 @@
 const express = require('express'),
-Customers = require('../controllers/customers'),
-Employees = require('../controllers/employees'),
-Invoices = require('../controllers/invoices'),
-Login = require('../controllers/login'),
-Products = require('../controllers/products'),
-Services = require('../controllers/services'),
-Vendors = require('../controllers/vendors'),
-VendorContact = require('../controllers/vendorContact'),
-Orders = require('../controllers/orders'),
-Status = require('../controllers/invoiceStatus'),
-Countries = require('../controllers/country');
+    Customers = require('../controllers/customers'),
+    Employees = require('../controllers/employees'),
+    Invoices = require('../controllers/invoices'),
+    Login = require('../controllers/login'),
+    Products = require('../controllers/products'),
+    Services = require('../controllers/services'),
+    Vendors = require('../controllers/vendors'),
+    VendorContact = require('../controllers/vendorContact'),
+    Orders = require('../controllers/orders'),
+    Status = require('../controllers/invoiceStatus'),
+    Countries = require('../controllers/country');
 router = new express.Router()
 
 
@@ -183,8 +183,6 @@ router.post('/orders', Orders.createOrders);
 
 //Retrieve One order
 router.get('/orders/:productOrderID', Orders.showOrderById);
-
-
 
 
 module.exports = router

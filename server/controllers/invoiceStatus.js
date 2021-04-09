@@ -4,9 +4,9 @@ module.exports = {
 
     showInvoiceStatus: (req, res) => {
         Invoices.getInvoiceStatus((err, results) => {
-            if(err){
+            if (err) {
                 res.send(err)
-            } else{
+            } else {
                 res.json(results)
             }
         })

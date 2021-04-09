@@ -3,8 +3,8 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 export const store = new Vuex.Store({
-    state:{
-        user:{
+    state: {
+        user: {
             loginID: null,
             username: null,
             password: null,
@@ -12,45 +12,45 @@ export const store = new Vuex.Store({
             firstName: null,
             lastName: null,
             employeeID: null
-            
+
         },
-        
-        customer:{
+
+        customer: {
             phoneNumber: null
         },
-        
-        product:{
+
+        product: {
             productID: null
         },
-        employee:{
+        employee: {
             employeeID: null
         },
-        vendor:{
+        vendor: {
             vendorID: null
         },
-        service:{
+        service: {
             serviceID: null
         },
-        order:{
+        order: {
             productOrderID: null
         }
 
 
     },
-    getters:{
-        isValidUser: state =>{
-            return (state.user.loginID) ? true: false
+    getters: {
+        isValidUser: state => {
+            return (state.user.loginID) ? true : false
         },
-        getUserAccess: state =>{
+        getUserAccess: state => {
             return (state.user.access)
         },
-        getEmployeeFirstName: state =>{
+        getEmployeeFirstName: state => {
             return (state.user.firstName)
         },
-        getEmployeeLastName: state =>{
+        getEmployeeLastName: state => {
             return (state.user.lastName)
         },
-        getEmployeeIDByLogin: state =>{
+        getEmployeeIDByLogin: state => {
             return (state.user.employeeID)
         },
         getAccountInfo: state => {
@@ -79,8 +79,8 @@ export const store = new Vuex.Store({
         }
 
     },
-    mutations:{
-        loginUser(state, {loginID, username, password, access, firstName, lastName, employeeID}){
+    mutations: {
+        loginUser(state, { loginID, username, password, access, firstName, lastName, employeeID }) {
             state.user.loginID = loginID
             state.user.username = username
             state.user.password = password
@@ -89,26 +89,26 @@ export const store = new Vuex.Store({
             state.user.lastName = lastName
             state.user.employeeID = employeeID
         },
-        logoutUser(state,{loginID}){
+        logoutUser(state, { loginID }) {
             state.user.loginID = loginID
         },
-        customerPhoneNumber(state,{phoneNumber}){
+        customerPhoneNumber(state, { phoneNumber }) {
             state.customer.phoneNumber = phoneNumber
         },
         //Named pProductID bc of other variable productID
-        pProductID(state,{productID}){
+        pProductID(state, { productID }) {
             state.product.productID = productID
         },
-        eEmployeeID(state,{employeeID}){
+        eEmployeeID(state, { employeeID }) {
             state.employee.employeeID = employeeID
-        }, 
-        setVendorID(state,{vendorID}){
+        },
+        setVendorID(state, { vendorID }) {
             state.vendor.vendorID = vendorID
         },
-        sServiceID(state,{serviceID}){
+        sServiceID(state, { serviceID }) {
             state.service.serviceID = serviceID
         },
-        oOrderID(state,{productOrderID}){
+        oOrderID(state, { productOrderID }) {
             state.order.productOrderID = productOrderID
         }
 
