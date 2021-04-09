@@ -44,8 +44,8 @@
       </b-form-input>
     </div>
   </div><br>
-  <b-button variant="warning" v-bind:to="'Update'">Edit</b-button>
-  <b-button v-b-modal.modal-1 variant="danger" @click="$bvModal.show('bv-modal-example')">Delete Account</b-button>
+  <b-button class="darkmode-ignore" variant="warning" v-bind:to="'Update'">Edit</b-button>
+  <b-button class="darkmode-ignore" v-b-modal.modal-1 variant="danger" @click="$bvModal.show('bv-modal-example')">Delete Account</b-button>
 <b-modal id="bv-modal-example" hide-footer>
     <template #modal-title>
       Delete Account

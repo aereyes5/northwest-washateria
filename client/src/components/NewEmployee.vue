@@ -12,8 +12,9 @@
                 <b-form-select-option value="Admin">Admin</b-form-select-option>
                 <b-form-select-option value="Employee">Employee</b-form-select-option>
             </b-form-select>
-            <b-button variant="primary" type="submit">Submit</b-button>
+            <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
         </b-form>
+        <b-button class="darkmode-ignore" v-bind:to="'Employees'" variant="primary">Cancel</b-button>
     </div>
 </template>
 

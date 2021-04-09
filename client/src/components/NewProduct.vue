@@ -4,8 +4,9 @@
             <b-form-input v-model="product.productName" placeholder="Enter Product Name" id="productName"></b-form-input>
             <b-form-input v-model="product.productPrice" placeholder="Enter Product Price" id="productPrice"></b-form-input>
             <b-form-input v-model="product.vendorID" placeholder="Enter Vendor ID" id="vendorID"></b-form-input>
-            <b-button variant="primary" type="submit">Submit</b-button>
+            <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
         </b-form>
+        <b-button class="darkmode-ignore" v-bind:to="'Products'" variant="primary">Cancel</b-button>
     </div>
 </template>
 

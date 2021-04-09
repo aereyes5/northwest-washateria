@@ -12,9 +12,9 @@
         {{status}}
         </p>
 
-        <b-button variant="success" v-bind:to="'new-vendor'">Add New</b-button>
-        <b-button variant="secondary" v-on:click="setVendorID">Update</b-button>
-        <b-button variant="danger" v-on:click="deleteVendor">Delete</b-button>
+        <b-button class="darkmode-ignore" variant="success" v-bind:to="'new-vendor'">Add New</b-button>
+        <b-button class="darkmode-ignore" variant="secondary" v-on:click="setVendorID">Update</b-button>
+        <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteVendor">Delete</b-button>
 
 
          <b-table 
@@ -29,7 +29,7 @@
          @row-selected="onRowSelected"
          >
       <template #cell(show_details)="row">
-        <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+        <b-button size="sm" @click="row.toggleDetails" class="mr-2, darkmode-ignore">
           {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
         </b-button>
 

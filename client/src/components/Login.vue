@@ -9,7 +9,7 @@
     <label for="text-password" >Password:</label>
     <b-form-input type="password" id="text-password" v-model="user.password" placeholder="Please Enter Password"></b-form-input>
     <br>
-    <b-button variant="primary" v-on:click="login">Login</b-button>
+    <b-button class="darkmode-ignore" variant="primary" v-on:click="login">Login</b-button>
    
       </b-container>
    <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">

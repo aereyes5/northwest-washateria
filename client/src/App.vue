@@ -22,7 +22,9 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Gilroy', Helvetica, Arial, sans-serif;
+  src: local("Gilroy"),
+   url(./fonts/Gilroy-Light.otf) format("truetype");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

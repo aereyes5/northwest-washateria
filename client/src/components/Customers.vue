@@ -16,9 +16,9 @@
         </p>
 
 
-        <b-button v-bind:to="'new-customer'" variant="success">Add New</b-button>
-        <b-button variant="secondary" v-on:click="setPhoneNumber">Update</b-button>
-        <b-button variant="danger" v-on:click="deleteCustomer">Delete</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'new-customer'" variant="success">Add New</b-button>
+        <b-button class="darkmode-ignore" variant="secondary" v-on:click="setPhoneNumber">Update</b-button>
+        <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteCustomer">Delete</b-button>
 
         <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
         {{status2}}
