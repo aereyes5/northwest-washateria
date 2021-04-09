@@ -27,7 +27,7 @@ showOrders: (req, res) => {
 
 //Retrieve One Product
 showOrderById: (req, res) => {
-    Orders.getOrdersById(req.params.orderID, (err, results) => {
+    Orders.getProductOrderByID(req.params.orderID, (err, results) => {
         if (err){
             res.send(err);
         }else{

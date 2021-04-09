@@ -1,16 +1,16 @@
 <template>
     <div>
         <b-form @submit.prevent="UpdateOrder">
-        <b-form-input v-model="customer.customerID" id="productOrderID" disabled></b-form-input>
-        <b-form-input v-model="customer.firstName" placeholder="Enter First Name" id="orderDate"></b-form-input>
-        <b-form-input v-model="customer.lastName" placeholder="Enter Last Name" id="productID"></b-form-input>
-        <b-form-input v-model="customer.phoneNumber" placeholder="Enter Phone Number" id="orderQuantity"></b-form-input>
-        <b-form-input v-model="customer.email" placeholder="Enter Email" id="orderTotalPrice"></b-form-input>
-        <b-form-input v-model="customer.email" placeholder="Enter Email" id="vendorID"></b-form-input>
-        <b-form-input v-model="customer.email" placeholder="Enter Email" id="vendorStatusID"></b-form-input>
+        <b-form-input v-model="orders.productOrderID" id="productOrderID" disabled></b-form-input>
+        <b-form-datepicker v-model="orders.orderDate" id="orderDate" disabled></b-form-datepicker>
+        <b-form-input v-model="orders.productName" id="productName" disabled></b-form-input>
+        <b-form-input v-model="orders.orderQuantity" id="orderQuantity" disabled></b-form-input>
+        <b-form-input v-model="orders.orderTotalPrice" id="orderTotalPrice" disabled></b-form-input>
+        <b-form-input v-model="orders.vendorName" id="vendorName" disabled></b-form-input>
+        <b-form-input v-model="orders.statusName" id="statusName"></b-form-input>
         <b-button variant="primary" type="submit">Submit</b-button>
     </b-form>
-            <b-button v-bind:to="'customers'" variant="primary" type="submit">Back</b-button>
+            <b-button v-bind:to="'Orders'" variant="primary" type="submit">Back</b-button>
     </div>
 </template>
 
@@ -24,11 +24,11 @@ export default {
             orders:{
                 productOrderID: null,
                 orderDate: null,
-                productID: null,
+                productName: null,
                 orderQuantity: null,
                 orderTotalPrice: null,
-                vendorID: null,
-                vendorStatusID: null
+                vendorName: null,
+                statusName: null
             }
             
 
@@ -36,37 +36,37 @@ export default {
     },
     
     methods: {
-        findCustomer(){
-            this.customer.phoneNumber = this.$store.getters.getPhoneNumber
-            this.getCustomerByPhone(this.customer.phoneNumber)
+        findOrder(){
+            this.orders.productOrderID = this.$store.getters.getOrderID
+            this.getOrderByID(this.orders.productOrderID)
 
         },
 
-        getCustomerByPhone(phoneNumber){
+        getOrderByID(productOrderID){
             try{
-                services.getCustomerByPhone(phoneNumber).then(response => {
+                services.getOrderByID(productOrderID).then(response => {
                     this.info = response
-                    this.customer.customerID = this.info[0].customerID;
-                    this.customer.firstName = this.info[0].firstName;
-                    this.customer.lastName = this.info[0].lastName;
-                    this.customer.phoneNumber = this.info[0].phoneNumber;
-                    this.customer.email = this.info[0].email;
-
-                    
+                    this.orders.productOrderID = this.info[0].productOrderID;
+                    this.orders.orderDate = this.info[0].orderDate;
+                    this.orders.productName = this.info[0].productName;
+                    this.orders.orderQuantity = this.info[0].orderQuantity;
+                    this.orders.orderTotalPrice = this.info[0].orderTotalPrice;
+                    this.orders.vendorName = this.info[0].vendorName;
+                    this.orders.statusName = this.info[0].statusName;
                 })
                 }catch(err){
                     console.log(err)
                 }
         },
 
-        updateCustomer(){
-            services.updateCustomer(this.customer)
-            this.$router.push({name: 'Customers'})
+        updateOrder(){
+            services.updateOrder(this.orders)
+            this.$router.push({name: 'Orders'})
 
         }
     },
     mounted(){
-        this.findCustomer()
+        this.findOrder()
     }
 }
 </script>

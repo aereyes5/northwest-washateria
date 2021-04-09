@@ -2,14 +2,12 @@
     <div>
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         
-
-
         <b-button v-bind:to="'new-order'" variant="success">Add New</b-button>
-        <b-button variant="secondary" v-on:click="setProductID">Update</b-button>
+        <b-button variant="secondary" v-on:click="setOrderID">Update Order Status</b-button>
         <!-- <b-button variant="danger" v-on:click="deleteProduct">Cancel</b-button> -->
 
-        <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
-        {{status}}
+        <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
+        {{status2}}
         </p>
 
 
@@ -22,6 +20,7 @@
         ref="selectableTable"
         selectable
         hover
+        @row-selected="onRowSelected"
         sticky-header="83vh"
         >
 
@@ -39,8 +38,8 @@ export default {
           fields: ['date', 'product', 'quantity', 'total', 'vendor', 'status'],
           selectMode: 'single',
           selected: [],
-          orderID: null,
-          status: "",
+          productOrderID: null,
+          status2: "",
           filter:""
         }
     },
@@ -55,7 +54,11 @@ export default {
                console.log(e);
            })
        },
-       setProductID(){
+       onRowSelected(items){
+           this.selected = items
+           console.log(items)
+       },
+       setOrderID(){
            if(!Array.isArray(this.selected) || !this.selected.length){
                 this.status2 = "Please select a record to update";
             }

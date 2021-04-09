@@ -173,7 +173,11 @@ router.get('/countries/:countryName', Countries.showCountryByName);
 //Retrieve All Product Orders
 router.get('/orders', Orders.showOrders);
 
-router.post('/orders', Orders.createOrders)
+//Create Order
+router.post('/orders', Orders.createOrders);
+
+//Retrieve One order
+router.get('/orders/:productOrderID', Orders.showOrderById);
 
 
 

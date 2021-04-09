@@ -26,6 +26,18 @@ insertProductOrder: (data, result) => {
     });   
 },
 
+//Get One Product Order
+getProductOrderByID: (productOrderID, result) => {
+    db.query("call getProductOrderByID(?)", [productOrderID], (err, results) => {
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    })
+},
+
 //Update Product Order
 updateProductOrderById: (data, productOrderID, result) => {
     db.query("UPDATE products SET orderDate = ?, productID = ?, orderQuantity = ?, orderTotalPrice = ?, vendorID = ?, vendorStatusID = ? WHERE productID = ?", [data.orderDate, data.productID, data.orderQuantity, data.orderTotalPrice, data.vendorID, data.vendorStatusID, productOrderID], (err, results) => {             

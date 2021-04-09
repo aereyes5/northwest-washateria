@@ -28,6 +28,7 @@ import NewVendor from '@/components/NewVendor'
 import NewService from '@/components/NewService'
 import UpdateService from '@/components/updateService'
 import NewInvoice from '@/components/NewInvoice'
+import UpdateOrder from '@/components/UpdateOrders'
 
 
 Vue.use(Router)
@@ -170,6 +171,11 @@ export default new Router({
       path: '/update-service',
       name: 'UpdateService',
       component: UpdateService
+    },
+    {
+      path: 'update-order',
+      name: 'UpdateOrders',
+      component: UpdateOrder
     }
 
     

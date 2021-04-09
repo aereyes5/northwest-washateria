@@ -484,8 +484,8 @@ static getEmployeeByID(employeeID){
     }
 /*---------------------------------------------------------------------------------*/
 
-//CRUD Orders
-static getOrders(){
+    //CRUD Orders
+    static getOrders(){
     return new Promise(async (resolve, reject) => {
         try{
             const res = await axios.get(`${orderURL}`)
@@ -497,7 +497,7 @@ static getOrders(){
     })
 }
 
-static insertOrder(order){
+    static insertOrder(order){
     return new Promise(async (resolve, reject) => {
         try{
             const res = await axios.post(`${orderURL}`, {
@@ -514,6 +514,19 @@ static insertOrder(order){
         }
     })
 }
+
+//Get Order by ID
+    static getOrderByID(productOrderID){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.get(`${orderURL}/${productOrderID}`);
+                const data = res.data
+                resolve(data)
+            }catch(error){
+                reject(`${error}`)
+            }
+        })
+    }
 
 
 }

@@ -27,6 +27,9 @@ export const store = new Vuex.Store({
         },
         service:{
             serviceID: null
+        },
+        order:{
+            productOrderID: null
         }
 
 
@@ -58,6 +61,9 @@ export const store = new Vuex.Store({
         },
         getServiceID: state => {
             return state.service.serviceID
+        },
+        getOrderID: state => {
+            return state.order.productOrderID
         }
 
     },
@@ -86,6 +92,9 @@ export const store = new Vuex.Store({
         },
         sServiceID(state,{serviceID}){
             state.service.serviceID = serviceID
+        },
+        oOrderID(state,{productOrderID}){
+            state.order.productOrderID = productOrderID
         }
 
     }

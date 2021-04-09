@@ -81,23 +81,6 @@ export default {
             console.log(items)
         },
 
-        getEmployeeByID(){
-            if(this.employeeID == null){
-                this.status = "Please enter employee ID"
-            }
-            else{
-                this.status = "";
-                try{
-                    services.getEmployeeByID(this.employeeID).then(response => {
-                        this.employees = response
-                        console.log(this.employees)
-                    })
-                }catch(err){
-                    console.log(err)
-                }
-            }
-        },
-
         setEmployeeID(){
             if(!Array.isArray(this.selected) || !this.selected.length){
                 this.status2 = "Please select a record to update"
@@ -108,7 +91,7 @@ export default {
         },
 
         updateEmployee(employeeID){
-            this.$store.commit('setEmployeeID', {employeeID})
+            this.$store.commit('eEmployeeID', {employeeID})
             this.$router.push({name: 'UpdateEmployee'})
         }
     },

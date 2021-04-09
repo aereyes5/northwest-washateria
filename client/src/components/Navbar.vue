@@ -1,7 +1,7 @@
 <template>
 <div>
  <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
-    <b-navbar-brand v-bind:to="'/'">
+    <b-navbar-brand>
       <img src="@/assets/genlogo.png" width="30" height="30" class="d-inline-block align-top" alt="nwwashateriaIcon">
       Northwest Washateria
     </b-navbar-brand>
