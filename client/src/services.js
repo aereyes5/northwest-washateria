@@ -510,6 +510,8 @@ class Services {
         /*---------------------------------------------------------------------------------*/
 
     //CRUD Orders
+    
+    //Get all orders
     static getOrders() {
         return new Promise(async(resolve, reject) => {
             try {
@@ -522,6 +524,7 @@ class Services {
         })
     }
 
+    //Add new order
     static insertOrder(order) {
         return new Promise(async(resolve, reject) => {
             try {
@@ -545,6 +548,22 @@ class Services {
         return new Promise(async(resolve, reject) => {
             try {
                 const res = await axios.get(`${orderURL}/${productOrderID}`);
+                const data = res.data
+                resolve(data)
+            } catch (error) {
+                reject(`${error}`)
+            }
+        })
+    }
+
+    //Update Order Status
+    static updateOrderStatus(productOrderID, statusName) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const res = await axios.put(`${orderURL}/${productOrderID}`, {
+                    productOrderID: productOrderID,
+                    statusName: statusName
+                })
                 const data = res.data
                 resolve(data)
             } catch (error) {

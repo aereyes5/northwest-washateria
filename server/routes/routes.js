@@ -184,5 +184,8 @@ router.post('/orders', Orders.createOrders);
 //Retrieve One order
 router.get('/orders/:productOrderID', Orders.showOrderById);
 
+//Update Product Order Status
+router.put('/orders/:productOrderID', Orders.updateOrder);
+
 
 module.exports = router

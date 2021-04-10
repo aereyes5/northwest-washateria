@@ -38,9 +38,9 @@ module.exports = {
 
     //Update Product
     updateOrder: (req, res) => {
-        const data = req.body;
-        const orderID = req.params.orderID;
-        Orders.updateProductOrderById(data, orderID, (err, results) => {
+        const productOrderID = req.params.productOrderID;
+        const statusName = req.params.statusName;
+        Orders.updateProductOrderStatus(productOrderID, statusName, (err, results) => {
             if (err) {
                 res.send(err);
             } else {

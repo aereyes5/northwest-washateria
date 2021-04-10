@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-form @submit.prevent="UpdateOrder">
+        <b-form @submit.prevent="updateOrder">
             <b-form-input v-model="orders.productOrderID" id="productOrderID" disabled></b-form-input>
             <b-form-datepicker v-model="orders.orderDate" id="orderDate" disabled></b-form-datepicker>
             <b-form-input v-model="orders.productName" id="productName" disabled></b-form-input>
@@ -43,10 +43,8 @@
                 this.getOrderByID(this.orders.productOrderID)
             },
             getOrderByID(productOrderID) {
-                console.log(productOrderID)
                 try {
                     services.getOrderByID(productOrderID).then(response => {
-                        console.log(response)
                         this.info = response
                         this.orders.productOrderID = this.info[0].orderID;
                         this.orders.orderDate = this.info[0].date;
@@ -61,7 +59,7 @@
                 }
             },
             updateOrder() {
-                services.updateOrder(this.orders)
+                services.updateOrderStatus(this.orders.productOrderID, this.orders.statusName)
                 this.$router.push({
                     name: 'Orders'
                 })
