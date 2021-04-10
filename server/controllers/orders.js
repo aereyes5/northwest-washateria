@@ -2,7 +2,7 @@ const Orders = require('../models/productOrdersModel')
 
 module.exports = {
 
-    //Create New Product
+    //Create New Order
     createOrders: (req, res) => {
         const data = req.body;
         Orders.insertProductOrder(data, (err, results) => {
@@ -14,7 +14,7 @@ module.exports = {
         });
     },
 
-    //Retrieve Products
+    //Retrieve Order
     showOrders: (req, res) => {
         Orders.getProductOrders((err, results) => {
             if (err) {
@@ -25,7 +25,7 @@ module.exports = {
         })
     },
 
-    //Retrieve One Product
+    //Retrieve One Order
     showOrderById: (req, res) => {
         Orders.getProductOrderByID(req.params.productOrderID, (err, results) => {
             if (err) {
@@ -36,7 +36,7 @@ module.exports = {
         });
     },
 
-    //Update Product
+    //Update Order
     updateOrder: (req, res) => {
         const productOrderID = req.params.productOrderID;
         const statusName = req.params.statusName;
@@ -49,10 +49,10 @@ module.exports = {
         });
     },
 
-    //Delete Product
+    //Delete Order
     deleteOrder: (req, res) => {
-        const productID = req.params.productID;
-        Orders.deleteProductOrder(productID, (err, results) => {
+        const productOrderID = req.params.productID;
+        Orders.deleteProductOrder(productOrderID, (err, results) => {
             if (err) {
                 res.send(err);
             } else {
