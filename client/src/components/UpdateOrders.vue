@@ -43,16 +43,18 @@
                 this.getOrderByID(this.orders.productOrderID)
             },
             getOrderByID(productOrderID) {
+                console.log(productOrderID)
                 try {
                     services.getOrderByID(productOrderID).then(response => {
+                        console.log(response)
                         this.info = response
-                        this.orders.productOrderID = this.info[0].productOrderID;
-                        this.orders.orderDate = this.info[0].orderDate;
-                        this.orders.productName = this.info[0].productName;
-                        this.orders.orderQuantity = this.info[0].orderQuantity;
-                        this.orders.orderTotalPrice = this.info[0].orderTotalPrice;
-                        this.orders.vendorName = this.info[0].vendorName;
-                        this.orders.statusName = this.info[0].statusName;
+                        this.orders.productOrderID = this.info[0].orderID;
+                        this.orders.orderDate = this.info[0].date;
+                        this.orders.productName = this.info[0].product;
+                        this.orders.orderQuantity = this.info[0].quantity;
+                        this.orders.orderTotalPrice = this.info[0].total;
+                        this.orders.vendorName = this.info[0].vendor;
+                        this.orders.statusName = this.info[0].status;
                     })
                 } catch (err) {
                     console.log(err)

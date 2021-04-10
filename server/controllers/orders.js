@@ -27,7 +27,7 @@ module.exports = {
 
     //Retrieve One Product
     showOrderById: (req, res) => {
-        Orders.getProductOrderByID(req.params.orderID, (err, results) => {
+        Orders.getProductOrderByID(req.params.productOrderID, (err, results) => {
             if (err) {
                 res.send(err);
             } else {

@@ -27,7 +27,7 @@
                 fields: ['date', 'product', 'quantity', 'total', 'vendor', 'status'],
                 selectMode: 'single',
                 selected: [],
-                productOrderID: null,
+                orderID: null,
                 status2: "",
                 filter: ""
             }
@@ -36,7 +36,7 @@
             getOrders() {
                 services.getOrders().then(response => {
                     this.orders = response[0]
-                    this.productOrderID = null
+                    this.orderID = null
                     console.log(this.orders)
                 }).catch(e => {
                     console.log(e);
@@ -50,7 +50,7 @@
                 if (!Array.isArray(this.selected) || !this.selected.length) {
                     this.status2 = "Please select a record to update";
                 } else {
-                    this.updateOrders(this.selected[0].productOrderID)
+                    this.updateOrders(this.selected[0].orderID)
                 }
             },
             updateOrders(productOrderID) {
