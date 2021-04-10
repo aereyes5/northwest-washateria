@@ -185,7 +185,7 @@ router.post('/orders', Orders.createOrders);
 router.get('/orders/:productOrderID', Orders.showOrderById);
 
 //Update Product Order Status
-router.put('/orders/:productOrderID', Orders.updateOrder);
+router.put('/orders/:productOrderID/:statusName', Orders.updateOrder);
 
 
 module.exports = router

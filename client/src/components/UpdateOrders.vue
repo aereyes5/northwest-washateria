@@ -12,6 +12,7 @@
                 <b-form-select-option value="Pending">Pending</b-form-select-option>
                 <b-form-select-option value="On the way">On the way</b-form-select-option>
                 <b-form-select-option value="Delivered">Delivered</b-form-select-option>
+                <b-form-select-option value="Canceled">Canceled</b-form-select-option>
             </b-form-select>
             <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
         </b-form>

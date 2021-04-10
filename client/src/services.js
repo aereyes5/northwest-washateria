@@ -562,11 +562,11 @@ class Services {
             console.log(productOrderID)
             console.log(statusName)
             try {
-                const res = await axios.put(`${orderURL}/${productOrderID}`, 
-                params: {
+                const res = await axios.put(`${orderURL}/${productOrderID}/${statusName}`, {
                     productOrderID: productOrderID,
                     statusName: statusName
                 })
+                console.log(res)
                 resolve(res)
             } catch (error) {
                 reject(`${error}`)
