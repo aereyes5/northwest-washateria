@@ -9,6 +9,7 @@ const express = require('express'),
     VendorContact = require('../controllers/vendorContact'),
     Orders = require('../controllers/orders'),
     Status = require('../controllers/invoiceStatus'),
+    InvoiceProducts = require('../controllers/invoiceProducts')
     Countries = require('../controllers/country');
 router = new express.Router()
 
@@ -17,6 +18,12 @@ router = new express.Router()
 router.get('/login', Login.showLogins)
 
 router.get('/login/:loginID', Login.showLoginById)
+
+/*--------------------------------------------------------------------------------*/
+
+//Invoice Products
+
+router.get('/invoiceProducts/:date', InvoiceProducts.showInvoiceProductsByDate)
 
 /*--------------------------------------------------------------------------------*/
 
@@ -183,9 +190,6 @@ router.post('/orders', Orders.createOrders);
 
 //Retrieve One order
 router.get('/orders/:productOrderID', Orders.showOrderById);
-
-//Update Product Order Status
-router.put('/orders/:productOrderID/:statusName', Orders.updateOrder);
 
 
 module.exports = router

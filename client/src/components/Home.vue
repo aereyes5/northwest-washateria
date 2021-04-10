@@ -11,10 +11,29 @@
 </template>
 
 <script>
+import services from '../services'
   export default {
     name: 'Home',
     data() {
-      return {}
+      return {
+        user: {
+          firstName:null,
+          lastName: null
+        }
+      }
+    },
+    methods:{
+
+      getUser(){
+        this.user.firstName = this.$store.getters.getEmployeeFirstName
+        this.user.lastName = this.$store.getters.getEmployeeLastName
+        console.log(this.$store.getters.getEmployeeFirstName)
+        
+      }
+
+    },
+    mounted(){
+      this.getUser()
     }
   }
 </script>

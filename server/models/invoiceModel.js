@@ -3,7 +3,7 @@ const db = require('../config/database')
 module.exports = {
     //Create Invoice
     insertInvoice: (data, result) => {
-        db.query("INSERT INTO invoice SET ?", [data], (err, results) => {
+        db.query("call insertInvoice2(?,?,?,?,?,?,?,?,?)", [data], (err, results) => {
             if (err) {
                 console.log(err);
                 result(err, null);

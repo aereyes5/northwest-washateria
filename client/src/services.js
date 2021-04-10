@@ -10,6 +10,9 @@ const servicesURL = 'http://localhost:3000/services'
 const orderURL = 'http://localhost:3000/orders'
 const loginURL = 'http://localhost:3000/login'
 const invoiceStatusURL = 'http://localhost:3000/invoiceStatus'
+const invoiceProductsURL = 'http://localhost:3000/invoiceProducts'
+const invoiceServicesURL = 'http://localhost:3000/invoiceServices'
+
 
 class Services {
     static getLogins() {
@@ -24,18 +27,46 @@ class Services {
         })
     }
 
-    static getEmployeeByLoginID(loginID) {
-            return new Promise(async(resolve, reject) => {
-                try {
-                    const res = await axios.get(`${loginURL}/${loginID}`);
-                    const data = res.data
-                    resolve(data)
-                } catch (error) {
-                    reject(`${error}`);
-                }
-            })
+    static getEmployeeDetails(loginID) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const res = await axios.get(`${loginURL}/${loginID}`);
+                const data = res.data
+                resolve(data)
+            } catch (error) {
+                reject(`${error}`);
+            }
+        })
+    }
+
+/*--------------------------------------------------------------------------------*/
+
+static getInvoiceProductsByDate(date) {
+    return new Promise(async(resolve, reject) => {
+        try {
+            const res = await axios.get(`${invoiceProductsURL}/${date}`);
+            const data = res.data
+            resolve(data)
+        } catch (error) {
+            reject(`${error}`);
         }
-        /*--------------------------------------------------------------------------------*/
+    })
+}
+
+static getInvoiceServicesByDate(date) {
+    return new Promise(async(resolve, reject) => {
+        try {
+            const res = await axios.get(`${invoiceServicesURL}/${date}`);
+            const data = res.data
+            resolve(data)
+        } catch (error) {
+            reject(`${error}`);
+        }
+    })
+}
+
+
+/*--------------------------------------------------------------------------------*/
 
     //CRUD Customers
 

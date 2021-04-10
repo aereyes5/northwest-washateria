@@ -45,7 +45,6 @@
                     customerPhoneNumber: null,
                     productName: null,
                     productQuantity: null,
-                    productPrice: null,
                     serviceName: null,
                     servicePrice: null,
                     paymentMethod: null,
@@ -54,6 +53,7 @@
                     employeeLastName: null,
                     total: null
                 },
+                productPrice: null,
                 products: [],
                 services: [],
                 paymentMethods: [],
@@ -95,6 +95,11 @@
                             .EPSILON) * 100) / 100
                     }
                 }
+            },
+
+            insertInvoice(){
+                
+
             }
 
 

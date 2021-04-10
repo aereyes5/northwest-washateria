@@ -80,7 +80,7 @@ export const store = new Vuex.Store({
 
     },
     mutations: {
-        loginUser(state, { loginID, username, password, access, firstName, lastName, employeeID }) {
+        loginUser(state, {loginID, username, password, access, firstName, lastName, employeeID}) {
             state.user.loginID = loginID
             state.user.username = username
             state.user.password = password

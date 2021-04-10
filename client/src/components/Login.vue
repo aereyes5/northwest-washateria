@@ -43,11 +43,14 @@
     },
     methods: {
       getEmployee() {
-        services.getEmployeeByLoginID(this.loginID).then(response => {
-          this.firstName = response.firstName
-          this.lastName = response.lastName
-          this.employeeID = response.employeeID
+        services.getEmployeeDetails(this.user.loginID).then(response => {
+          this.user.firstName = response[0].firstName
+          this.user.lastName = response[0].lastName
+          this.user.employeeID = response[0].employeeID
         })
+
+        this.storeUser(this.user.loginID, this.user.username, this.user.password, this.user.access, this.user.firstName, this.user.lastName, this.user.employeeID)
+        console.log(this.user)
       },
       getLogins() {
         services.getLogins().then(response => {
@@ -62,25 +65,18 @@
           if ((this.user.username == this.allUsers[i].username) && (this.user.password == this.allUsers[i].pswd)) {
             this.user.loginID = this.allUsers[i].loginID
             this.user.access = this.allUsers[i].access
+            this.user.username = this.allUsers[i].username
+            this.user.password = this.allUsers[i].pswd
             this.getEmployee()
-            this.storeUser(this.user.loginID, this.user.username, this.user.password, this.user.access, this.user
-              .firstName, this.user.lastName, this.user.employeeID)
-            this.$router.push({
-              name: 'Home'
-            })
           }
         }
         if ((this.user.loginID == null) && (this.user.access == null)) {
           this.status = "Invalid Credentials. Please try again."
         }
       },
-      storeUser(loginID, username, password, access) {
-        this.$store.commit('loginUser', {
-          loginID,
-          username,
-          password,
-          access
-        })
+      storeUser(loginID, username, password, access, firstName, lastName, employeeID) {
+        this.$store.commit('loginUser', {loginID, username,password,access,firstName,lastName,employeeID})
+        this.$router.push({name: 'Home'})
       },
     },
     computed: {
@@ -88,7 +84,7 @@
         return this.$store.getters.isValidUser
       }
     },
-    mounted() {
+    created() {
       this.getLogins()
     }
   }
