@@ -559,13 +559,15 @@ class Services {
     //Update Order Status
     static updateOrderStatus(productOrderID, statusName) {
         return new Promise(async(resolve, reject) => {
+            console.log(productOrderID)
+            console.log(statusName)
             try {
-                const res = await axios.put(`${orderURL}/${productOrderID}`, {
+                const res = await axios.put(`${orderURL}/${productOrderID}`, 
+                params: {
                     productOrderID: productOrderID,
                     statusName: statusName
                 })
-                const data = res.data
-                resolve(data)
+                resolve(res)
             } catch (error) {
                 reject(`${error}`)
             }
