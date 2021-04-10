@@ -9,7 +9,6 @@
             <b-form-input v-model="orders.vendorName" id="vendorName" disabled></b-form-input>
             <b-form-select v-model="orders.statusName" id="statusName">
                 <b-form-select-option value=null disabled>Please select an option</b-form-select-option>
-                <b-form-select-option value="Pending">Pending</b-form-select-option>
                 <b-form-select-option value="On the way">On the way</b-form-select-option>
                 <b-form-select-option value="Delivered">Delivered</b-form-select-option>
                 <b-form-select-option value="Canceled">Canceled</b-form-select-option>

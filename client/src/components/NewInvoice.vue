@@ -9,7 +9,7 @@
                 id="customerPhoneNumber"></b-form-input>
 
             <b-form-select v-model="invoice.productName" :options="products" class="mb-3" value-field="productName"
-                text-field="productName" disabled-field="notEnabled" @change="productSelected" placeholder="Products">
+                text-field="productName" disabled-field="notEnabled" placeholder="Products">
             </b-form-select>
 
             <b-form-spinbutton v-model="invoice.productQuantity" id="sb-inline" placeholder="--" inline
@@ -86,7 +86,18 @@
                     this.paymentMethods = response
                     console.log(this.paymentMethods)
                 })
+            },
+
+            findProductTotal() {
+                for (let i = 0; i < this.products.length; i++) {
+                    if (this.products[i].productName == this.order.productName) {
+                        this.order.total = Math.round(((this.products[i].price * this.order.quantity) + Number
+                            .EPSILON) * 100) / 100
+                    }
+                }
             }
+
+
         },
         created() {
             this.getLoginID()
