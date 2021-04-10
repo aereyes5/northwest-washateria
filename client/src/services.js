@@ -553,6 +553,19 @@ class Services {
         })
     }
 
+    //Delete Order
+    static deleteService(productOrderID) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const res = await axios.delete(`${orderURL}/${productOrderID}`)
+                const data = res.data
+                resolve(data)
+            } catch (error) {
+                reject(`${error}`)
+            }
+        })
+    }
+
 
 }
 

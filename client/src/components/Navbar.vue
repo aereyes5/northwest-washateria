@@ -2,8 +2,9 @@
   <div>
     <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
       <b-navbar-brand>
-        <img src="@/assets/genlogo.png" width="30" height="30" class="d-inline-block align-top" alt="nwwashateriaIcon">
-        Northwest Washateria
+        <!-- I'm trying to make the logos clickable, can someone help me? -->
+        <img src="@/assets/nwlogolong.png" v-bind:to="'/home'" width="161" height="35" class="d-inline-block align-top" alt="nwlogolong" v-if="userVerified">
+        <img src="@/assets/nwlogolong.png" v-bind:to="'Login'" width="161" height="35" class="d-inline-block align-top" alt="nwlogolong" v-if="!userVerified">
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -31,7 +32,7 @@
             <b-dropdown-item v-bind:to="'Account'" v-if="userVerified">Account</b-dropdown-item>
             <b-dropdown-item v-bind:to="'/'" v-if="userVerified" @click="logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
-          <b-nav-item v-bind:to="'UserGuide'" v-b-tooltip.hover.bottom title="User Guide" v-if="userVerified">
+          <b-nav-item v-bind:to="'UserGuide'" v-b-tooltip.hover.bottom title="User Guide">
             <b-icon icon="question-circle" aria-label="User"></b-icon>
           </b-nav-item>
         </b-navbar-nav>

@@ -1,6 +1,8 @@
 <template>
   <div>
     <b-container class="back">
+      <img src="@/assets/nwlogolong.png" width="920" height="200" alt="nwlogolong">
+      <br>
       <br>
       <h1><span style="text-decoration:underline">Login</span></h1><br>
 
