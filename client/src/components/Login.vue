@@ -6,12 +6,14 @@
       <br>
       <h1><span>Login</span></h1><br>
       <form>
-      <label for="text-email">Username:</label>
-      <b-form-input type="email" id="text-email" v-model="user.username" placeholder="Please Enter Username">
-      </b-form-input><br>
-      <label for="text-password">Password:</label>
-      <b-form-input type="password" id="text-password" v-model="user.password" placeholder="Please Enter Password">
-      </b-form-input>
+        <b-input-group prepend="Username">
+          <b-form-input type="email" id="text-email" v-model="user.username" placeholder="Please Enter Username">
+          </b-form-input><br>
+        </b-input-group>
+        <b-input-group prepend="Password">
+          <b-form-input type="password" id="text-password" v-model="user.password" placeholder="Please Enter Password">
+          </b-form-input>
+        </b-input-group>
       </form>
       <br>
       <b-button class="darkmode-ignore" variant="primary" v-on:click="login">Login</b-button>
@@ -48,10 +50,9 @@
           this.user.firstName = response[0].firstName
           this.user.lastName = response[0].lastName
           this.user.employeeID = response[0].employeeID
-          this.storeUser(this.user.loginID, this.user.username, this.user.password, this.user.access, this.user.firstName, this.user.lastName, this.user.employeeID)
-
+          this.storeUser(this.user.loginID, this.user.username, this.user.password, this.user.access, this.user
+            .firstName, this.user.lastName, this.user.employeeID)
         })
-
         console.log(this.user)
       },
       getLogins() {
@@ -77,8 +78,18 @@
         }
       },
       storeUser(loginID, username, password, access, firstName, lastName, employeeID) {
-        this.$store.commit('loginUser', {loginID, username, password, access, firstName, lastName, employeeID})
-        this.$router.push({name: 'Home'})
+        this.$store.commit('loginUser', {
+          loginID,
+          username,
+          password,
+          access,
+          firstName,
+          lastName,
+          employeeID
+        })
+        this.$router.push({
+          name: 'Home'
+        })
       },
     },
     computed: {
