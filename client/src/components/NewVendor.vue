@@ -9,7 +9,7 @@
             </b-form-select>
 
             <b-form-select v-model="vendor.country" :options="countries" class="mb-3" value-field="countryName"
-                text-field="countryName" disabled-field="notEnabled"></b-form-select>
+                text-field="countryName" disabled-field="notEnabled" ></b-form-select>
 
             <!-- <b-form-input v-model="vendor.country" placeholder="Country" id="country"></b-form-input> -->
             <b-form-input v-model="vendor.vendorContact" placeholder="Vendor Contact Name" id="vendorContact">

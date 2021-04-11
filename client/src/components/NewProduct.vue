@@ -5,7 +5,18 @@
             </b-form-input>
             <b-form-input v-model="product.productPrice" placeholder="Enter Product Price" id="productPrice">
             </b-form-input>
-            <b-form-input v-model="product.vendorID" placeholder="Enter Vendor ID" id="vendorID"></b-form-input>
+            <b-form-input v-model="product.vendorName" placeholder="Enter Vendor Name" id="vendorID"></b-form-input>
+            <b-form-select v-model="product.vendorType" placeholder="Vendor Type" id="type">
+                <b-form-select-option value=null disabled>Vendor Type</b-form-select-option>
+                <b-form-select-option value="Supplier">Supplier</b-form-select-option>
+                <b-form-select-option value="Company">Company</b-form-select-option>
+            </b-form-select>            
+            <b-form-select v-model="product.country" :options="countries" class="mb-3" value-field="countryName"
+                text-field="countryName" disabled-field="notEnabled"></b-form-select>            
+            <b-form-input v-model="product.vendorContact" placeholder="Enter Vendor Contact Name" id="vendorID"></b-form-input>
+            <b-form-input v-model="product.phoneNumber" placeholder="Enter Phone Number" id="vendorID"></b-form-input>
+            <b-form-input v-model="product.email" placeholder="Enter Email" id="vendorID"></b-form-input>
+
             <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
         </b-form>
         <b-button class="darkmode-ignore" v-bind:to="'Products'" variant="primary">Cancel</b-button>
@@ -21,8 +32,15 @@
                 product: {
                     productName: null,
                     productPrice: null,
-                    vendorID: null
-                }
+                    vendorName: null,
+                    vendorType: null,
+                    country: null,
+                    vendorContact: null,
+                    phoneNumber: null,
+                    email: null
+                },
+
+                countries:[]
             }
         },
         methods: {
@@ -39,7 +57,17 @@
                 } catch (error) {
                     this.status = error
                 }
+            },
+
+            getCountries() {
+                services.getCountries().then(response => {
+                    this.countries = response
+                    console.log(this.countries)
+                })
             }
+        },
+        mounted(){
+            this.getCountries()
         }
     }
 </script>

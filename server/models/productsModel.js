@@ -4,7 +4,7 @@ module.exports = {
 
     //Create Product
     insertProduct: (data, result) => {
-        db.query("INSERT INTO products SET ?", [data], (err, results) => {
+        db.query("call insertProduct(?,?,?,?,?,?,?,?)", [data.productName, data.productPrice, data.vendorName, data.vendorType, data.country, data.vendorContact, data.phoneNumber, data.email], (err, results) => {
             if (err) {
                 console.log(err);
                 result(err, null);

@@ -181,10 +181,14 @@ static getInvoiceServicesByDate(date) {
         return new Promise(async(resolve, reject) => {
             try {
                 const res = await axios.post(`${productUrl}`, {
-                    productID: product.productID,
                     productName: product.productName,
                     productPrice: product.productPrice,
-                    vendorID: product.vendorID
+                    vendorName: product.vendorName,
+                    vendorType: product.vendorType,
+                    country: product.country,
+                    vendorContact: product.vendorContact,
+                    phoneNumber: product.phoneNumber,
+                    email: product.email
                 })
                 const data = res.data
                 console.log(data)
