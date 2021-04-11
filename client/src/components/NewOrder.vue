@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/addorder.png" alt="Add Order">
         <b-form @submit.prevent="insertOrder">
             <b-form-input v-model="order.vendorName" placeholder="Vendor Name" id="vendorName" disabled></b-form-input>
 

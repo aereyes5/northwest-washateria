@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/updatevendor.png" alt="Update Vendor">
         <b-form @submit.prevent="updateVendor">
             <b-form-input v-model="vendor.vendorID" id="vendorID" disabled></b-form-input>
             <b-form-input v-model="vendor.vendorName" placeholder="Vendor Name" id="vendorName"></b-form-input>

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/updateorder.png" alt="Update Order">
         <b-form @submit.prevent="updateOrder">
             <b-form-input v-model="orders.productOrderID" id="productOrderID" disabled></b-form-input>
             <b-form-datepicker v-model="orders.orderDate" id="orderDate" disabled></b-form-datepicker>

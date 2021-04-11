@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/addvendor.png" alt="Add Vendor">
         <b-form @submit.prevent="insertVendor">
             <b-form-input v-model="vendor.vendorName" placeholder="Vendor Name" id="vendorName"></b-form-input>
             <b-form-select v-model="vendor.type" placeholder="Vendor Type" id="type">

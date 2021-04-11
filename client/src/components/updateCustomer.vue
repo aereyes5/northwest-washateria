@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/updatecustomer.png" alt="Update Customer">
         <b-form @submit.prevent="updateCustomer">
             <b-form-input v-model="customer.customerID" id="customerID" disabled></b-form-input>
             <b-form-input v-model="customer.firstName" placeholder="Enter First Name" id="firstName"></b-form-input>

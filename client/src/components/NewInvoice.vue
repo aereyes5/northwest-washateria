@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/addinvoice.png" alt="Add Invoice">
         <b-form @submit.prevent="insertInvoice">
             <b-form-input v-model="invoice.customerFirstName" placeholder="Customer First Name" id="customerFirstName">
             </b-form-input>

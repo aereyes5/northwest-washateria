@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/addemployee.png" alt="Add Employee">
         <b-form @submit.prevent="addEmployee">
             <b-form-input v-model="employee.firstName" placeholder="Enter First Name" id="firstName"></b-form-input>
             <b-form-input v-model="employee.lastName" placeholder="Enter Last Name" id="lastName"></b-form-input>
