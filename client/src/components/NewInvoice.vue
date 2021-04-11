@@ -5,7 +5,7 @@
             </b-form-input>
             <b-form-input v-model="invoice.customerLastName" placeholder="Customer Last Name" id="customerLastName">
             </b-form-input>
-            <b-form-input v-model="invoice.customerPhoneNumber" placeholder="Customer Phone Number"
+            <b-form-input v-model="invoice.phoneNumber" placeholder="Customer Phone Number"
                 id="customerPhoneNumber"></b-form-input>
 
             <b-form-select v-model="invoice.productName" :options="products" class="mb-3" value-field="productName"
@@ -42,7 +42,7 @@
                 invoice: {
                     customerFirstName: null,
                     customerLastName: null,
-                    customerPhoneNumber: null,
+                    phoneNumber: null,
                     productName: null,
                     productQuantity: null,
                     serviceName: null,
@@ -116,7 +116,40 @@
                             .EPSILON) * 100) / 100
             },
 
-            insertInvoice(){
+            getCustomerByPhone() {
+                if (this.invoice.phoneNumber == null) {
+                    this.status = "Please enter customer's phone number";
+                } else {
+                    this.status = "";
+                    try {
+                        services.getCustomerByPhone(this.invoice.phoneNumber).then((response) => {
+                            this.invoice.customerID = response.customerID;
+                            console.log(this.invoice.customerID);
+                            if(this.invoice.customerID == null){
+                                this.addCustomer()
+                            }
+                        });
+                    } catch (err) {
+                        console.log(err);
+                    }
+                }
+            },
+            async addCustomer() {
+                try {
+                const newCustomer = services.insertCustomer(this.customer).then(customer => {
+                    this.$router.push({
+                    name: 'Customers'
+                    })
+                    return customer
+                }).catch((error) => {
+                    this.status = error
+                })
+                } catch (error) {
+                this.status = error
+                }
+            },
+
+            async insertInvoice(){
                 try {
                     console.log(this.invoice)
                     services.insertInvoice(this.invoice).then(invoice => {

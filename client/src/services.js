@@ -344,7 +344,7 @@ static getInvoiceServicesByDate(date) {
                 const res = await axios.post(`${invoiceURL}`, {
                     firstName: invoice.customerFirstName,
                     lastName: invoice.customerLastName,
-                    phoneNumber: invoice.customerPhoneNumber,
+                    phoneNumber: invoice.phoneNumber,
                     productName: invoice.productName,
                     productQuantity: invoice.productQuantity,
                     serviceName: invoice.serviceName,
