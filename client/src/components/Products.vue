@@ -6,6 +6,7 @@
             <b-button variant="primary" v-on:click="getProductByID">Search</b-button>
             </b-input-group-append>
         </b-input-group> -->
+        <img src="@/assets/Products.png" alt="Products">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
 
         <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">

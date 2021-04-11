@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/Invoices.png" alt="Invoices">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
 
         <b-button class="darkmode-ignore" v-bind:to="'new-report'" variant="primary">Report Generator</b-button>

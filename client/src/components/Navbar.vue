@@ -1,17 +1,17 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
-      <b-navbar-brand>
-        <!-- I'm trying to make the logos clickable, can someone help me? -->
-        <img src="@/assets/nwlogolong.png" v-bind:to="'/home'" width="161" height="35" class="d-inline-block align-top" alt="nwlogolong" v-if="userVerified">
-        <img src="@/assets/nwlogolong.png" v-bind:to="'Login'" width="161" height="35" class="d-inline-block align-top" alt="nwlogolong" v-if="!userVerified">
+      <b-navbar-brand v-bind:to="'/home'" v-if="userVerified">
+        <img src="@/assets/nwlogolong.png" width="161" height="35" alt="nwlogolong">
+      </b-navbar-brand>
+      <b-navbar-brand v-bind:to="'/'" v-if="!userVerified">
+        <img src="@/assets/nwlogolong.png" width="161" height="35" alt="nwlogolong">
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item v-bind:to="'/home'" v-if="userVerified">Home</b-nav-item>
           <b-nav-item v-bind:to="'Products'" v-if="userVerified">Products</b-nav-item>
           <b-nav-item v-bind:to="'Services'" v-if="userVerified">Services</b-nav-item>
           <b-nav-item v-bind:to="'Customers'" v-if="userVerified">Customers</b-nav-item>
