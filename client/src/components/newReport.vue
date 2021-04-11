@@ -2,10 +2,11 @@
     <div>
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         <b-button class="darkmode-ignore" variant="success">Excel Report</b-button>
-        <b-button class="darkmode-ignore" variant="primary">PDF Report</b-button>
+        <b-button class="darkmode-ignore" variant="primary" v-on:click="createNewReport">PDF Report</b-button>
         <b-button class="darkmode-ignore" variant="info">Email Report</b-button>
 
         <b-table 
+        id="report"
         :items="invoices" 
         :fields="fields" 
         :filter="filter"
@@ -22,6 +23,8 @@
 
 <script>
 import services from '../services'
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 export default {
     name: 'newReport',
     data() {
@@ -46,7 +49,12 @@ export default {
         onRowSelected(items) {
                 this.selected = items
                 console.log(this.selected)
-            }
+            },
+        createNewReport(){
+            const doc = new jsPDF()
+            doc.autoTable({ html: '#report'})
+            doc.save('Report.pdf')
+        }
     },
     created() {
         this.getInvoices()
