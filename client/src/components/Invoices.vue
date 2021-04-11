@@ -2,7 +2,7 @@
     <div>
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
 
-        <b-button class="darkmode-ignore" v-bind:to="'new-report'" variant="primary">Generate Invoice Report</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'new-report'" variant="primary">Report Generator</b-button>
         <b-button class="darkmode-ignore" v-bind:to="'new-invoice'" variant="success">Add New</b-button>
         <b-button class="darkmode-ignore" variant="secondary" v-on:click="setInvoiceID">Update</b-button>
         <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteInvoice">Delete</b-button>

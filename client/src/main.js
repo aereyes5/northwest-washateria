@@ -5,9 +5,11 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App'
 import router from './router'
 import { store } from './store/store'
+import JsonExcel from "vue-json-excel";
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.component("downloadExcel", JsonExcel);
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue'
 
