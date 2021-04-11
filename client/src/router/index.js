@@ -30,6 +30,7 @@ import UpdateService from '@/components/updateService'
 import NewInvoice from '@/components/NewInvoice'
 import UpdateOrder from '@/components/UpdateOrders'
 import UpdateInvoice from '@/components/UpdateInvoices'
+import NewReport from '@/components/newReport'
 
 
 Vue.use(Router)
@@ -178,9 +179,14 @@ export default new Router({
             component: UpdateService
         },
         {
-            path: 'update-order',
+            path: '/update-order',
             name: 'UpdateOrders',
             component: UpdateOrder
+        },
+        {
+            path: '/new-report',
+            name: 'newReport',
+            component: NewReport
         }
 
 
