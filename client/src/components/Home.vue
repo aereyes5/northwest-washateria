@@ -2,7 +2,7 @@
   <div class="background">
     <!-- <b-img src="@/assets/nwlogo.png" fluid alt="Fluid image"></b-img> -->
     <img src="@/assets/nwlogo.png" width="500" height="500" alt="nwwashateriaIcon">
-    <h1>Welcome back %user%!</h1>
+    <h1>Welcome back {{user.firstName}} {{user.lastName}}!</h1>
     <!-- <div class="jumbo">
       <b-jumbotron header="Welcome back %user%!" lead="Select an option below:" style="width:80%">
       </b-jumbotron>
@@ -27,7 +27,6 @@ import services from '../services'
       getUser(){
         this.user.firstName = this.$store.getters.getEmployeeFirstName
         this.user.lastName = this.$store.getters.getEmployeeLastName
-        console.log(this.$store.getters.getEmployeeFirstName)
         
       }
 

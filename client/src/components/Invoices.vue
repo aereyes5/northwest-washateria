@@ -46,9 +46,7 @@
                     </tr>
                 </table>
 
-           
-
-         <!--   <b-row class="mb-2">
+                  <!-- <b-row class="mb-2">
                 <b-col sm="3" class="text-sm-right"><b>QTY</b></b-col>
                 <b-col sm="3" class="text-sm-right"><b>DESC</b></b-col>
                 <b-col sm="3" class="text-sm-right"><b>AMT</b></b-col>
@@ -73,6 +71,7 @@
             </b-card>
         </template>
         </b-table>
+        <!-- </b-table> -->
 
          
         <!-- <b-modal id="modal-scrollable" scrollable title="Customer Receipt">
@@ -93,21 +92,23 @@
         data() {
             return {
                 invoices: [],
+                // fields:['date', 'firstName', 'lastName','total'],
                 fields: ['date', 'customerFirstName', 'customerLastName', 'total', 'show_details'],
                 // modalFields: ['qty', 'desc', 'amt'],
                 selectMode: 'single',
                 selected: [],
                 status2: "",
-                filter: ""
-                // receipt:{
-                //     employeeFirstName: null,
-                //     employeeLastName: null,
-                //     date: null,
-                //     purchases:[],
-                //     customer: null,
-                //     payment: null
+                filter: "",
+                receipt:{
+                    employeeFirstName: null,
+                    employeeLastName: null,
+                    date: null,
+                    purchases:[],
+                    customer: null,
+                    payment: null
 
-                // }
+                },
+                invoiceDate: null
             }
         },
         methods: {
@@ -116,12 +117,15 @@
                  if (!Array.isArray(this.selected) || !this.selected.length) {
                     this.status2 = "Please select a record to update"
                 }
+                else{
+                }
 
             },
 
             getProductsByDate(){
                 try {
-                    services.getInvoiceProductsByDate(this.selected.date).then(response => {
+                    this.invoiceDate = this.$store.getters.getInvoice
+                    services.getInvoiceProductsByDate(this.invoiceDate).then(response => {
                         this.receipt.purchases = response
                         console.log(this.receipt.purchases)
                     })
@@ -132,6 +136,7 @@
 
             getServicesByDate(){
                 try {
+
                     services.getInvoiceServicesByDate(this.selected.date).then(response => {
                         this.receipt.purchases += response
                         console.log(this.receipt.purchases)
@@ -164,7 +169,14 @@
             onRowSelected(items) {
                 this.selected = items
                 console.log(this.selected)
+                this.storeInvoiceDate(this.selected.date)
                 this.getProductsByDate()
+            },
+
+
+            storeInvoiceDate(invoiceDate){
+                 this.$store.commit('invoiceDate', {invoiceDate})
+
             },
             getInvoiceByID() {
                 if (this.invoiceID == null) {

@@ -33,6 +33,10 @@ export const store = new Vuex.Store({
         },
         order: {
             productOrderID: null
+        },
+        invoice:{
+            invoiceDate: null,
+            
         }
 
 
@@ -42,16 +46,16 @@ export const store = new Vuex.Store({
             return (state.user.loginID) ? true : false
         },
         getUserAccess: state => {
-            return (state.user.access)
+            return state.user.access
         },
         getEmployeeFirstName: state => {
-            return (state.user.firstName)
+            return state.user.firstName
         },
         getEmployeeLastName: state => {
-            return (state.user.lastName)
+            return state.user.lastName
         },
         getEmployeeIDByLogin: state => {
-            return (state.user.employeeID)
+            return state.user.employeeID
         },
         getAccountInfo: state => {
             return state.user.email
@@ -76,8 +80,10 @@ export const store = new Vuex.Store({
         },
         getOrderID: state => {
             return state.order.productOrderID
+        },
+        getInvoice: state => {
+            return state.invoice.invoiceDate
         }
-
     },
     mutations: {
         loginUser(state, {loginID, username, password, access, firstName, lastName, employeeID}) {
@@ -110,6 +116,9 @@ export const store = new Vuex.Store({
         },
         oOrderID(state, { productOrderID }) {
             state.order.productOrderID = productOrderID
+        },
+        invoiceDate(state, { invoiceDate }) {
+            state.invoice.invoiceDate = invoiceDate
         }
 
     }

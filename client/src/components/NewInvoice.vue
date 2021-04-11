@@ -9,7 +9,7 @@
                 id="customerPhoneNumber"></b-form-input>
 
             <b-form-select v-model="invoice.productName" :options="products" class="mb-3" value-field="productName"
-                text-field="productName" disabled-field="notEnabled" placeholder="Products">
+                text-field="productName" disabled-field="notEnabled" placeholder="Products" @change="newProduct">
             </b-form-select>
 
             <b-form-spinbutton v-model="invoice.productQuantity" id="sb-inline" placeholder="--" inline
@@ -17,10 +17,10 @@
             <b-form-input v-model="productTotal" id="productTotal" disabled></b-form-input>
 
             <b-form-select v-model="invoice.serviceName" :options="services" class="mb-3" value-field="serviceName"
-                text-field="serviceName" disabled-field="notEnabled" @change="serviceSelected" placeholder="Services">
+                text-field="serviceName" disabled-field="notEnabled" @change="findServiceTotal" placeholder="Services">
             </b-form-select>
 
-            <b-form-input v-model="invoice.servicePrice" id="serviceTotal" disabled></b-form-input>
+            <b-form-input v-model="serviceTotal" id="serviceTotal" disabled></b-form-input>
             <b-form-select v-model="invoice.paymentMethod" :options="paymentMethods" class="mb-3"
                 value-field="paymentDescription" text-field="paymentDescription" disabled-field="notEnabled"
                 placeholder="Payment Method"></b-form-select>
@@ -46,11 +46,8 @@
                     productName: null,
                     productQuantity: null,
                     serviceName: null,
-                    servicePrice: null,
                     paymentMethod: null,
                     employeeID: null,
-                    employeeFirstName: null,
-                    employeeLastName: null,
                     total: null
                 },
                 productPrice: null,
@@ -63,9 +60,8 @@
         },
         methods: {
             getLoginID() {
-                this.invoice.employeeID = this.$store.getters.getEmployeeByLoginID
-                this.invoice.employeeFirstName = this.$store.getters.getEmployeeFirstName
-                this.invoice.employeeLastName = this.$store.getters.getEmployeeLastName
+                this.invoice.employeeID = this.$store.getters.getEmployeeIDByLogin
+                console.log(this.invoice.employeeID)
             },
             getProductNames() {
                 services.getProducts().then(response => {
@@ -73,6 +69,11 @@
                     console.log(this.products)
                 })
             },
+            newProduct(){
+                this.productTotal = null
+                this.invoice.productQuantity = null
+            },
+
             getServices() {
                 services.getServices().then(response => {
                     this.services = response
@@ -90,15 +91,45 @@
 
             findProductTotal() {
                 for (let i = 0; i < this.products.length; i++) {
-                    if (this.products[i].productName == this.order.productName) {
-                        this.order.total = Math.round(((this.products[i].price * this.order.quantity) + Number
+                    if (this.products[i].productName == this.invoice.productName) {
+                        this.productTotal = Math.round(((this.products[i].price * this.invoice.productQuantity) + Number
                             .EPSILON) * 100) / 100
                     }
                 }
+                this.findTotal()
+            },
+
+            findServiceTotal() {
+
+                for (let i = 0; i < this.services.length; i++) {
+                    if (this.services[i].serviceName == this.invoice.serviceName) {
+                        this.serviceTotal = this.services[i].servicePrice
+                    }
+                }
+                this.findTotal()
+            },
+
+            findTotal(){
+                let taxes = null
+                taxes = (((Number(this.productTotal) + Number(this.serviceTotal)))*8.25)/100
+                this.invoice.total = Math.round((((Number(this.productTotal) + Number(this.serviceTotal)) + taxes) + Number
+                            .EPSILON) * 100) / 100
             },
 
             insertInvoice(){
-                
+                try {
+                    console.log(this.invoice)
+                    services.insertInvoice(this.invoice).then(invoice => {
+                        this.$router.push({
+                            name: 'Invoices'
+                        })
+                        return invoice
+                    }).catch((error) => {
+                        this.status = error
+                    })
+                } catch (error) {
+                    this.status = error
+                }
 
             }
 
@@ -109,6 +140,7 @@
             this.getProductNames()
             this.getServices()
             this.getInvoiceStatus()
+
         }
     }
 </script>

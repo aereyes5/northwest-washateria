@@ -3,7 +3,7 @@ const db = require('../config/database')
 module.exports = {
     //Create Invoice
     insertInvoice: (data, result) => {
-        db.query("call insertInvoice2(?,?,?,?,?,?,?,?,?)", [data], (err, results) => {
+        db.query("call insertInvoice2(?,?,?,?,?,?,?,?,?)", [data.firstName, data.lastName, data.phonNumber, data.productName, data.productQuantity, data.serviceName, data.total, data.employeeID, data.payment], (err, results) => {
             if (err) {
                 console.log(err);
                 result(err, null);

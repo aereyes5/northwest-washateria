@@ -53,7 +53,7 @@
                 } else {
                     this.status2 = "";
                     services.deleteEmployee(this.selected[0].employeeID)
-                    window.location.reload()
+                    this.getEmployees()
                 }
             },
             onRowSelected(items) {

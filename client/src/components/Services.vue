@@ -51,7 +51,7 @@
                 } else {
                     this.status2 = "";
                     services.deleteService(this.selected[0].serviceID)
-                    window.location.reload()
+                    this.getServices()
                 }
             },
             onRowSelected(items) {

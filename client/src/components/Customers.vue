@@ -55,7 +55,7 @@
                 } else {
                     this.status2 = "";
                     services.deleteCustomer(this.selected[0].customerID);
-                    window.location.reload();
+                    this.getCustomers()
                 }
             },
             onRowSelected(items) {

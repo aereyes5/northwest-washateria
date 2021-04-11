@@ -59,7 +59,7 @@
                 } else {
                     this.status2 = "";
                     services.deleteProduct(this.selected[0].productID)
-                    window.location.reload()
+                    this.getProducts()
                 }
             },
             onRowSelected(items) {

@@ -338,6 +338,29 @@ static getInvoiceServicesByDate(date) {
 
     //CRUD Invoices 
 
+    static insertInvoice(invoice) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const res = await axios.post(`${invoiceURL}`, {
+                    firstName: invoice.customerFirstName,
+                    lastName: invoice.customerLastName,
+                    phoneNumber: invoice.customerPhoneNumber,
+                    productName: invoice.productName,
+                    productQuantity: invoice.productQuantity,
+                    serviceName: invoice.serviceName,
+                    total: invoice.total,
+                    employeeID: invoice.employeeID,
+                    payment: invoice.paymentMethod
+                })
+                const data = res.data
+                console.log(data)
+                resolve(data)
+            } catch (error) {
+                reject(`Unable to add new product\n${error}`);
+            }
+        })
+    }
+
     static getInvoices() {
         return new Promise(async(resolve, reject) => {
             try {

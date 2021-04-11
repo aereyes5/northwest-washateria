@@ -111,7 +111,7 @@
         } else {
           this.status = "";
           services.deleteVendor(this.selected[0].vendorID)
-          window.location.reload()
+          this.getVendors()
         }
       }
     },
