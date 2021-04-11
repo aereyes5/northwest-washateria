@@ -2,26 +2,31 @@
   <b-container class="back">
     <div>
       <br>
-      <h1><span style="text-decoration: underline">Account Info</span></h1>
+      <h1><span>Edit Account Info</span></h1>
       <br>
       <b-form>
         <div class="form-row">
           <div class="col">
-            <b-form-input type="email" class="form-control" placeholder="Username" id="username" v-model="user.username"
-              disabled>
-            </b-form-input>
+            <b-input-group prepend="Username">
+              <b-form-input type="email" class="form-control" placeholder="Username" id="username"
+                v-model="user.username" disabled>
+              </b-form-input>
+            </b-input-group>
           </div>
         </div>
         <br>
         <div class="form-row">
           <div class="col">
-            <b-form-input type="password" class="form-control" placeholder="Password" id="password" autocomplete="on"
-              v-model="user.password" disabled>
-            </b-form-input>
+            <b-input-group prepend="Password">
+              <b-form-input type="password" class="form-control" placeholder="Password" id="password" autocomplete="on"
+                v-model="user.password" disabled>
+              </b-form-input>
+            </b-input-group>
           </div>
         </div>
         <br>
-        <b-button class="darkmode-ignore" variant="warning" v-bind:to="'Update'">Edit</b-button>
+        <b-button class="darkmode-ignore" variant="warning" v-bind:to="'Update'">Submit Changes</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'home'" variant="primary" type="submit">Cancel</b-button>
       </b-form><br>
     </div>
   </b-container>

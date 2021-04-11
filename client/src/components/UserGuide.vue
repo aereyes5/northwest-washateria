@@ -2,7 +2,7 @@
     <b-container class="back">
         <div>
             <br>
-            <h1><span style="text-decoration:underline">User Guide</span></h1><br>
+            <h1><span>User Guide</span></h1><br>
             <div class="questions">
                 <!-- I plan to add .gifs to demo the steps and more questions -->
                 <h4>How do I access the database?</h4>

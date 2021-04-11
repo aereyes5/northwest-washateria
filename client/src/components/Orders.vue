@@ -4,7 +4,7 @@
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
 
         <b-button class="darkmode-ignore" v-bind:to="'new-order'" variant="success">Add New</b-button>
-        <b-button class="darkmode-ignore" variant="secondary" v-on:click="setOrderID">Update Order Status</b-button>
+        <b-button class="darkmode-ignore" variant="secondary" v-on:click="setOrderID">Update</b-button>
 
         <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
             {{status2}}

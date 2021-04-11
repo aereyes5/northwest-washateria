@@ -5,9 +5,9 @@
       <b-form-input v-model="customer.lastName" placeholder="Enter Last Name"></b-form-input>
       <b-form-input v-model="customer.phoneNumber" placeholder="Enter Phone Number"></b-form-input>
       <b-form-input v-model="customer.email" placeholder="Enter Email"></b-form-input>
-      <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
+      <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
     </b-form>
-    <b-button class="darkmode-ignore" v-bind:to="'customers'" variant="primary" type="submit">Cancel</b-button>
+    <b-button class="darkmode-ignore" v-bind:to="'customers'" variant="danger" type="submit">Cancel</b-button>
   </div>
 </template>
 

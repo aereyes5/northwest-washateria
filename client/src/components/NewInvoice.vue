@@ -27,7 +27,7 @@
 
             <b-form-input v-model="invoice.total" id="total" disabled></b-form-input>
 
-            <b-button class="darkmode-ignore" variant="primary" type="submit">Place Order</b-button>
+            <b-button class="darkmode-ignore" variant="success" type="submit">Place Order</b-button>
         </b-form>
         <b-button class="darkmode-ignore" v-bind:to="'Invoices'" variant="danger">Cancel</b-button>
     </div>

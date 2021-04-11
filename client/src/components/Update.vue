@@ -19,7 +19,7 @@
           </div>
         </div><br>
         <b-button v-b-modal.modal-1 variant="success" type="submit" id="save">Save</b-button>
-        <b-button id="back" v-bind:to="'Account'">Back</b-button>
+        <b-button id="back" v-bind:to="'Account'" variant="danger">Back</b-button>
       </b-form>
     </div>
   </b-container>
