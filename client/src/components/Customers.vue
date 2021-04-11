@@ -91,7 +91,7 @@
                     phoneNumber,
                 });
                 this.$router.push({
-                    name: "UpdateCustomer",
+                    name: "UpdateCustomer"
                 });
             },
         },

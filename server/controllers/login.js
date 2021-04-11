@@ -39,8 +39,8 @@ module.exports = {
     //Update Login
     updateLogin: (req, res) => {
         const data = req.body;
-        const employeeID = req.params.employeeID;
-        Login.updateLoginById(data, employeeID, (err, results) => {
+        const loginID = req.params.loginID
+        Login.updateLoginById(data, loginID, (err, results) => {
             if (err) {
                 res.send(err);
             } else {

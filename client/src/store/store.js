@@ -54,6 +54,15 @@ export const store = new Vuex.Store({
         getEmployeeLastName: state => {
             return state.user.lastName
         },
+        getEmployeeUsername: state => {
+            return state.user.username
+        },
+        getEmployeePassword: state => {
+            return state.user.password
+        },
+        getEmployeeLoginID: state => {
+            return state.user.loginID
+        },
         getEmployeeIDByLogin: state => {
             return state.user.employeeID
         },
