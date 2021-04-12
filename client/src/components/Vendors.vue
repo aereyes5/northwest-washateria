@@ -1,13 +1,6 @@
 <template>
   <div>
-    <!-- <b-input-group class="mt-3">
-            <b-form-input placeholder="Search by vendor name..." v-model="vendorName"></b-form-input>
-            <b-input-group-append>
-            <b-button variant="primary" v-on:click="getVendorByName">Search</b-button>
-            </b-input-group-append>
-        </b-input-group> -->
-
-    <img src="@/assets/Vendors.png" alt="Vendors">
+    <img src="@/assets/Vendors.png" width=750px heigth=500px alt="Vendors">
     <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
     <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
       {{status}}

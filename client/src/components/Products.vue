@@ -1,12 +1,6 @@
 <template>
     <div>
-        <!-- <b-input-group class="mt-3">
-            <b-form-input placeholder="Enter Product's ID number" v-model="productID"></b-form-input>
-            <b-input-group-append>
-            <b-button variant="primary" v-on:click="getProductByID">Search</b-button>
-            </b-input-group-append>
-        </b-input-group> -->
-        <img src="@/assets/Products.png" alt="Products">
+        <img src="@/assets/Products.png" width=750px heigth=500px alt="Products">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
 
         <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">

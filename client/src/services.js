@@ -27,6 +27,22 @@ class Services {
         })
     }
 
+    static updateLogin(user) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const res = await axios.put(`${loginURL}/${user.loginID}`, {
+                    username: user.username,
+                    password: user.password,
+                    loginID: user.loginID
+                })
+                const data = res.data
+                resolve(data)
+            } catch (error) {
+                reject(`${error}`)
+            }
+        })
+    }
+
     static getEmployeeDetails(loginID) {
         return new Promise(async(resolve, reject) => {
             try {

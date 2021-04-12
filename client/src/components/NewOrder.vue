@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/addorder.png" alt="Add Order">
         <b-form @submit.prevent="insertOrder">
             <b-form-input v-model="order.vendorName" placeholder="Vendor Name" id="vendorName" disabled></b-form-input>
 
@@ -10,7 +11,7 @@
             </b-form-spinbutton>
             <b-form-input v-model="order.total" id="total" disabled></b-form-input>
 
-            <b-button class="darkmode-ignore" variant="primary" type="submit">Place Order</b-button>
+            <b-button class="darkmode-ignore" variant="success" type="submit">Place Order</b-button>
         </b-form>
         <b-button class="darkmode-ignore" v-bind:to="'Orders'" variant="danger">Cancel</b-button>
     </div>

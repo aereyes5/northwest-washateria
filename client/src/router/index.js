@@ -2,10 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '@/components/Home'
-import Purchases from '@/components/Purchases'
 import Orders from '@/components/Orders'
 import NewOrder from '@/components/NewOrder'
-import PurchaseHistory from '@/components/PurchaseHistory'
 import Invoices from '@/components/Invoices'
 import Products from '@/components/Products'
 import Services from '@/components/Services'
@@ -13,7 +11,6 @@ import Vendors from '@/components/Vendors'
 import Customers from '@/components/Customers'
 import Employees from '@/components/Employees'
 import UserGuide from '@/components/UserGuide'
-import Registration from '@/components/Registration'
 import Login from '@/components/Login'
 import Account from '@/components/Account'
 import Update from '@/components/Update'
@@ -44,11 +41,6 @@ export default new Router({
             component: Home
         },
         {
-            path: '/purchases',
-            name: 'Purchases',
-            component: Purchases
-        },
-        {
             path: '/orders',
             name: 'Orders',
             component: Orders
@@ -57,11 +49,6 @@ export default new Router({
             path: '/new-order',
             name: 'NewOrder',
             component: NewOrder
-        },
-        {
-            path: '/PurchaseHistory',
-            name: 'PurchaseHistory',
-            component: PurchaseHistory
         },
         {
             path: '/invoices',
@@ -117,11 +104,6 @@ export default new Router({
             path: '/userguide',
             name: 'UserGuide',
             component: UserGuide
-        },
-        {
-            path: '/register',
-            name: 'Registration',
-            component: Registration
         },
         {
             path: '/',

@@ -1,13 +1,14 @@
 <template>
     <div>
+        <img src="@/assets/addservice.png" alt="Add Service">
         <b-form @submit.prevent="addService">
             <b-form-input v-model="service.serviceName" placeholder="Enter Service Name" id="serviceName">
             </b-form-input>
             <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price" id="servicePrice">
             </b-form-input>
-            <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
+            <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
         </b-form>
-        <b-button class="darkmode-ignore" v-bind:to="'Services'" variant="primary">Cancel</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'Services'" variant="danger">Cancel</b-button>
     </div>
 </template>
 

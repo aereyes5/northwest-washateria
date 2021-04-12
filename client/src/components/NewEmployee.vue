@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/addemployee.png" alt="Add Employee">
         <b-form @submit.prevent="addEmployee">
             <b-form-input v-model="employee.firstName" placeholder="Enter First Name" id="firstName"></b-form-input>
             <b-form-input v-model="employee.lastName" placeholder="Enter Last Name" id="lastName"></b-form-input>
@@ -13,9 +14,9 @@
                 <b-form-select-option value="Admin">Admin</b-form-select-option>
                 <b-form-select-option value="Employee">Employee</b-form-select-option>
             </b-form-select>
-            <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
+            <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
         </b-form>
-        <b-button class="darkmode-ignore" v-bind:to="'Employees'" variant="primary">Cancel</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'Employees'" variant="danger">Cancel</b-button>
     </div>
 </template>
 

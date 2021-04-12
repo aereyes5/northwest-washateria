@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/updatecustomer.png" alt="Update Customer">
         <b-form @submit.prevent="updateCustomer">
             <b-form-input v-model="customer.customerID" id="customerID" disabled></b-form-input>
             <b-form-input v-model="customer.firstName" placeholder="Enter First Name" id="firstName"></b-form-input>
@@ -7,9 +8,9 @@
             <b-form-input v-model="customer.phoneNumber" placeholder="Enter Phone Number" id="phoneNumber">
             </b-form-input>
             <b-form-input v-model="customer.email" placeholder="Enter Email" id="email"></b-form-input>
-            <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
+            <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
         </b-form>
-        <b-button class="darkmode-ignore" v-bind:to="'customers'" variant="primary" type="submit">Cancel</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'customers'" variant="danger" type="submit">Cancel</b-button>
     </div>
 </template>
 

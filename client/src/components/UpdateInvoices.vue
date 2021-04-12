@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/updateinvoice.png" alt="Update Invoice">
         <b-form @submit.prevent="updateInvoice">
             <b-form-input v-model="invoice.invoiceID" id="invoiceID" disabled></b-form-input>
             <b-form-input v-model="invoice.date" placeholder="Enter First Name" id="date"></b-form-input>
@@ -18,9 +19,9 @@
             <b-form-input v-model="invoice.totalPrice" placeholder="Enter First Name" id="totalPrice"></b-form-input>
             <b-form-input v-model="invoice.paymentMethod" placeholder="Enter First Name" id="paymentMethod">
             </b-form-input>
-            <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
+            <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
         </b-form>
-        <b-button class="darkmode-ignore" v-bind:to="'Invoices'" variant="primary">Cancel</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'Invoices'" variant="danger">Cancel</b-button>
     </div>
 </template>
 

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/addvendor.png" alt="Add Vendor">
         <b-form @submit.prevent="insertVendor">
             <b-form-input v-model="vendor.vendorName" placeholder="Vendor Name" id="vendorName"></b-form-input>
             <b-form-select v-model="vendor.type" placeholder="Vendor Type" id="type">
@@ -16,9 +17,9 @@
             </b-form-input>
             <b-form-input v-model="vendor.phoneNumber" placeholder="Phone Number" id="phoneNumber"></b-form-input>
             <b-form-input v-model="vendor.email" placeholder="Email" id="email"></b-form-input>
-            <b-button class="darkmode-ignore" variant="primary" type="submit">Submit</b-button>
+            <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
         </b-form>
-        <b-button class="darkmode-ignore" v-bind:to="'vendors'" variant="primary">Cancel</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'vendors'" variant="danger">Cancel</b-button>
     </div>
 </template>
 

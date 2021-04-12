@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/genreport.png" alt="Genereate Reports">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         <b-button class="darkmode-ignore" variant="success">
             <downloadExcel
@@ -25,22 +26,14 @@
             </downloadExcel>
         </b-button>
         <br>
-        <b-button class="darkmode-ignore" variant="outline-success" v-on:click="selectAllRows">Select All Rows</b-button>
-        <b-button class="darkmode-ignore" variant="outline-danger" v-on:click="clearSelected">Clear Selected Rows</b-button>
+        <b-button class="darkmode-ignore" variant="outline-success" v-on:click="selectAllRows">Select All Rows
+        </b-button>
+        <b-button class="darkmode-ignore" variant="outline-danger" v-on:click="clearSelected">Clear Selected Rows
+        </b-button>
 
-        <b-table 
-        id="report"
-        :items="invoices" 
-        :fields="fields" 
-        :filter="filter"
-        :select-mode="selectMode"
-        striped
-        responsive="sm"
-        ref="selectableTable"
-        selectable
-        hover
-        @row-selected="onRowSelected"
-        sticky-header="83vh"></b-table>
+        <b-table id="report" :items="invoices" :fields="fields" :filter="filter" :select-mode="selectMode" striped
+            responsive="sm" ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh">
+        </b-table>
     </div>
 </template>
 
@@ -71,40 +64,40 @@ export default {
                     console.log(e);
                 })
             },
-        onRowSelected(items) {
+            onRowSelected(items) {
                 this.selected = items
                 console.log(this.selected)
             },
-        createNewReport(){
-            const doc = new jsPDF()
-            doc.autoTable({ 
-                html: '#report',
-                theme: 'grid',
-                headStyles: {
-                    halign: 'center',
-                    fillColor: [ 77, 128, 222 ]
-                },
-                bodyStyles: {
-                    halign: 'center'
-                },
-                alternateRowStyles: {
-                    fillColor: [ 213, 219, 219 ]
-                },
-                showHead: 'everyPage',
-                pageBreak: 'auto' 
+            createNewReport() {
+                const doc = new jsPDF()
+                doc.autoTable({
+                    html: '#report',
+                    theme: 'grid',
+                    headStyles: {
+                        halign: 'center',
+                        fillColor: [77, 128, 222]
+                    },
+                    bodyStyles: {
+                        halign: 'center'
+                    },
+                    alternateRowStyles: {
+                        fillColor: [213, 219, 219]
+                    },
+                    showHead: 'everyPage',
+                    pageBreak: 'auto'
                 })
-            doc.save('Report.pdf')
+                doc.save('Report.pdf')
+            },
+            selectAllRows() {
+                this.$refs.selectableTable.selectAllRows()
+            },
+            clearSelected() {
+                this.$refs.selectableTable.clearSelected()
+            }
         },
-        selectAllRows() {
-            this.$refs.selectableTable.selectAllRows()
-        },
-        clearSelected() {
-            this.$refs.selectableTable.clearSelected()
-        },
-        
-    },
-    created() {
+        created() {
         this.getInvoices()
     }
-}
+    }
+    
 </script>

@@ -40,7 +40,7 @@ module.exports = {
 
     // Update Login
     updateLoginById: (data, loginID, result) => {
-        db.query("UPDATE login SET username = ?, pswd = ?, access = ? WHERE loginID = ?", [data.username, data.pswd, data.access, loginID], (err, results) => {
+        db.query("UPDATE login SET username = ?, pswd = ? WHERE loginID = ?", [data.username, data.password, loginID], (err, results) => {
             if (err) {
                 console.log(err);
                 result(err, null);

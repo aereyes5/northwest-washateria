@@ -19,6 +19,8 @@ router.get('/login', Login.showLogins)
 
 router.get('/login/:loginID', Login.showLoginById)
 
+router.put('/login/:loginID', Login.updateLogin)
+
 /*--------------------------------------------------------------------------------*/
 
 //Invoice Products
