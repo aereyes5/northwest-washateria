@@ -29,6 +29,7 @@ import UpdateOrder from '@/components/UpdateOrders'
 import UpdateInvoice from '@/components/UpdateInvoices'
 import NewReport from '@/components/newReport'
 import OrderReport from '@/components/orderReport'
+import CustomerReport from '@/components/customerReport'
 
 
 Vue.use(Router)
@@ -175,6 +176,11 @@ export default new Router({
             path: '/order-report',
             name: 'orderReport',
             component: OrderReport
+        },
+        {
+            path: '/customer-report',
+            name: 'customerReport',
+            component: CustomerReport
         }
 
 
