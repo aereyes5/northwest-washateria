@@ -15,7 +15,8 @@
         </p>
 
         <b-table :items="services" :fields="fields" :select-mode="selectMode" :filter="filter" striped responsive="sm"
-            ref="selectableTable" selectable @row-selected="onRowSelected" sticky-header="83vh">
+            ref="selectableTable" selectable @row-selected="onRowSelected" sticky-header="83vh"
+            :per-page="perPage" :current-page="currentPage">
 
         </b-table>
     </div>
@@ -34,7 +35,9 @@
                 serviceID: null,
                 status: "",
                 status2: "",
-                filter: ""
+                filter: "",
+                perPage: 7,
+                currentPage: 1
             }
         },
         methods: {
@@ -92,6 +95,11 @@
         },
         created() {
             this.getServices()
+        },
+        computed: {
+            rows(){
+                return this.services.length
+            }
         }
     }
 </script>

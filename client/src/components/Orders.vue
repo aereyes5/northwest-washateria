@@ -10,9 +10,10 @@
         <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
             {{status2}}
         </p>
-
+        <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
         <b-table :items="orders" :fields="fields" :select-mode="selectMode" :filter="filter" striped responsive="sm"
-            ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh">
+            ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh"
+            :per-page="perPage" :current-page="currentPage">
 
         </b-table>
     </div>
@@ -30,7 +31,9 @@
                 selected: [],
                 orderID: null,
                 status2: "",
-                filter: ""
+                filter: "",
+                perPage: 7,
+                currentPage: 1
             }
         },
         methods: {
@@ -65,6 +68,11 @@
         },
         created() {
             this.getOrders()
+        },
+        computed: {
+            rows(){
+                return this.orders.length
+            }
         }
     }
 </script>

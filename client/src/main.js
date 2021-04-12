@@ -6,7 +6,9 @@ import App from './App'
 import router from './router'
 import { store } from './store/store'
 import JsonExcel from "vue-json-excel";
+import Vuelidate from 'vuelidate'
 
+Vue.use(Vuelidate)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.component("downloadExcel", JsonExcel);
