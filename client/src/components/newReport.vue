@@ -6,12 +6,24 @@
             :fields="fieldsForExcel"
             :data="selected"
             name="Report"
+            worksheet="Invoices"
+            type="xls"
             >
             Excel Report
             </downloadExcel>
         </b-button>    
-        <b-button class="darkmode-ignore" variant="primary" v-on:click="createNewReport">PDF Report</b-button>
-        <b-button class="darkmode-ignore" variant="info">Email Report</b-button>
+        <b-button class="darkmode-ignore" variant="primary" v-on:click="createNewReport">PDF Report</b-button> 
+        <b-button class="darkmode-ignore" variant="info">
+            <downloadExcel
+            :fields="fieldsForExcel"
+            :data="selected"
+            name="Report"
+            worksheet="Invoices"
+            type="csv"
+            >
+            CSV Report
+            </downloadExcel>
+        </b-button>
         <br>
         <b-button class="darkmode-ignore" variant="outline-success" v-on:click="selectAllRows">Select All Rows</b-button>
         <b-button class="darkmode-ignore" variant="outline-danger" v-on:click="clearSelected">Clear Selected Rows</b-button>
@@ -45,7 +57,8 @@ export default {
             fieldsForExcel: {Date: "date", Product: "product", Quantity: "quantity", ProductPrice: "productPrice", Service: "service", ServicePrice: "servicePrice", PaymentMethod: "paymentMethod", Total: "total"},
             selectMode: 'range',
             selected: [],
-            filter: ""
+            filter: "",
+            reportEmail: ""
         }
     },
     methods: {
@@ -87,7 +100,8 @@ export default {
         },
         clearSelected() {
             this.$refs.selectableTable.clearSelected()
-        }
+        },
+        
     },
     created() {
         this.getInvoices()
