@@ -8,7 +8,8 @@
     />
 
     <b-form @submit.prevent="addCustomer">
-      <div>
+      <b-label for="firstName" text-align="left"> First Name:</b-label>
+      <div class="form-group">
         <b-form-input
           v-model="customer.firstName"
           type="text"
@@ -18,18 +19,20 @@
         ></b-form-input>
 
         <span
-        v-if="!$v.firstName.required && $v.firstName.$dirty"
-        class="text-danger"
-        >First name is required</span
-      >
-      <span
-        v-if="!$v.firstName.alpha && $v.firstName.$dirty"
-        class="text-danger"
-        >First name is required</span
-      >
+          v-if="!$v.firstName.required && $v.firstName.$dirty"
+          class="text-danger"
+          >First name is required</span
+        >
+        <span
+          v-if="!$v.firstName.alpha && $v.firstName.$dirty"
+          class="text-danger"
+          >First name is required</span
+        >
       </div>
 
       <div class="form-group">
+        <label for="lastName">Last Name:</label>
+
         <b-form-input
           v-model="customer.lastName"
           placeholder="e.g., Doe"
@@ -51,14 +54,19 @@
           v-model="customer.phoneNumber"
           placeholder="e.g., 8325551212"
         ></b-form-input>
-        <span v-if="!$v.phoneNumber.numeric && $v.phoneNumber.$dirty">Please enter a valid phone number</span>
+        <span v-if="!$v.phoneNumber.numeric && $v.phoneNumber.$dirty"
+          >Please enter a valid phone number</span
+        >
         <span
-          v-if="!$v.phoneNumber.alpha && $v.phoneNumber.$dirty"
+          v-if="!$v.phoneNumber.required && $v.phoneNumber.$dirty"
           class="text-danger"
           >Phone number is required</span
         >
         <span
-          v-if="(!$v.phoneNumber.minLength || !$v.phoneNumber.maxlength) && $v.phoneNumber.$dirty"
+          v-if="
+            (!$v.phoneNumber.minLength || !$v.phoneNumber.maxlength) &&
+            $v.phoneNumber.$dirty
+          "
           class="text-danger"
           >Please enter a valid phone number</span
         >
@@ -70,7 +78,9 @@
           v-model="customer.email"
           placeholder="e.g., jdoe@example.com"
         ></b-form-input>
-        <span v-if="!$v.email.email && $v.email.$dirty">Please enter a valid email</span>
+        <span v-if="!$v.email.email && $v.email.$dirty"
+          >Please enter a valid email</span
+        >
       </div>
 
       <b-button class="darkmode-ignore" variant="primary" type="submit"
