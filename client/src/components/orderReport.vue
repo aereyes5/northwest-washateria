@@ -7,7 +7,7 @@
             :fields="fieldsForExcel"
             :data="selected"
             name="Report"
-            worksheet="Invoices"
+            worksheet="Orders"
             type="xls"
             >
             Excel Report
@@ -30,7 +30,7 @@
         <b-button class="darkmode-ignore" variant="outline-danger" v-on:click="clearSelected">Clear Selected Rows
         </b-button>
 
-        <b-table id="report" :items="invoices" :fields="fields" :filter="filter" :select-mode="selectMode" striped
+        <b-table id="report" :items="orders" :fields="fields" :filter="filter" :select-mode="selectMode" striped
             responsive="sm" ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh">
         </b-table>
     </div>
@@ -44,9 +44,9 @@ export default {
     name: 'newReport',
     data() {
         return {
-            invoices: [],
-            fields: ['date', 'product', 'quantity', 'productPrice', 'service', 'servicePrice', 'paymentMethod','total'],
-            fieldsForExcel: {Date: "date", Product: "product", Quantity: "quantity", ProductPrice: "productPrice", Service: "service", ServicePrice: "servicePrice", PaymentMethod: "paymentMethod", Total: "total"},
+            orders: [],
+            fields: ['date', 'product', 'quantity', 'total', 'vendor', 'status'],
+            fieldsForExcel: {Date: "date", Product: "product", Quantity: "quantity",  Total: "total", Vendor: 'vendor', Status: 'status'},
             selectMode: 'range',
             selected: [],
             filter: "",
@@ -54,11 +54,11 @@ export default {
         }
     },
     methods: {
-        getInvoices() {
-                services.getInvoices().then(response => {
-                    this.invoices = response
-                    this.invoiceID = null
-                    console.log(this.invoices)
+        getOrders() {
+                services.getOrders().then(response => {
+                    this.orders = response[0]
+                    this.orderID = null
+                    console.log(this.orders)
                 }).catch(e => {
                     console.log(e);
                 })
@@ -95,7 +95,7 @@ export default {
             }
         },
         created() {
-        this.getInvoices()
+        this.getOrders()
     }
     }
     
