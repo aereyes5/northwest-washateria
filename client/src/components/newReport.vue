@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="@/assets/genreport.png" alt="Genereate Reports">
+        <img src="@/assets/genreport.png" width=750px heigth=150px alt="Genereate Reports">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         <b-button class="darkmode-ignore" variant="success">
             <downloadExcel :fields="fieldsForExcel" :data="selected" name="Report">

@@ -2,7 +2,7 @@
     <b-container class="back">
         <div>
             <br>
-            <h1><span>User Guide</span></h1><br>
+            <img src="@/assets/userguide.png" width=750px heigth=150px alt="User Guide">
             <div class="questions">
                 <!-- I plan to add .gifs to demo the steps and more questions -->
                 <h4>How do I access the database?</h4>
@@ -51,7 +51,6 @@
                         You can delete a record by first clicking on a record to select it and then clicking the red
                         "Delete" button to remove it.
                     </li>
-                    <img src="@/assets/dkmtoggle.png" alt="Dark Mode Toggle">
                 </ul>
                 <h4>What is that moon icon on the lower right hand side of the screen?</h4>
                 <ul>

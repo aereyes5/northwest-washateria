@@ -1,7 +1,7 @@
 <template>
     <div>
         <container>
-            <img src="@/assets/Invoices.png" width=750px heigth=500px alt="Invoices">
+            <img src="@/assets/Invoices.png" width=750px heigth=150px alt="Invoices">
         </container>
         
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
