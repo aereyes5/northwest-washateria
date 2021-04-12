@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="@/assets/genreport.png" alt="Genereate Reports">
+        <img src="@/assets/genreport.png" width=750px heigth=150px alt="Genereate Reports">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         <b-button class="darkmode-ignore" variant="success">
             <downloadExcel
@@ -29,6 +29,7 @@
         </b-button>
         <b-button class="darkmode-ignore" variant="outline-danger" v-on:click="clearSelected">Clear Selected Rows
         </b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'Customers'" variant="danger">Cancel</b-button>
 
         <b-table id="report" :items="customers" :fields="fields" :filter="filter" :select-mode="selectMode" striped
             responsive="sm" ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh">

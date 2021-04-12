@@ -17,7 +17,7 @@
         <b-table :items="invoices" :fields="fields" :filter="filter" :select-mode="selectMode" striped responsive="sm"
             ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh" >
             <template #cell(show_details)="row">
-                    <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+                    <b-button size="sm" @click="row.toggleDetails" class="mr-2, darkmode-ignore">
                     {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
                     </b-button>
             </template>
