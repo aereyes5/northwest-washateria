@@ -9,9 +9,12 @@
     <b-button class="darkmode-ignore" variant="success" v-bind:to="'new-vendor'">Add New</b-button>
     <b-button class="darkmode-ignore" variant="secondary" v-on:click="setVendorID">Update</b-button>
     <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteVendor">Delete</b-button>
+      
+    <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
 
     <b-table :items="vendors" :fields="fields" :select-mode="selectMode" :filter="filter" striped responsive="sm"
-      ref="selectableTable" selectable hover @row-selected="onRowSelected">
+      ref="selectableTable" selectable hover @row-selected="onRowSelected"
+      :per-page="perPage" :current-page="currentPage">
       <template #cell(show_details)="row">
         <b-button size="sm" @click="row.toggleDetails" class="mr-2, darkmode-ignore">
           {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
@@ -54,7 +57,9 @@
         status: "",
         selectMode: 'single',
         selected: [],
-        filter: ""
+        filter: "",
+        perPage: 7,
+        currentPage: 1
       }
     },
     methods: {
@@ -111,7 +116,12 @@
     },
     created() {
       this.getVendors()
-    }
+    },
+    computed: {
+            rows(){
+                return this.vendors.length
+            }
+        }
   }
 </script>
 

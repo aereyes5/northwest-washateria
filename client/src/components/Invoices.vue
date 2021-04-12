@@ -13,9 +13,10 @@
         <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
             {{status2}}
         </p>
-
+        <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
         <b-table :items="invoices" :fields="fields" :filter="filter" :select-mode="selectMode" striped responsive="sm"
-            ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh" >
+            ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh" 
+            :per-page="perPage" :current-page="currentPage">
             <template #cell(show_details)="row">
                     <b-button size="sm" @click="row.toggleDetails" class="mr-2, darkmode-ignore">
                     {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
@@ -112,6 +113,8 @@
                     payment: null
 
                 },
+                perPage: 7,
+                currentPage: 1,
                 invoiceDate: null
             }
         },
@@ -215,6 +218,11 @@
         },
         created() {
             this.getInvoices()
+        },
+        computed: {
+            rows(){
+                return this.invoices.length
+            }
         }
     }
 </script>
