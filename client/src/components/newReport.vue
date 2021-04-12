@@ -3,25 +3,14 @@
         <img src="@/assets/genreport.png" width=750px heigth=150px alt="Genereate Reports">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         <b-button class="darkmode-ignore" variant="success">
-            <downloadExcel
-            :fields="fieldsForExcel"
-            :data="selected"
-            name="Report"
-            worksheet="Invoices"
-            type="xls"
-            >
-            Excel Report
+            <downloadExcel :fields="fieldsForExcel" :data="selected" name="Report" worksheet="Invoices" type="xls">
+                Excel Report
             </downloadExcel>
-        </b-button>    
-        <b-button class="darkmode-ignore" variant="primary" v-on:click="createNewReport">PDF Report</b-button> 
+        </b-button>
+        <b-button class="darkmode-ignore" variant="primary" v-on:click="createNewReport">PDF Report</b-button>
         <b-button class="darkmode-ignore" variant="info">
-            <downloadExcel
-            :fields="fieldsForExcel"
-            :data="selected"
-            name="Report"
-            type="csv"
-            >
-            CSV Report
+            <downloadExcel :fields="fieldsForExcel" :data="selected" name="Report" type="csv">
+                CSV Report
             </downloadExcel>
         </b-button>
         <br>
@@ -29,6 +18,7 @@
         </b-button>
         <b-button class="darkmode-ignore" variant="outline-danger" v-on:click="clearSelected">Clear Selected Rows
         </b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'Invoices'" variant="danger">Cancel</b-button>
 
         <b-table id="report" :items="invoices" :fields="fields" :filter="filter" :select-mode="selectMode" striped
             responsive="sm" ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh">
@@ -37,24 +27,35 @@
 </template>
 
 <script>
-import services from '../services'
-import jsPDF from 'jspdf'
-import 'jspdf-autotable'
-export default {
-    name: 'newReport',
-    data() {
-        return {
-            invoices: [],
-            fields: ['date', 'product', 'quantity', 'productPrice', 'service', 'servicePrice', 'paymentMethod','total'],
-            fieldsForExcel: {Date: "date", Product: "product", Quantity: "quantity", ProductPrice: "productPrice", Service: "service", ServicePrice: "servicePrice", PaymentMethod: "paymentMethod", Total: "total"},
-            selectMode: 'range',
-            selected: [],
-            filter: "",
-            reportEmail: ""
-        }
-    },
-    methods: {
-        getInvoices() {
+    import services from '../services'
+    import jsPDF from 'jspdf'
+    import 'jspdf-autotable'
+    export default {
+        name: 'newReport',
+        data() {
+            return {
+                invoices: [],
+                fields: ['date', 'product', 'quantity', 'productPrice', 'service', 'servicePrice', 'paymentMethod',
+                    'total'
+                ],
+                fieldsForExcel: {
+                    Date: "date",
+                    Product: "product",
+                    Quantity: "quantity",
+                    ProductPrice: "productPrice",
+                    Service: "service",
+                    ServicePrice: "servicePrice",
+                    PaymentMethod: "paymentMethod",
+                    Total: "total"
+                },
+                selectMode: 'range',
+                selected: [],
+                filter: "",
+                reportEmail: ""
+            }
+        },
+        methods: {
+            getInvoices() {
                 services.getInvoices().then(response => {
                     this.invoices = response
                     this.invoiceID = null
@@ -95,8 +96,7 @@ export default {
             }
         },
         created() {
-        this.getInvoices()
+            this.getInvoices()
+        }
     }
-    }
-    
 </script>

@@ -22,7 +22,7 @@
     bottom: '32px', // default: '32px'
     right: '32px', // default: '32px'
     left: 'unset', // default: 'unset'
-    time: '0.7s', // default: '0.3s'
+    time: '0.8s', // default: '0.3s'
     mixColor: '#fff', // default: '#fff'
     backgroundColor: '#fff', // default: '#fff'
     buttonColorDark: '#100f2c', // default: '#100f2c'
@@ -38,7 +38,6 @@
 <style>
   #app {
     font-family: "Franklin Gothic Book", Helvetica, Arial, sans-serif;
-    src: local("Gilroy"), url(./fonts/Gilroy-Light.otf) format("truetype");
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
