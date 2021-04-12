@@ -15,7 +15,7 @@
         </p>
 
         <b-table :items="services" :fields="fields" :select-mode="selectMode" :filter="filter" striped responsive="sm"
-            ref="selectableTable" selectable @row-selected="onRowSelected" sticky-header="83vh"
+            ref="selectableTable" selectable @row-selected="onRowSelected"
             :per-page="perPage" :current-page="currentPage">
 
         </b-table>

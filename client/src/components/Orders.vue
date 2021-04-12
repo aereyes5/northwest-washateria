@@ -12,7 +12,7 @@
         </p>
         <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
         <b-table :items="orders" :fields="fields" :select-mode="selectMode" :filter="filter" striped responsive="sm"
-            ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh"
+            ref="selectableTable" selectable hover @row-selected="onRowSelected"
             :per-page="perPage" :current-page="currentPage">
 
         </b-table>

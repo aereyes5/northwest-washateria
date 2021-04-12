@@ -51,7 +51,6 @@
       selectable
       hover
       @row-selected="onRowSelected"
-      sticky-header="83vh"
       :per-page="perPage"
       :current-page="currentPage"
     >

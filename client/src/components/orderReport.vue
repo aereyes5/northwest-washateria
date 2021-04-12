@@ -21,7 +21,7 @@
         <b-button class="darkmode-ignore" v-bind:to="'Orders'" variant="danger">Cancel</b-button>
 
         <b-table id="report" :items="orders" :fields="fields" :filter="filter" :select-mode="selectMode" striped
-            responsive="sm" ref="selectableTable" selectable hover @row-selected="onRowSelected" sticky-header="83vh">
+            responsive="sm" ref="selectableTable" selectable hover @row-selected="onRowSelected">
         </b-table>
     </div>
 </template>

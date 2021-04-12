@@ -12,7 +12,6 @@ export const store = new Vuex.Store({
             firstName: null,
             lastName: null,
             employeeID: null
-
         },
 
         customer: {
@@ -34,9 +33,8 @@ export const store = new Vuex.Store({
         order: {
             productOrderID: null
         },
-        invoice:{
+        invoice: {
             invoiceDate: null,
-            
         }
 
 
@@ -95,7 +93,7 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
-        loginUser(state, {loginID, username, password, access, firstName, lastName, employeeID}) {
+        loginUser(state, { loginID, username, password, access, firstName, lastName, employeeID }) {
             state.user.loginID = loginID
             state.user.username = username
             state.user.password = password
@@ -129,6 +127,5 @@ export const store = new Vuex.Store({
         invoiceDate(state, { invoiceDate }) {
             state.invoice.invoiceDate = invoiceDate
         }
-
     }
 })

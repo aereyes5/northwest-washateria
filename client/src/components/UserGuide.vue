@@ -15,18 +15,20 @@
                 <h4>How do I access a table?</h4>
                 <ul>
                     <li>
-                        In the navbar located at the top, you can select a table to access the records associated with
+                        In the navigation bar located at the top of the page, you can select a table to access the
+                        records associated with
                         that table.
                     </li>
                 </ul>
                 <h4>How do I add a record to a table?</h4>
                 <ul>
                     <li>
-                        You can click on the green "Add New" button in order to load a form to add a new record to the
+                        You can click on the green "Add New" button in order to load a form that can be used to add a
+                        new record to the
                         table.
                     </li>
                 </ul>
-                <h4>What if I dont want to add a new record anymore?</h4>
+                <h4>What if I do not want to add a new record anymore?</h4>
                 <ul>
                     <li>
                         You can click on the red "Cancel" button in order to be taken back to the previous page.
@@ -35,11 +37,11 @@
                 <h4>How do I edit a record?</h4>
                 <ul>
                     <li>
-                        You can edit a record by first clicking on a record to select it and then clicking the gray
-                        "Update" button to be taken to a form to edit the fields in a record.
+                        You can edit a record by first clicking on a record to select it, then clicking the gray
+                        "Update" button to be taken to a form to edit the data points in a record.
                     </li>
                 </ul>
-                <h4>What if I dont want to edit a record anymore?</h4>
+                <h4>What if I do not want to edit a record anymore?</h4>
                 <ul>
                     <li>
                         You can click on the red "Cancel" button in order to be taken back to the previous page.
