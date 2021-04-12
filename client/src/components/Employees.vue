@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="@/assets/Employees.png" alt="Employees">
+        <img src="@/assets/Employees.png" width=750px heigth=500px alt="Employees">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
         
         <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">

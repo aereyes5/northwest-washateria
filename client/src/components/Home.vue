@@ -12,7 +12,7 @@ import services from '../services'
     data() {
       return {
         user: {
-          firstName:null,
+          firstName: null,
           lastName: null
         }
       }
