@@ -1,9 +1,14 @@
 <template>
   <div>
-        <img src="@/assets/addcustomer.png" width=750px heigth=150px alt="Add Customer">
+    <img
+      src="@/assets/addcustomer.png"
+      width="750px"
+      heigth="150px"
+      alt="Add Customer"
+    />
+
     <b-form @submit.prevent="addCustomer">
-      <div class="form-group">
-        <label for="firstName"></label>
+      <div>
         <b-form-input
           v-model="customer.firstName"
           type="text"
@@ -11,16 +16,17 @@
           placeholder="e.g., Jane"
           id="firstName"
         ></b-form-input>
+
         <span
-          v-if="!$v.firstName.required && $v.firstName.$dirty"
-          class="text-danger"
-          >First name is required</span
-        >
-        <span
-          v-if="!$v.firstName.alpha && $v.firstName.$dirty"
-          class="text-danger"
-          >First name is required</span
-        >
+        v-if="!$v.firstName.required && $v.firstName.$dirty"
+        class="text-danger"
+        >First name is required</span
+      >
+      <span
+        v-if="!$v.firstName.alpha && $v.firstName.$dirty"
+        class="text-danger"
+        >First name is required</span
+      >
       </div>
 
       <div class="form-group">
@@ -62,7 +68,7 @@
         <b-form-input
           type="email"
           v-model="customer.email"
-          placeholder="e.g., "
+          placeholder="e.g., jdoe@example.com"
         ></b-form-input>
         <span v-if="!$v.email.email && $v.email.$dirty">Please enter a valid email</span>
       </div>
@@ -85,7 +91,7 @@
 import {
   required,
   minLength,
-  maxlength,
+  maxLength,
   alpha,
   email,
   numeric,
@@ -101,27 +107,26 @@ export default {
         phoneNumber: null,
         email: null,
       },
-
-      validations: {
-        firstName: {
-          required,
-          alpha,
-        },
-        lastName: {
-          required,
-          alpha,
-        },
-        phoneNumber: {
-          required,
-          numeric,
-          maxlength: maxlength(10),
-          minLength: minLength(10),
-        },
-        email: {
-          email,
-        },
-      },
     };
+  },
+  validations: {
+    firstName: {
+      required,
+      alpha,
+    },
+    lastName: {
+      required,
+      alpha,
+    },
+    phoneNumber: {
+      required,
+      numeric,
+      minLength: minLength(10),
+      maxLength: maxLength(10),
+    },
+    email: {
+      email,
+    },
   },
   methods: {
     async addCustomer() {

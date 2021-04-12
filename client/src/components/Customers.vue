@@ -3,7 +3,7 @@
     <img src="@/assets/Customers.png" width=750px heigth=500px alt="Customers">
     <br /><br />
     <b-row align-h="center">
-                <b-button class="darkmode-ignore" v-bind:to="'customer-report'" variant="primary">Generate Reports</b-button>
+      <b-button class="darkmode-ignore" v-bind:to="'customer-report'" variant="primary">Generate Reports</b-button>
 
       <b-button
         class="darkmode-ignore"
