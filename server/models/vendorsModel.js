@@ -56,10 +56,10 @@ module.exports = {
     updateVendorById: (data, result) => {
         db.query("call updateVendor(?,?,?,?,?,?,?)", [data.vendorID, data.vendorName, data.type, data.country, data.vendorContact, data.phoneNumber, data.email], (err, results) => {
             if (err) {
-                console.log(err);
-                result(err, null);
+                console.log(err)
+                result(err, null)
             } else {
-                result(null, results);
+                result(null, results[0])
             }
         });
     },

@@ -10,7 +10,7 @@
             <b-form-input v-model="customer.email" placeholder="Enter Email" id="email"></b-form-input>
             <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
         </b-form>
-        <b-button class="darkmode-ignore" v-bind:to="'customers'" variant="danger" type="submit">Cancel</b-button>
+        <b-button class="darkmode-ignore" v-bind:to="'Customers'" variant="danger" type="submit">Cancel</b-button>
     </div>
 </template>
 

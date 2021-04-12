@@ -9,7 +9,7 @@ const express = require('express'),
     VendorContact = require('../controllers/vendorContact'),
     Orders = require('../controllers/orders'),
     Status = require('../controllers/invoiceStatus'),
-    InvoiceProducts = require('../controllers/invoiceProducts')
+    InvoiceProducts = require('../controllers/invoiceProducts'),
     Countries = require('../controllers/country');
 router = new express.Router()
 

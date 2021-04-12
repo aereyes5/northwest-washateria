@@ -2,39 +2,75 @@
     <div>
         <img src="@/assets/addinvoice.png" width=750px heigth=150px alt="Add Invoice">
         <b-form @submit.prevent="insertInvoice">
-            <b-form-input v-model="invoice.customerFirstName" placeholder="Customer First Name" id="customerFirstName">
-            </b-form-input>
-            <b-form-input v-model="invoice.customerLastName" placeholder="Customer Last Name" id="customerLastName">
-            </b-form-input>
-            <b-form-input v-model="invoice.phoneNumber" placeholder="Customer Phone Number"
-                id="customerPhoneNumber"></b-form-input>
 
-            <b-form-select v-model="invoice.productName" :options="products" class="mb-3" value-field="productName"
-                text-field="productName" disabled-field="notEnabled" placeholder="Products" @change="newProduct">
-            </b-form-select>
-
-            <b-form-spinbutton v-model="invoice.productQuantity" id="sb-inline" placeholder="--" inline
+            <div class="form-group">
+                <b-form-input v-model="invoice.customerFirstName" placeholder="Customer First Name" id="customerFirstName">
+                </b-form-input>
+                <span v-if="!$v.invoice.customerFirstName.required && $v.invoice.customerFirstName.$dirty" class="text-danger">Customer's first name is required</span>
+                <span v-if="!$v.invoice.customerFirstName.alpha && $v.invoice.customerFirstName.$dirty" class="text-danger">Customer's first name must only contain alpha characters</span>
+            </div>
+           
+            <div class="form-group">
+                <b-form-input v-model="invoice.customerLastName" placeholder="Customer Last Name" id="customerLastName">
+                </b-form-input>
+                <span v-if="!$v.invoice.customerLastName.required && $v.invoice.customerLastName.$dirty" class="text-danger">Customer's last name is required</span>
+                <span v-if="!$v.invoice.customerLastName.alpha && $v.invoice.customerLastName.$dirty" class="text-danger">Customer's last name must only contain alpha characters</span>
+            </div>
+            
+            <div class="form-group">
+                <b-form-input v-model="invoice.phoneNumber" placeholder="Customer Phone Number"
+                    id="customerPhoneNumber"></b-form-input>
+                <span v-if="!$v.invoice.phoneNumber.required && $v.invoice.phoneNumber.$dirty" class="text-danger">Customer's phone number is required</span>
+                <span v-if="(!$v.invoice.phoneNumber.numeric ||!$v.invoice.phoneNumber.minLength ||!$v.invoice.phoneNumber.maxLength) && $v.invoice.phoneNumber.$dirty" class="text-danger">Please enter a valid phone number</span>
+            </div>
+            
+            <div class="form-group">
+                <b-form-select v-model="invoice.productName" :options="products" class="mb-3" value-field="productName"
+                    text-field="productName" disabled-field="notEnabled" placeholder="Products" @change="newProduct">
+                </b-form-select>
+            </div>
+            
+            <div class="form-group">
+                 <b-form-spinbutton v-model="invoice.productQuantity" id="sb-inline" placeholder="--" inline
                 @change="findProductTotal"></b-form-spinbutton>
-            <b-form-input v-model="productTotal" id="productTotal" disabled></b-form-input>
+            </div>
 
-            <b-form-select v-model="invoice.serviceName" :options="services" class="mb-3" value-field="serviceName"
-                text-field="serviceName" disabled-field="notEnabled" @change="findServiceTotal" placeholder="Services">
-            </b-form-select>
+            <div class="form-group">
+                <b-form-input v-model="productTotal" id="productTotal" disabled></b-form-input>
+            </div>
+           
+            <div class="form-group">
+                <b-form-select v-model="invoice.serviceName" :options="services" class="mb-3" value-field="serviceName"
+                    text-field="serviceName" disabled-field="notEnabled" @change="findServiceTotal" placeholder="Services">
+                </b-form-select>
+            </div>
 
-            <b-form-input v-model="serviceTotal" id="serviceTotal" disabled></b-form-input>
-            <b-form-select v-model="invoice.paymentMethod" :options="paymentMethods" class="mb-3"
+            <div class="form-group">
+                <b-form-input v-model="serviceTotal" id="serviceTotal" disabled></b-form-input>
+            </div>
+            
+            <div class="form-group">
+                <b-form-select v-model="invoice.paymentMethod" :options="paymentMethods" class="mb-3"
                 value-field="paymentDescription" text-field="paymentDescription" disabled-field="notEnabled"
                 placeholder="Payment Method"></b-form-select>
+                <span v-if="!$v.invoice.paymentMethod.required && $v.invoice.paymentMethod.$dirty" class="text-danger">Please select a payment method</span>
+            </div>
 
-            <b-form-input v-model="invoice.total" id="total" disabled></b-form-input>
+            <div class="form-group">
+                <b-form-input v-model="invoice.total" id="total" disabled></b-form-input>
+                <span v-if="!$v.invoice.total.required && $v.invoice.total.$dirty" class="text-danger">Please select a product or service to purchase</span>
+            </div>
 
-            <b-button class="darkmode-ignore" variant="success" type="submit">Place Order</b-button>
+            <b-row align-h="center">
+                <b-button class="darkmode-ignore" v-bind:to="'Invoices'" variant="danger">Cancel</b-button>
+                <b-button class="darkmode-ignore" variant="success" type="submit">Place Order</b-button>
+            </b-row>
         </b-form>
-        <b-button class="darkmode-ignore" v-bind:to="'Invoices'" variant="danger">Cancel</b-button>
     </div>
 </template>
 
 <script>
+    import {required,minLength,maxLength,alpha,numeric} from "vuelidate/lib/validators"
     import services from '../services'
     export default {
         name: "NewInvoice",
@@ -58,6 +94,32 @@
                 productTotal: null,
                 serviceTotal: null
             }
+        },
+        validations:{
+            invoice:{
+                customerFirstName: {
+                    required,
+                    alpha
+                },
+                customerLastName: {
+                    required,
+                    alpha
+                },
+                phoneNumber: {
+                    required,
+                    numeric,
+                    maxLength: maxLength(10),
+                    minLength: minLength(10)
+                },
+                paymentMethod: {
+                    required
+                },
+                total: {
+                    required
+                }
+            }
+            
+
         },
         methods: {
             getLoginID() {
@@ -117,52 +179,55 @@
                             .EPSILON) * 100) / 100
             },
 
-            getCustomerByPhone() {
-                if (this.invoice.phoneNumber == null) {
-                    this.status = "Please enter customer's phone number";
-                } else {
-                    this.status = "";
-                    try {
-                        services.getCustomerByPhone(this.invoice.phoneNumber).then((response) => {
-                            this.invoice.customerID = response.customerID;
-                            console.log(this.invoice.customerID);
-                            if(this.invoice.customerID == null){
-                                this.addCustomer()
-                            }
-                        });
-                    } catch (err) {
-                        console.log(err);
-                    }
-                }
-            },
-            async addCustomer() {
-                try {
-                const newCustomer = services.insertCustomer(this.customer).then(customer => {
-                    this.$router.push({
-                    name: 'Customers'
-                    })
-                    return customer
-                }).catch((error) => {
-                    this.status = error
-                })
-                } catch (error) {
-                this.status = error
-                }
-            },
+            // getCustomerByPhone() {
+            //     if (this.invoice.phoneNumber == null) {
+            //         this.status = "Please enter customer's phone number";
+            //     } else {
+            //         this.status = "";
+            //         try {
+            //             services.getCustomerByPhone(this.invoice.phoneNumber).then((response) => {
+            //                 this.invoice.customerID = response.customerID;
+            //                 console.log(this.invoice.customerID);
+            //                 if(this.invoice.customerID == null){
+            //                     this.addCustomer()
+            //                 }
+            //             });
+            //         } catch (err) {
+            //             console.log(err);
+            //         }
+            //     }
+            // },
+            // async addCustomer() {
+            //     try {
+            //     const newCustomer = services.insertCustomer(this.customer).then(customer => {
+            //         this.$router.push({
+            //         name: 'Customers'
+            //         })
+            //         return customer
+            //     }).catch((error) => {
+            //         this.status = error
+            //     })
+            //     } catch (error) {
+            //     this.status = error
+            //     }
+            // },
 
-            async insertInvoice(){
-                try {
-                    console.log(this.invoice)
-                    services.insertInvoice(this.invoice).then(invoice => {
-                        this.$router.push({
-                            name: 'Invoices'
+            insertInvoice(){
+                this.$v.$touch()
+                if (!this.$v.$invalid) {
+                    try {
+                        console.log(this.invoice)
+                        services.insertInvoice(this.invoice).then(invoice => {
+                            this.$router.push({
+                                name: 'Invoices'
+                            })
+                            return invoice
+                        }).catch((error) => {
+                            this.status = error
                         })
-                        return invoice
-                    }).catch((error) => {
+                    } catch (error) {
                         this.status = error
-                    })
-                } catch (error) {
-                    this.status = error
+                    }
                 }
 
             }

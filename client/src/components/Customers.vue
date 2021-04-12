@@ -2,7 +2,7 @@
   <div>
     <img src="@/assets/Customers.png" width=750px heigth=500px alt="Customers">
     <br /><br />
-    <b-row align-h="center">
+    
       <b-button class="darkmode-ignore" v-bind:to="'customer-report'" variant="primary">Generate Reports</b-button>
 
       <b-button
@@ -21,27 +21,22 @@
         class="darkmode-ignore"
         variant="danger"
         v-on:click="deleteCustomer"
-        >Delete</b-button
-      >
-    </b-row>
-    <b-row align-h="center">
+        >Delete</b-button>
+
       <p
         v-if="status2"
         class="danger font-italic font-weight-bold text-danger text-center"
       >
         {{ status2 }}
       </p>
-    </b-row>
-    <b-container>
-      <b-row>
-        <div class="col-xs-4">
+ 
           <b-form-input
             placeholder="Search..."
             v-model="filter"
             type="search"
           ></b-form-input>
-        </div>
-      </b-row>
+        
+     
       <br />
 
       <b-table
@@ -55,8 +50,7 @@
         selectable
         hover
         @row-selected="onRowSelected"
-        :per-page="perPage"
-        :current-page="currentPage"
+
       >
       </b-table>
       <b-pagination
@@ -64,7 +58,6 @@
         :total-rows="rows"
         :per-page="perPage"
       ></b-pagination>
-    </b-container>
   </div>
 </template>
 
@@ -79,7 +72,6 @@ export default {
       selectMode: "single",
       selected: [],
       phoneNumber: null,
-      status: "",
       status2: "",
       filter: "",
       perPage: 7,
@@ -87,12 +79,10 @@ export default {
     };
   },
   methods: {
-    getCustomers() {
-      services
-        .getCustomers()
+     getCustomers() {
+      services.getCustomers()
         .then((response) => {
           this.customers = response;
-          this.phoneNumber = null;
           console.log(this.customers);
         })
         .catch((e) => {
@@ -101,27 +91,31 @@ export default {
     },
     deleteCustomer() {
       if (!Array.isArray(this.selected) || !this.selected.length) {
-        this.status2 = "Please select a record to delete";
+        this.status2 = "Please select a record to delete"
       } else {
-        this.status2 = "";
-        services.deleteCustomer(this.selected[0].customerID);
-        this.getCustomers();
+        this.status2 = ""
+        services.deleteCustomer(this.selected[0].customerID).then(response =>{
+          console.log(response.data)
+          this.getCustomers()
+        }).catch(err =>{
+          console.log(err)
+        })       
       }
     },
     onRowSelected(items) {
-      this.selected = items;
-      console.log(items);
+      this.selected = items
+      console.log(items)
     },
     //Retrieve Customer By Phone Number
     getCustomerByPhone() {
       if (this.phoneNumber == null) {
         this.status = "Please enter customer's phone number";
       } else {
-        this.status = "";
+        this.status = ""
         try {
           services.getCustomerByPhone(this.phoneNumber).then((response) => {
-            this.customers = response;
-            console.log(this.customers);
+            this.customers = response
+            console.log(this.customers)
           });
         } catch (err) {
           console.log(err);
@@ -130,9 +124,9 @@ export default {
     },
     setPhoneNumber() {
       if (!Array.isArray(this.selected) || !this.selected.length) {
-        this.status2 = "Please select a record to update";
+        this.status2 = "Please select a record to update"
       } else {
-        this.updateCustomer(this.selected[0].phoneNumber);
+        this.updateCustomer(this.selected[0].phoneNumber)
       }
     },
     updateCustomer(phoneNumber) {
@@ -144,14 +138,15 @@ export default {
       });
     },
   },
-  created() {
-    this.getCustomers();
-  },
   computed: {
     rows() {
-      return this.customers.length;
-    },
+      return this.customers.length
+    }
   },
+  mounted() {
+    this.getCustomers()
+  },
+  
 };
 </script>
 

@@ -2,17 +2,31 @@
     <div>
         <img src="@/assets/addservice.png" width=750px heigth=150px alt="Add Service">
         <b-form @submit.prevent="addService">
-            <b-form-input v-model="service.serviceName" placeholder="Enter Service Name" id="serviceName">
-            </b-form-input>
-            <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price" id="servicePrice">
-            </b-form-input>
-            <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
+            <div class="form-group">
+                <b-form-input v-model="service.serviceName" placeholder="Enter Service Name" id="serviceName">
+                </b-form-input>
+                <span v-if="!$v.service.serviceName.required && $v.service.serviceName.$dirty" class="text-danger">Service name is required</span>
+                <span v-if="!$v.service.serviceName.alpha && $v.service.serviceName.$dirty" class="text-danger">Service name must contain alpha characters</span>
+            </div>
+            
+            <div class="form-group">
+                <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price" id="servicePrice">
+                </b-form-input>
+                <span v-if="!$v.service.servicePrice.required && $v.service.servicePrice.$dirty" class="text-danger">Service price is required</span>
+                <span v-if="!$v.service.servicePrice.decimal && $v.service.servicePrice.$dirty" class="text-danger">Service price must be a decimal value</span> 
+            </div>
+            
+           
+           <b-row align-h="center">
+                <b-button class="darkmode-ignore" v-bind:to="'Services'" variant="danger">Cancel</b-button>
+                <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
+           </b-row>
         </b-form>
-        <b-button class="darkmode-ignore" v-bind:to="'Services'" variant="danger">Cancel</b-button>
     </div>
 </template>
 
 <script>
+    import {required,alpha,decimal} from "vuelidate/lib/validators";
     import services from '../services'
     export default {
         name: 'NewService',
@@ -24,9 +38,23 @@
                 }
             }
         },
+        validations:{
+            service:{
+                serviceName:{
+                    required,
+                    alpha
+                },
+                servicePrice:{
+                    required,
+                    decimal
+                }
+            }
+        },
         methods: {
             async addService() {
-                try {
+                this.$v.$touch();
+                if(!this.$v.$invalid){
+                    try {
                     const newService = services.insertService(this.service).then(service => {
                         this.$router.push({
                             name: 'Services'
@@ -38,6 +66,8 @@
                 } catch (error) {
                     this.status = error
                 }
+                }
+                
             }
         }
     }
