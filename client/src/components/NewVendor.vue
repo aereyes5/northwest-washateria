@@ -5,7 +5,6 @@
             <div class="form-group">
                 <b-form-input v-model="vendor.vendorName" placeholder="Vendor Name" id="vendorName"></b-form-input>
                 <span v-if="!$v.vendor.vendorName.required && $v.vendor.vendorName.$dirty" class="text-danger">Vendor name is required</span>
-                <span v-if="!$v.vendor.vendorName.alpha && $v.vendor.vendorName.$dirty" class="text-danger">Vendor name can only contain alpha characters</span>
             </div>
             
             <div class="form-group">
@@ -28,7 +27,6 @@
                 <b-form-input v-model="vendor.vendorContact" placeholder="Vendor Contact Name" id="vendorContact">
                 </b-form-input>
                 <span v-if="!$v.vendor.vendorContact.required && $v.vendor.vendorContact.$dirty" class="text-danger">Vendor contact name is required</span>
-                <span v-if="!$v.vendor.vendorContact.alpha && $v.vendor.vendorContact.$dirty" class="text-danger">Vendor contact name can only contain alpa characters</span>
             </div>
             
             <div class="form-group">

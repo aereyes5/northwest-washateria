@@ -25,7 +25,7 @@
       </div>
       
       <div class="form-group">
-        <b-form-input v-model="employee.position" placeholder="e.g., Employee, Owner" id="position"></b-form-input>
+        <b-form-input v-model="employee.position" placeholder="Enter Position" id="position"></b-form-input>
         <span v-if="!$v.employee.position.required && $v.employee.position.$dirty" class="text-danger">Employee position is required</span>
       </div>
       
@@ -39,7 +39,7 @@
         <b-form-input v-model="employee.pswd" placeholder="Enter Password" type="password" id="pswd"
         ></b-form-input>
         <span v-if="!$v.employee.pswd.required && $v.employee.pswd.$dirty" class="text-danger">Password is required</span>
-        <span v-if="!$v.employee.pswd.minLength && $v.employee.pswd.$dirty" class="text-danger">Password must be at least {{$v.employee.password.$params.minLength.min}} characters long</span>
+        <span v-if="!$v.employee.pswd.minLength && $v.employee.pswd.$dirty" class="text-danger">Password must be at least {{$v.employee.pswd.$params.minLength.min}} characters long</span>
       </div>
       
       <div class="form-group">
