@@ -37,7 +37,7 @@
 
 <style>
   #app {
-    font-family: "Gilroy", Helvetica, Arial, sans-serif;
+    font-family: "Franklin Gothic Book", Helvetica, Arial, sans-serif;
     src: local("Gilroy"), url(./fonts/Gilroy-Light.otf) format("truetype");
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
