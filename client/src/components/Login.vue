@@ -2,9 +2,7 @@
   <div>
     <b-container class="back">
       <img src="@/assets/nwlogolong.png" width="920" height="200" alt="nwlogolong">
-      <br>
-      <br>
-      <h1><span>Login</span></h1><br>
+      <img src="@/assets/login.png" width=750px heigth=150px alt="Login">
       <form>
         <b-input-group prepend="Username">
           <b-form-input type="email" id="text-email" v-model="user.username" placeholder="Please Enter Username">

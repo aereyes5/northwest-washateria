@@ -1,9 +1,7 @@
 <template>
   <b-container class="back">
     <div>
-      <br>
-      <h1><span>Edit Account Info</span></h1>
-      <br>
+      <img src="@/assets/editaccount.png" width=750px heigth=150px alt="Edit Account Info">
       <b-form>
         <div class="form-row">
           <div class="col">

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="@/assets/updateinvoice.png" alt="Update Invoice">
+        <img src="@/assets/updateinvoice.png" width=750px heigth=150px alt="Update Invoice">
         <b-form @submit.prevent="updateInvoice">
             <b-form-input v-model="invoice.invoiceID" id="invoiceID" disabled></b-form-input>
             <b-form-input v-model="invoice.date" placeholder="Enter First Name" id="date"></b-form-input>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="@/assets/addservice.png" alt="Add Service">
+        <img src="@/assets/addservice.png" width=750px heigth=150px alt="Add Service">
         <b-form @submit.prevent="addService">
             <b-form-input v-model="service.serviceName" placeholder="Enter Service Name" id="serviceName">
             </b-form-input>
