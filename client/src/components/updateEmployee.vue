@@ -8,7 +8,6 @@
             <b-form-datepicker v-model="employee.startDate" placeholder="Enter End Date" id="startDate" disabled>
             </b-form-datepicker>
             <b-form-datepicker v-model="employee.endDate" placeholder="Enter End Date" id="endDate"></b-form-datepicker>
-            <b-form-input v-model="employee.position" placeholder="Enter Postion" id="position"></b-form-input>
             <b-form-input v-model="employee.username" placeholder="Enter Username" id="username"></b-form-input>
             <b-form-input v-model="employee.pswd" placeholder="Enter Password" id="pswd"></b-form-input>
             <b-form-select v-model="employee.access" placeholder="Enter Access" id="access">
@@ -66,7 +65,7 @@
                     console.log(err)
                 }
             },
-            UpdateEmployee() {
+            updateEmployee() {
                 services.updateEmployee(this.employee)
                 this.$router.push({
                     name: 'Employees'

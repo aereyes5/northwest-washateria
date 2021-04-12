@@ -74,7 +74,7 @@
                     console.log(err)
                 }
             },
-            UpdateInvoice() {
+            updateInvoice() {
                 services.updateInvoice(this.invoice)
                 this.$router.push({
                     name: 'Invoices'

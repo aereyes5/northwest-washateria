@@ -50,9 +50,9 @@ module.exports = {
     //Update Product
     updateProduct: (req, res) => {
         const data = req.body;
-        const productID = req.params.productID;
-        Products.updateProductById(data, productID, (err, results) => {
+        Products.updateProductById(data, (err, results) => {
             if (err) {
+                console.log(data)
                 res.send(err);
             } else {
                 res.json(results);

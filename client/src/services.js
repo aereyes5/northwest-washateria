@@ -235,10 +235,11 @@ static getInvoiceServicesByDate(date) {
                 const res = await axios.put(`${productUrl}/${product.productID}`, {
                     productID: product.productID,
                     productName: product.productName,
-                    productPrice: product.productPrice,
-                    vendorID: product.vendorID
+                    price: product.price,
+                    vendor: product.vendor
                 })
                 const data = res.data
+                console.log(product)
                 resolve(data)
             } catch (error) {
                 reject(`${error}`)

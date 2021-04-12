@@ -40,11 +40,10 @@ module.exports = {
     },
 
     //Update Product
-    updateProductById: (data, productID, result) => {
-        db.query("UPDATE products SET productName = ?, productPrice = ?, vendorID = ? WHERE productID = ?", [data.productName, data.productPrice, data.vendorID, productID], (err, results) => {
+    updateProductById: (data, result) => {
+        db.query("call updateProduct(?,?,?,?)", [data.productID, data.productName, data.price, data.vendor], (err, results) => {
             if (err) {
                 console.log(err);
-                4
                 result(err, null);
             } else {
                 result(null, results);
