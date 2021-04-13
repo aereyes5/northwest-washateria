@@ -127,11 +127,15 @@
           this.status = "";
           services.deleteVendor(this.selected[0].vendorID)
           this.getVendors()
+          this.$refs.selectableTable.refresh();
         }
       }
     },
     created() {
       this.getVendors()
+    },
+    mounted(){
+      this.$refs.selectableTable.refresh();
     },
     computed: {
             rows(){

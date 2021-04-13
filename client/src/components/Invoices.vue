@@ -147,7 +147,7 @@
                 } else {
                     this.status2 = "";
                     services.deleteInvoice(this.selected[0].invoiceID)
-                    window.location.reload()
+                    this.$refs.selectableTable.refresh();
                 }
             },
             onRowSelected(items) {
@@ -195,6 +195,9 @@
         },
         created() {
             this.getInvoices()
+        },
+        mounted(){
+            this.$refs.selectableTable.refresh();
         },
         computed: {
             rows(){

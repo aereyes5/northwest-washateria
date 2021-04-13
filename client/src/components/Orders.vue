@@ -83,6 +83,10 @@
         },
         created() {
             this.getOrders()
+            
+        },
+        mounted(){
+            this.$refs.selectableTable.refresh();
         },
         computed: {
             rows(){

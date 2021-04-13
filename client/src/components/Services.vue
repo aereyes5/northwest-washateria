@@ -73,6 +73,7 @@
                     this.status2 = "";
                     services.deleteService(this.selected[0].serviceID)
                     this.getServices()
+                    this.$refs.selectableTable.refresh();
                 }
             },
             onRowSelected(items) {
@@ -112,6 +113,9 @@
         },
         created() {
             this.getServices()
+        },
+        mounted() {
+            this.$refs.selectableTable.refresh();
         },
         computed: {
             rows(){

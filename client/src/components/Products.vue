@@ -83,6 +83,7 @@ export default {
         this.status2 = "" 
         services.deleteProduct(this.selected[0].productID) 
         this.getProducts() 
+        this.$refs.selectableTable.refresh();
       }
     },
     onRowSelected(items) {
@@ -127,6 +128,9 @@ export default {
   },
   created() {
     this.getProducts()
+  },
+  mounted(){
+    this.$refs.selectableTable.refresh();
   }
   
 }

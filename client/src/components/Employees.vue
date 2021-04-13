@@ -65,6 +65,7 @@
                     services.deleteEmployee(this.selected[0].employeeID)
                     this.getEmployees()
                 }
+                this.$refs.selectableTable.refresh();
             },
             onRowSelected(items) {
                 this.selected = items
@@ -91,6 +92,9 @@
             rows(){
                 return this.employees.length
             }
+        },
+        mounted(){
+            this.$refs.selectableTable.refresh();
         },
         created() {
             this.getEmployees()

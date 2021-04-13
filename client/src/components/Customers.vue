@@ -80,7 +80,8 @@ export default {
           this.getCustomers()
         }).catch(err =>{
           console.log(err)
-        })       
+        })
+        this.$refs.selectableTable.refresh();  
       }
     },
     onRowSelected(items) {
@@ -126,6 +127,7 @@ export default {
   },
   mounted() {
     this.getCustomers()
+    this.$refs.selectableTable.refresh();
   },
   
 };
