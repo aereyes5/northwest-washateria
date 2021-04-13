@@ -5,7 +5,7 @@
         <b-container fluid="md">
             <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
             
-            <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
+            <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
                 {{status}}
             </p>
 
@@ -50,7 +50,6 @@
                 selectMode: 'single',
                 selected: [],
                 serviceID: null,
-                status: "",
                 status2: "",
                 filter: "",
                 perPage: 7,
@@ -80,21 +79,21 @@
                 this.selected = items
                 console.log(items)
             },
-            getServiceByID() {
-                if (this.serviceID == null) {
-                    this.status = "Please enter service ID"
-                } else {
-                    this.status = "";
-                    try {
-                        services.getServiceByID(this.serviceID).then(response => {
-                            this.services = response
-                            console.log(this.services)
-                        })
-                    } catch (err) {
-                        console.log(err)
-                    }
-                }
-            },
+            // getServiceByID() {
+            //     if (this.serviceID == null) {
+            //         this.status = "Please enter service ID"
+            //     } else {
+            //         this.status = "";
+            //         try {
+            //             services.getServiceByID(this.serviceID).then(response => {
+            //                 this.services = response
+            //                 console.log(this.services)
+            //             })
+            //         } catch (err) {
+            //             console.log(err)
+            //         }
+            //     }
+            // },
             setServiceID() {
                 if (!Array.isArray(this.selected) || !this.selected.length) {
                     this.status2 = "Please select a record to update"

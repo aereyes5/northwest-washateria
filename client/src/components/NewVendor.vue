@@ -6,6 +6,7 @@
             <div class="form-group">
                 <b-form-input v-model="vendor.vendorName" placeholder="Enter Vendor Name" id="vendorName"></b-form-input>
                 <span v-if="!$v.vendor.vendorName.required && $v.vendor.vendorName.$dirty" class="text-danger">Vendor name is required</span>
+                <span v-if="!$v.vendor.vendorName.isNameValid && $v.vendor.vendorName.$dirty" class="text-danger">Vendor name is invalid</span>
             </div>
             
             <div class="form-group">
@@ -32,6 +33,8 @@
                 <b-form-input v-model="vendor.vendorContact" placeholder="Enter Vendor Contact Name (e.g., Jane Doe)" id="vendorContact">
                 </b-form-input>
                 <span v-if="!$v.vendor.vendorContact.required && $v.vendor.vendorContact.$dirty" class="text-danger">Vendor contact name is required</span>
+                <span v-if="!$v.vendor.vendorContact.isNameValid && $v.vendor.vendorContact.$dirty" class="text-danger">Vendor contact name must only contain characters</span>
+
             </div>
             
             <div class="form-group">
@@ -59,7 +62,7 @@
 </template>
 
 <script>
-    import {required,minLength,maxLength,alpha,email,numeric} from "vuelidate/lib/validators" 
+    import {required,minLength,maxLength,helpers,email,numeric} from "vuelidate/lib/validators" 
     import services from '../services'
     export default {
         name: "NewVendor",
@@ -81,6 +84,8 @@
             vendor:{
                 vendorName: {
                     required,
+                    isNameValid: helpers.regex('isNameValid',/^[a-z0-9& ]*$/i),
+
                 },
                 type: {
                     required
@@ -89,7 +94,8 @@
                     required
                 },
                 vendorContact: {
-                    required
+                    required,
+                    isNameValid: helpers.regex('isNameValid',/^[a-z ]*$/i),
                 },
                 phoneNumber: {
                     required,

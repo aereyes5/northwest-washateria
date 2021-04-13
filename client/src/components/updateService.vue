@@ -13,6 +13,7 @@
                     </b-form-input>
                     <span v-if="!$v.service.serviceName.required && $v.service.serviceName.$dirty" class="text-danger">Service name is required</span>
             
+                    <span v-if="!$v.service.serviceName.isNameValid && $v.service.serviceName.$dirty" class="text-danger">Service name is invalid</span>
                 </div>
                 
                 <div class="form-group">
@@ -52,6 +53,8 @@
             service:{
                 serviceName:{
                     required,
+                    isNameValid: helpers.regex('isNameValid',/^[a-z&0-9 ]*$/i)
+
                     },
                 servicePrice:{
                     required,

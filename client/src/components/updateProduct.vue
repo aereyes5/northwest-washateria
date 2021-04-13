@@ -11,7 +11,7 @@
                     <b-form-input v-model="product.productName" placeholder="Enter Product Name" id="productName">
                     </b-form-input>
                     <span v-if="!$v.product.productName.required && $v.product.productName.$dirty" class="text-danger">Product name is required</span>
-                    <span v-if="!$v.product.productName.alphaNum && $v.product.productName.$dirty" class="text-danger">Product name must contain alpha characters</span>
+                    <span v-if="!$v.product.productName.isNameValid && $v.product.productName.$dirty" class="text-danger">Product name is invalid</span>
                 </div>
 
                 <div class="form-group">
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-    import {required, alphaNum, decimal} from "vuelidate/lib/validators" 
+    import {required, helpers, decimal} from "vuelidate/lib/validators" 
     import services from '../services'
     export default {
         name: 'UpdateProduct',
@@ -56,7 +56,7 @@
             product:{
                 productName: {
                     required,
-                    alphaNum
+                    isNameValid: helpers.regex('isNameValid',/^[a-z& ]*$/i)
                 },
                 price: {
                     required,

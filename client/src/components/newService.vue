@@ -7,6 +7,8 @@
                 <b-form-input v-model="service.serviceName" placeholder="Enter Service Name" id="serviceName">
                 </b-form-input>
                 <span v-if="!$v.service.serviceName.required && $v.service.serviceName.$dirty" class="text-danger">Service name is required</span>
+                <span v-if="!$v.service.serviceName.isNameValid && $v.service.serviceName.$dirty" class="text-danger">Service name is invalid</span>
+
             </div>
             
             <div class="form-group">
@@ -31,7 +33,7 @@
 </template>
 
 <script>
-    import {required,decimal} from "vuelidate/lib/validators";
+    import {required,decimal, helpers} from "vuelidate/lib/validators";
     import services from '../services'
     export default {
         name: 'NewService',
@@ -47,6 +49,7 @@
             service:{
                 serviceName:{
                     required,
+                    isNameValid: helpers.regex('isNameValid',/^[a-z&0-9 +]*$/i)
                 },
                 servicePrice:{
                     required,

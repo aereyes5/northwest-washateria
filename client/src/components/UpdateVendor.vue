@@ -34,6 +34,7 @@
                 <div class="form-group">
                     <b-form-input v-model="vendor.vendorContact" placeholder="Enter Vendor Contact Name (e.g., Jane Doe)" id="vendorContact"></b-form-input>
                     <span v-if="!$v.vendor.vendorContact.required && $v.vendor.vendorContact.$dirty" class="text-danger">Vendor contact name is required</span>
+                    <span v-if="!$v.vendor.vendorContact.isNameValid && $v.vendor.vendorContact.$dirty" class="text-danger">Vendor contact name is required</span>
                 </div>
 
                 <div class="form-group">
@@ -60,7 +61,7 @@
 </template>
 
 <script>
-    import {required,minLength,maxLength,alpha,email,numeric} from "vuelidate/lib/validators" 
+    import {required,minLength,maxLength,helpers,email,numeric} from "vuelidate/lib/validators" 
     import services from '../services'
     export default {
         name: "UpdateVendor",
@@ -92,7 +93,8 @@
                 },
                 vendorContact: {
                     required,
-                    alpha
+                    isNameValid: helpers.regex('isNameValid',/^[a-z ]*$/i),
+
                 },
                 phoneNumber: {
                     required,

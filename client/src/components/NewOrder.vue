@@ -7,6 +7,8 @@
             <div class="form-group">
                 <b-form-input v-model="order.vendorName" placeholder="Vendor Name" id="vendorName" disabled></b-form-input>
                 <span v-if="!$v.order.vendorName.required && $v.order.vendorName.$dirty" class="text-danger">Vendor name is required</span>
+                <span v-if="!$v.order.vendorName.isNameValid && $v.order.vendorName.$dirty" class="text-danger">Vendor name is invalid</span>
+
             </div>
 
             <div class="form-group">
@@ -49,7 +51,7 @@
 </template>
 
 <script>
-    import {required,alpha} from "vuelidate/lib/validators";
+    import {required,helpers} from "vuelidate/lib/validators";
     import services from '../services'
     export default {
         name: "NewOrder",
@@ -68,10 +70,11 @@
             order:{
                 vendorName: {
                     required,
-                    alpha
+                    isNameValid: helpers.regex('isNameValid',/^[a-z&0-9 ]*$/i)
                 },
                 productName: {
                     required,
+                    isNameValid: helpers.regex('isNameValid',/^[a-z&0-9 ]*$/i)
                 },
                 quantity: {
                     required
