@@ -1,90 +1,71 @@
 <template>
     <div>
             <img src="@/assets/Invoices.png" width=750px heigth=150px alt="Invoices">
-        
-        <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
-
-        <b-button class="darkmode-ignore" v-bind:to="'invoice-report'" variant="primary">Generate Reports</b-button>
-        <b-button class="darkmode-ignore" v-bind:to="'new-invoice'" variant="success">Add New</b-button>
-        <!-- <b-button class="darkmode-ignore" variant="secondary" v-on:click="setInvoiceID">Update</b-button>
-        <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteInvoice">Delete</b-button> -->
-        <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
-            {{status2}}
-        </p>
-        <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
-        <b-table :items="invoices" :fields="fields" :filter="filter" :select-mode="selectMode" striped responsive="sm"
-            ref="selectableTable" selectable hover @row-selected="onRowSelected"
-            :per-page="perPage" :current-page="currentPage">
-            <template #cell(show_details)="row">
-                    <b-button size="sm" @click="row.toggleDetails" class="mr-2, darkmode-ignore">
-                    {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
-                    </b-button>
-            </template>
-
-            <template #row-details="row">
-            <b-card>
-                <b-row class="mb-2">
-                <b-col sm="3" class="text-sm-right"><b>Employee: </b></b-col>
-                <b-col>{{ row.item.employeeFirstName }} {{row.item.employeeLastName}}</b-col>
-            </b-row>
-            <b-row class="mb-2">
-                <b-col sm="3" class="text-sm-right"><b>Payment Method: </b></b-col>
-                <b-col>{{ row.item.paymentMethod }}</b-col>
-            </b-row>
-                <table class="table" id="center">
-                    <tr>
-                        <th>QTY</th>
-                        <th>DESC</th>
-                        <th>AMT</th>
-                    </tr>
-                    <tr>
-                        <td>{{ row.item.quantity }}</td>
-                        <td>{{ row.item.product }}</td>
-                        <td>{{ row.item.productPrice }}</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>{{ row.item.service }}</td>
-                        <td>{{ row.item.servicePrice }}</td>
-                    </tr>
-                </table>
-
-                  <!-- <b-row class="mb-2">
-                <b-col sm="3" class="text-sm-right"><b>QTY</b></b-col>
-                <b-col sm="3" class="text-sm-right"><b>DESC</b></b-col>
-                <b-col sm="3" class="text-sm-right"><b>AMT</b></b-col>
-            </b-row>
-
-            <b-row class="mb-2">
-                <b-col>{{ row.item.quantity }}</b-col>
-                <b-col>{{ row.item.product }}</b-col>
-                <b-col>{{ row.item.productPrice }}</b-col>
-            </b-row>
-
-            <b-row class="mb-2">
-                <b-col>1</b-col>
-                <b-col>{{ row.item.service }}</b-col>
-                <b-col>{{ row.item.servicePrice }}</b-col>
-            </b-row>
-
-            <b-row class="mb-2">
-                <b-col sm="3" class="text-sm-right"><b>Payment Method: </b></b-col>
-                <b-col>{{ row.item.paymentMethod }}</b-col>
-            </b-row> -->
-            </b-card>
-        </template>
-        </b-table>
-        <!-- </b-table> -->
-
-         
-        <!-- <b-modal id="modal-scrollable" scrollable title="Customer Receipt">
-            <img src="../assets/nwlogolong.png" style="width:100%; max-width:300px;" class="rounded mx-auto d-block">
             <br>
-            <b-table
-            :items="receipt.purchases"
-            :fields="modalFields"
-            ></b-table>
-        </b-modal> -->
+        <b-container fluid="md">
+            <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
+            <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
+                {{status2}}
+            </p>
+
+            <b-row>
+                <b-col>
+                    <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
+                </b-col>
+
+                <b-col cols="12" md="8">
+                <b-button-group>
+                    <b-button class="darkmode-ignore" v-bind:to="'new-invoice'" variant="success">Add New</b-button>
+                    <b-button class="darkmode-ignore" variant="secondary" v-on:click="setInvoiceID">Update</b-button>
+                    <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteInvoice">Delete</b-button>
+                    <b-button class="darkmode-ignore" v-bind:to="'invoice-report'" variant="primary">Generate Reports</b-button>
+                </b-button-group>
+                </b-col>
+            </b-row>
+
+            <b-table :items="invoices" :fields="fields" :filter="filter" :select-mode="selectMode" striped responsive="sm"
+                ref="selectableTable" selectable hover @row-selected="onRowSelected"
+                :per-page="perPage" :current-page="currentPage">
+                <template #cell(show_details)="row">
+                        <b-button size="sm" @click="row.toggleDetails" class="mr-2, darkmode-ignore">
+                        {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
+                        </b-button>
+                </template>
+
+                <template #row-details="row">
+                <b-card>
+                    <b-row class="mb-2" id="text">
+                    <b-col sm="3" class="text-sm-right"><b>Employee: </b></b-col>
+                    <b-col>{{ row.item.employeeFirstName }} {{row.item.employeeLastName}}</b-col>
+                </b-row>
+                <b-row class="mb-2" id="text">
+                    <b-col sm="3" class="text-sm-right"><b>Payment Method: </b></b-col>
+                    <b-col>{{ row.item.paymentMethod }}</b-col>
+                </b-row>
+                    <table class="table" id="center">
+                        <tr>
+                            <th>QTY</th>
+                            <th>DESC</th>
+                            <th>AMT</th>
+                        </tr>
+                        <tr>
+                            <td>{{ row.item.quantity }}</td>
+                            <td>{{ row.item.product }}</td>
+                            <td>{{ row.item.productPrice }}</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>{{ row.item.service }}</td>
+                            <td>{{ row.item.servicePrice }}</td>
+                        </tr>
+                    </table>
+
+                </b-card>
+            </template>
+            </b-table>
+        </b-container>
+        
+
     </div>
 </template>
 
@@ -230,5 +211,13 @@
   margin-left: auto;
   margin-right: auto;
 
+}
+
+#text{
+    text-align: center;
+}
+
+.pagination {
+margin: 0px !important;
 }
 </style>

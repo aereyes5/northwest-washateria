@@ -90,14 +90,12 @@
                     }
                 }
             },
-            async insertOrder() {
+            insertOrder() {
                 this.$v.$touch();
                 if (!this.$v.$invalid) {
                     try {
-                        services.insertOrder(this.order).then(order => {
-                            this.$router.push({
-                                name: 'Orders'
-                            })
+                        services.insertOrder(this.order).then((order) => {
+                            this.$router.push({name: 'Orders'})
                             return order
                         }).catch((error) => {
                             this.status = error

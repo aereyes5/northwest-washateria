@@ -23,8 +23,8 @@
           </div>
         </div>
         <br>
-        <b-button class="darkmode-ignore" variant="warning" v-bind:to="'Update'">Submit Changes</b-button>
         <b-button class="darkmode-ignore" v-bind:to="'home'" variant="danger" type="submit">Cancel</b-button>
+        <b-button class="darkmode-ignore" variant="warning" v-bind:to="'Update'">Edit</b-button>
       </b-form><br>
     </div>
   </b-container>

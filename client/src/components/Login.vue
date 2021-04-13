@@ -4,17 +4,27 @@
       <img src="@/assets/nwlogolong.png" width="920" height="200" alt="nwlogolong">
       <img src="@/assets/login.png" width=750px heigth=150px alt="Login">
       <form>
-        <b-input-group prepend="Username">
+        <div class="form-group">
+          <b-input-group prepend="Username">
           <b-form-input type="email" id="text-email" v-model="user.username" placeholder="Please Enter Username">
           </b-form-input><br>
         </b-input-group>
-        <b-input-group prepend="Password">
+        </div>
+        
+        <div class="form-group">
+          <b-input-group prepend="Password">
           <b-form-input type="password" id="text-password" v-model="user.password" placeholder="Please Enter Password">
           </b-form-input>
         </b-input-group>
+        </div>
+
+        <b-row align-h="center">
+          <b-button class="darkmode-ignore" variant="primary" v-on:click="login">Login</b-button>
+        </b-row>
       </form>
+
       <br>
-      <b-button class="darkmode-ignore" variant="primary" v-on:click="login">Login</b-button>
+      
 
     </b-container>
     <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">

@@ -1,45 +1,30 @@
 <template>
     <div>
-        <img src="@/assets/Products.png" width=750px heigth=150px alt="Products">
+
+      <img src="@/assets/Products.png" width=750px heigth=150px alt="Products">
+        <br>
+      <b-container fluid="md">
         <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
 
-    <p
-      v-if="status"
-      class="danger font-italic font-weight-bold text-danger text-center"
-    >
-      {{ status }}
-    </p>
+      <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">{{ status }}</p>
+        <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">{{ status2 }}</p>
 
-    <b-button
-      class="darkmode-ignore"
-      v-bind:to="'new-product'"
-      variant="success"
-      >Add New</b-button
-    >
-    <b-button
-      class="darkmode-ignore"
-      variant="secondary"
-      v-on:click="setProductID"
-      >Update</b-button
-    >
-    <b-button
-      class="darkmode-ignore"
-      variant="danger"
-      v-on:click="deleteProduct"
-      >Delete</b-button
-    >
+        <b-row>
+          <b-col>
+            <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" ></b-pagination>
+          </b-col>
 
-    <p
-      v-if="status2"
-      class="danger font-italic font-weight-bold text-danger text-center"
-    >
-      {{ status2 }}
-    </p>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-    ></b-pagination>
+          <b-col cols="12" md="8">
+             <b-button-group class="ml-5">
+              <b-button class="darkmode-ignore" v-bind:to="'new-product'" variant="success" >Add New</b-button>
+              <b-button class="darkmode-ignore" variant="secondary" v-on:click="setProductID">Update</b-button>
+              <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteProduct">Delete</b-button>
+            </b-button-group>
+          </b-col>
+        </b-row>
+        
+       
+    
     <b-table
       :items="products"
       :fields="fields"
@@ -55,6 +40,8 @@
       :current-page="currentPage"
     >
     </b-table>
+      </b-container>
+      
   </div>
 </template>
 
@@ -145,4 +132,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.pagination {
+margin: 0px !important;
+}
+</style>

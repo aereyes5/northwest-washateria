@@ -1,24 +1,41 @@
 <template>
     <div>
         <img src="@/assets/Services.png" width=750px heigth=150px alt="Services">
-        <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
-        <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
-            {{status}}
-        </p>
+        <br>
+        <b-container fluid="md">
+            <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
+            
+            <p v-if="status" class="danger font-italic font-weight-bold text-danger text-center">
+                {{status}}
+            </p>
 
-        <b-button class="darkmode-ignore" v-bind:to="'new-service'" variant="success">Add New</b-button>
-        <b-button class="darkmode-ignore" variant="secondary" v-on:click="setServiceID">Update</b-button>
-        <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteService">Delete</b-button>
+            <b-row>
+                <b-col>
+                    <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" ></b-pagination>
+                </b-col>
 
-        <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
-            {{status2}}
-        </p>
+                <b-col cols="12" md="8">
+                    <b-button-group class="ml-5">
+                        <b-button class="darkmode-ignore" v-bind:to="'new-service'" variant="success">Add New</b-button>
+                        <b-button class="darkmode-ignore" variant="secondary" v-on:click="setServiceID">Update</b-button>
+                        <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteService">Delete</b-button>
+                    </b-button-group>
+                    </b-col>
+            </b-row>
+          
+            
+            
+            <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
+                {{status2}}
+            </p>
 
-        <b-table :items="services" :fields="fields" :select-mode="selectMode" :filter="filter" striped responsive="sm"
-            ref="selectableTable" selectable @row-selected="onRowSelected"
-            :per-page="perPage" :current-page="currentPage">
+            <b-table :items="services" :fields="fields" :select-mode="selectMode" :filter="filter" striped responsive="sm"
+                ref="selectableTable" selectable @row-selected="onRowSelected"
+                :per-page="perPage" :current-page="currentPage">
+            </b-table>
+        </b-container>
 
-        </b-table>
+       
     </div>
 </template>
 
@@ -105,5 +122,7 @@
 </script>
 
 <style scoped>
-
+.pagination {
+margin: 0px !important;
+}
 </style>

@@ -19,7 +19,6 @@
            <div class="form-group">
                 <b-form-input v-model="product.vendorName" placeholder="Enter Vendor Name" id="vendorID"></b-form-input>
                 <span v-if="!$v.product.vendorName.required && $v.product.vendorName.$dirty" class="text-danger">Vendor name is required</span>
-                <span v-if="!$v.product.vendorName.alpha && $v.product.vendorName.$dirty" class="text-danger">Vendor name must contain alpha characters</span>
            </div>
 
            <div class="form-group">
@@ -40,7 +39,6 @@
             <div class="form-group">
                 <b-form-input v-model="product.vendorContact" placeholder="Enter Vendor's Contact Name"></b-form-input>
                 <span v-if="!$v.product.vendorContact.required && $v.product.vendorContact.$dirty" class="text-danger">Vendor's contact name is required</span>
-                <span v-if="!$v.product.vendorContact.alpha && $v.product.vendorContact.$dirty" class="text-danger">Vendor's contact name must contain alpha characters</span>
             </div>
            
            <div class="form-group">
@@ -97,8 +95,7 @@
                     decimal
                 },
                 vendorName: {
-                    required,
-                    alpha
+                    required
                 },
                 vendorType: {
                     required
@@ -107,8 +104,7 @@
                     required
                 },
                 vendorContact: {
-                    required,
-                    alpha
+                    required
                 },
                 phoneNumber: {
                     required,
