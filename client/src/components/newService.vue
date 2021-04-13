@@ -1,7 +1,8 @@
 <template>
     <div>
         <img src="@/assets/addservice.png" width=750px heigth=150px alt="Add Service">
-        <b-form @submit.prevent="addService">
+        <b-container>
+            <b-form @submit.prevent="addService">
             <div class="form-group">
                 <b-form-input v-model="service.serviceName" placeholder="Enter Service Name" id="serviceName">
                 </b-form-input>
@@ -10,7 +11,7 @@
             </div>
             
             <div class="form-group">
-                <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price" id="servicePrice">
+                <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price (e.g., 11.99, 0.25)" id="servicePrice">
                 </b-form-input>
                 <span v-if="!$v.service.servicePrice.required && $v.service.servicePrice.$dirty" class="text-danger">Service price is required</span>
                 <span v-if="!$v.service.servicePrice.decimal && $v.service.servicePrice.$dirty" class="text-danger">Service price must be a decimal value</span> 
@@ -22,6 +23,9 @@
                 <b-button class="darkmode-ignore" variant="success" type="submit">Submit</b-button>
            </b-row>
         </b-form>
+        </b-container>
+
+        
     </div>
 </template>
 

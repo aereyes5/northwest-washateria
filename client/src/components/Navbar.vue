@@ -14,8 +14,8 @@
         <b-navbar-nav>
           <b-nav-item v-bind:to="'Products'" v-if="userVerified">Products</b-nav-item>
           <b-nav-item v-bind:to="'Services'" v-if="userVerified">Services</b-nav-item>
-          <b-nav-item v-bind:to="'Customers'" v-if="userVerified">Customers</b-nav-item>
           <b-nav-item v-bind:to="'Invoices'" v-if="userVerified">Invoices</b-nav-item>
+          <b-nav-item v-bind:to="'Customers'" v-if="userVerified && userAccess=='Admin'" >Customers</b-nav-item>
           <b-nav-item v-bind:to="'Employees'" v-if="userVerified && userAccess=='Admin'">Employees</b-nav-item>
           <b-nav-item v-bind:to="'Vendors'" v-if="userVerified && userAccess=='Admin'">Vendors</b-nav-item>
           <b-nav-item v-bind:to="'Orders'" v-if="userVerified && userAccess=='Admin'">Orders</b-nav-item>

@@ -7,14 +7,14 @@
       alt="Add Customer"
     />
 
-    <b-form @submit.prevent="addCustomer">
-      <label for="firstName"> First Name:</label>
+    <b-container>
+      <b-form @submit.prevent="addCustomer">
       <div class="form-group">
         <b-form-input
           v-model="customer.firstName"
           type="text"
           class="form-control"
-          placeholder="e.g., Jane"
+          placeholder="Enter First Name (e.g., Jane)"
           id="firstName"
         ></b-form-input>
         
@@ -32,10 +32,9 @@
       </div>
 
       <div class="form-group">
-        <label for="lastName">Last Name:</label>
         <b-form-input
           v-model="customer.lastName"
-          placeholder="e.g., Doe"
+          placeholder="Enter Last Name (e.g., Doe)"
         ></b-form-input>
         <span
           v-if="!$v.customer.lastName.required && $v.customer.lastName.$dirty"
@@ -50,10 +49,9 @@
       </div>
 
       <div class="form-group">
-        <label for="phoneNumber">Phone Number:</label>
         <b-form-input
           v-model="customer.phoneNumber"
-          placeholder="e.g., 8325551212"
+          placeholder="Enter Phone Number (e.g., 8325551212)"
           id="phoneNumber"
         ></b-form-input>
         <span
@@ -68,12 +66,10 @@
       </div>
 
       <div class="form-group">
-        <label for="email"> Email (Optional):</label>
-
         <b-form-input
           type="email"
           v-model="customer.email"
-          placeholder="e.g., jdoe@example.com"
+          placeholder="Enter Email (Optional) (e.g., jdoe@example.com)"
           id="email"
         ></b-form-input>
         <span v-if="!$v.customer.email.email && $v.customer.email.$dirty"
@@ -93,6 +89,9 @@
         >
       </b-row>
     </b-form>
+    </b-container>
+
+    
     <br />
   </div>
 </template>

@@ -1,7 +1,8 @@
 <template>
     <div>
         <img src="@/assets/addorder.png" width=750px heigth=150px alt="Add Order">
-        <b-form @submit.prevent="insertOrder">
+        <b-container>
+            <b-form @submit.prevent="insertOrder">
 
             <div class="form-group">
                 <b-form-input v-model="order.vendorName" placeholder="Vendor Name" id="vendorName" disabled></b-form-input>
@@ -9,20 +10,32 @@
             </div>
 
             <div class="form-group">
-                <b-form-select v-model="order.productName" :options="products" class="mb-3" value-field="productName"
-                text-field="productName" disabled-field="notEnabled" @change="vendorSelected"></b-form-select>
-                <span v-if="!$v.order.productName.required && $v.order.productName.$dirty" class="text-danger">Please select a product to order</span>
+                <b-row>
+                    <b-col cols="14" md="10">
+                        <b-form-select v-model="order.productName" :options="products" class="mb-3" value-field="productName"
+                            text-field="productName" disabled-field="notEnabled" @change="vendorSelected" :select-size="5">
+                            <template #first>
+                                <b-form-select-option value=null disabled>--Select Product To Purchase--</b-form-select-option>
+                            </template>
+                                <span v-if="!$v.order.productName.required && $v.order.productName.$dirty" class="text-danger">Please select a product to order</span>
+                        </b-form-select>
+                    </b-col>
+
+                    <b-col align-self="center">
+                        <label for="sb-inline">Product Quantity:</label>
+                        <b-form-spinbutton v-model="order.quantity" id="sb-inline" placeholder="--" inline @change="findTotal">
+                        </b-form-spinbutton> <br>
+                        <span v-if="!$v.order.quantity.required && $v.order.quantity.$dirty" class="text-danger">Product quantity is required</span>                 
+                    </b-col>
+                </b-row>
             </div>
+
             
             <div class="form-group">
-                <b-form-spinbutton v-model="order.quantity" id="sb-inline" placeholder="--" inline @change="findTotal">
-                </b-form-spinbutton> <br>
-                <span v-if="!$v.order.quantity.required && $v.order.quantity.$dirty" class="text-danger">Product quantity is required</span>
-            </div>
-            
-            <div class="form-group">
-                <b-form-input v-model="order.total" id="total" disabled></b-form-input>
-                <span v-if="!$v.order.total.required && $v.order.total.$dirty" class="text-danger">Please fill out the product order fields above for your total</span>
+                <b-input-group prepend="$">
+                    <b-form-input v-model="order.total" id="total" disabled placeholder="Grand Total (taxes included)"></b-form-input>
+                    <span v-if="!$v.order.total.required && $v.order.total.$dirty" class="text-danger">Please fill out the product order fields above for your total</span>
+                </b-input-group>
             </div>
 
             <b-row align-h="center">
@@ -30,6 +43,8 @@
                 <b-button class="darkmode-ignore" variant="success" type="submit">Place Order</b-button>
             </b-row>
         </b-form>
+        </b-container>
+        
     </div>
 </template>
 
@@ -74,13 +89,13 @@
                 })
             },
             vendorSelected() {
-                this.order.total = null
-                this.order.quantity = null
+                this.order.quantity = 1
                 for (let i = 0; i < this.products.length; i++) {
                     if (this.products[i].productName == this.order.productName) {
                         this.order.vendorName = this.products[i].vendor
                     }
                 }
+                this.findTotal()
             },
             findTotal() {
                 for (let i = 0; i < this.products.length; i++) {

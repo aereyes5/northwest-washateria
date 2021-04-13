@@ -1,7 +1,8 @@
 <template>
     <div>
         <img src="@/assets/addproduct.png" width=750px heigth=150px alt="Add Product">
-        <b-form @submit.prevent="addProduct">
+        <b-container>
+            <b-form @submit.prevent="addProduct">
             <div class="form-group">
                 <b-form-input v-model="product.productName" placeholder="Enter Product Name" id="productName">
                 </b-form-input>
@@ -10,7 +11,7 @@
             </div>
 
             <div class="form-group">
-                <b-form-input v-model="product.productPrice" placeholder="Enter Product Price" id="productPrice">
+                <b-form-input v-model="product.productPrice" placeholder="Enter Product Price (e.g., 11.99, 0.25)" id="productPrice">
                 </b-form-input>
                 <span v-if="!$v.product.productPrice.required && $v.product.productPrice.$dirty" class="text-danger">Product price is required</span>
                 <span v-if="!$v.product.productPrice.decimal && $v.product.productPrice.$dirty" class="text-danger">Product price must be a decimal</span>
@@ -32,7 +33,11 @@
             
            <div class="form-group">
                 <b-form-select v-model="product.country" :options="countries" class="mb-3" value-field="countryName"
-                text-field="countryName" disabled-field="notEnabled"></b-form-select>
+                text-field="countryName" disabled-field="notEnabled" :select-size="5">
+                <template #first>
+                    <b-form-select-option value=null disabled>--Select Country--</b-form-select-option>
+                </template>
+                </b-form-select>
                 <span v-if="!$v.product.country.required && $v.product.country.$dirty" class="text-danger">Country is required</span>
            </div>
             
@@ -42,14 +47,14 @@
             </div>
            
            <div class="form-group">
-                <b-form-input v-model="product.phoneNumber" placeholder="e.g.,8325551212"></b-form-input>
+                <b-form-input v-model="product.phoneNumber" placeholder="Enter Vendor Contact's Phone Number (e.g.,8325551212)"></b-form-input>
                 <span v-if="!$v.product.phoneNumber.required && $v.product.phoneNumber.$dirty" class="text-danger">Vendor's contact name is required</span>
                 <span v-if="(!$v.product.phoneNumber.numeric ||!$v.product.phoneNumber.minLength ||!$v.product.phoneNumber.maxLength) && $v.product.phoneNumber.$dirty" class="text-danger">
                     Please enter a valid phone number</span>
            </div>
           
           <div class="form-group">
-                <b-form-input v-model="product.email" placeholder="Enter Email"></b-form-input>
+                <b-form-input v-model="product.email" placeholder="Enter Email (e.g., jdoe@example.com)"></b-form-input>
                 <span v-if="!$v.product.email.required && $v.product.email.$dirty" class="text-danger">Contact's email is required</span>
                 <span v-if="!$v.product.email.email && $v.product.email.$dirty" class="text-danger">Please enter a valid email</span>
           </div>
@@ -60,6 +65,8 @@
             </b-row>
 
         </b-form>
+        </b-container>
+        
     </div>
 </template>
 
