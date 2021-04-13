@@ -1,7 +1,7 @@
 <template>
     <div>
         <img src="@/assets/addproduct.png" width=750px heigth=150px alt="Add Product">
-        <b-container>
+        <b-container fluid="md">
             <b-form @submit.prevent="addProduct">
             <div class="form-group">
                 <b-form-input v-model="product.productName" placeholder="Enter Product Name" id="productName">
@@ -11,11 +11,14 @@
             </div>
 
             <div class="form-group">
-                <b-form-input v-model="product.productPrice" placeholder="Enter Product Price (e.g., 11.99, 0.25)" id="productPrice">
+                <b-input-group prepend="$">
+                   <b-form-input v-model="product.productPrice" placeholder="Enter Product Price (e.g., 11.99, 0.25)" id="productPrice">
                 </b-form-input>
                 <span v-if="!$v.product.productPrice.required && $v.product.productPrice.$dirty" class="text-danger">Product price is required</span>
                 <span v-if="!$v.product.productPrice.decimal && $v.product.productPrice.$dirty" class="text-danger">Product price must be a decimal</span>
-            </div>
+             
+                </b-input-group>
+                </div>
             
            <div class="form-group">
                 <b-form-input v-model="product.vendorName" placeholder="Enter Vendor Name" id="vendorID"></b-form-input>

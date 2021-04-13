@@ -7,15 +7,16 @@
                 <b-form-input v-model="service.serviceName" placeholder="Enter Service Name" id="serviceName">
                 </b-form-input>
                 <span v-if="!$v.service.serviceName.required && $v.service.serviceName.$dirty" class="text-danger">Service name is required</span>
-                <span v-if="!$v.service.serviceName.alpha && $v.service.serviceName.$dirty" class="text-danger">Service name must contain alpha characters</span>
             </div>
             
             <div class="form-group">
-                <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price (e.g., 11.99, 0.25)" id="servicePrice">
-                </b-form-input>
-                <span v-if="!$v.service.servicePrice.required && $v.service.servicePrice.$dirty" class="text-danger">Service price is required</span>
-                <span v-if="!$v.service.servicePrice.decimal && $v.service.servicePrice.$dirty" class="text-danger">Service price must be a decimal value</span> 
-            </div>
+                <b-input-group prepend="$">
+                        <b-form-input v-model="service.servicePrice" placeholder="Enter Service Price (e.g., 11.99, 0.25)" id="servicePrice">
+                        </b-form-input>
+                        </b-input-group>
+                        <span v-if="!$v.service.servicePrice.required && $v.service.servicePrice.$dirty" class="text-danger">Service price is required</span>
+                        <span v-if="!$v.service.servicePrice.decimal && $v.service.servicePrice.$dirty" class="text-danger">Service price must be a decimal value</span> 
+                </div>
             
            
            <b-row align-h="center">
@@ -30,7 +31,7 @@
 </template>
 
 <script>
-    import {required,alpha,decimal} from "vuelidate/lib/validators";
+    import {required,decimal} from "vuelidate/lib/validators";
     import services from '../services'
     export default {
         name: 'NewService',
@@ -46,7 +47,6 @@
             service:{
                 serviceName:{
                     required,
-                    alpha
                 },
                 servicePrice:{
                     required,

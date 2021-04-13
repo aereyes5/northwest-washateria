@@ -7,7 +7,7 @@
       alt="Add Customer"
     />
 
-    <b-container>
+    <b-container fluid="md">
       <b-form @submit.prevent="addCustomer">
       <div class="form-group">
         <b-form-input

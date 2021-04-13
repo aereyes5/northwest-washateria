@@ -16,8 +16,6 @@
                 <b-col cols="12" md="8">
                 <b-button-group>
                     <b-button class="darkmode-ignore" v-bind:to="'new-invoice'" variant="success">Add New</b-button>
-                    <b-button class="darkmode-ignore" variant="secondary" v-on:click="setInvoiceID">Update</b-button>
-                    <b-button class="darkmode-ignore" variant="danger" v-on:click="deleteInvoice">Delete</b-button>
                     <b-button class="darkmode-ignore" v-bind:to="'invoice-report'" variant="primary">Generate Reports</b-button>
                 </b-button-group>
                 </b-col>

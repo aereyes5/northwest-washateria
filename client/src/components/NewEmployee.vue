@@ -7,7 +7,7 @@
       alt="Add Employee"
     />
 
-    <b-container>
+    <b-container fluid="md">
       <b-form @submit.prevent="addEmployee">
       <div class="form-group">
         <b-form-input v-model="employee.firstName" placeholder="Enter First Name (e.g., Jane)" id="firstName"></b-form-input>
@@ -65,8 +65,8 @@
 </template>
 
 <script>
-import {required,minLength,alpha} from "vuelidate/lib/validators";
-import services from "../services";
+import {required,minLength,alpha} from "vuelidate/lib/validators" 
+import services from "../services" 
 export default {
   name: "NewEmployee",
   data() {
@@ -116,7 +116,7 @@ export default {
 
   methods: {
     addEmployee() {
-      this.$v.$touch();
+      this.$v.$touch() 
       if (!this.$v.$invalid) {
         try {
           const NewEmployee = services
@@ -124,19 +124,19 @@ export default {
             .then((employee) => {
               this.$router.push({
                 name: "Employees",
-              });
-              return employee;
+              }) 
+              return employee 
             })
             .catch((error) => {
-              this.status = error;
-            });
+              this.status = error 
+            }) 
         } catch (error) {
-          this.status = error;
+          this.status = error 
         }
       }
     },
   },
-};
+} 
 </script>
 
 <style scoped></style>

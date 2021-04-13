@@ -1,7 +1,7 @@
 <template>
     <div>
         <img src="@/assets/addorder.png" width=750px heigth=150px alt="Add Order">
-        <b-container>
+        <b-container fluid="md">
             <b-form @submit.prevent="insertOrder">
 
             <div class="form-group">

@@ -1,7 +1,7 @@
 <template>
     <div>
         <img src="@/assets/addvendor.png" width=750px heigth=150px alt="Add Vendor">
-        <b-container>
+        <b-container fluid="md">
             <b-form @submit.prevent="insertVendor">
             <div class="form-group">
                 <b-form-input v-model="vendor.vendorName" placeholder="Enter Vendor Name" id="vendorName"></b-form-input>
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-    import {required,minLength,maxLength,alpha,email,numeric} from "vuelidate/lib/validators";
+    import {required,minLength,maxLength,alpha,email,numeric} from "vuelidate/lib/validators" 
     import services from '../services'
     export default {
         name: "NewVendor",
@@ -113,7 +113,7 @@
                 })
             },
             async insertVendor() {
-                this.$v.$touch();
+                this.$v.$touch() 
                 if (!this.$v.$invalid) {
                     try {
                         services.insertVendor(this.vendor).then(vendor => {

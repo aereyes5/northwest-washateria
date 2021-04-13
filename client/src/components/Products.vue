@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import services from "../services";
+import services from "../services" 
 export default {
   name: "Products",
   data() {
@@ -61,79 +61,79 @@ export default {
       filter: "",
       perPage: 7,
       currentPage: 1,
-    };
+    } 
   },
   methods: {
     getProducts() {
       services
         .getProducts()
         .then((response) => {
-          this.products = response[0];
-          this.productID = null;
-          console.log(this.products);
+          this.products = response[0] 
+          this.productID = null 
+          console.log(this.products) 
         })
         .catch((e) => {
-          console.log(e);
-        });
+          console.log(e) 
+        }) 
     },
     deleteProduct() {
       if (!Array.isArray(this.selected) || !this.selected.length) {
-        this.status2 = "Please select a record to delete";
+        this.status2 = "Please select a record to delete" 
       } else {
-        this.status2 = "";
-        services.deleteProduct(this.selected[0].productID);
-        this.getProducts();
+        this.status2 = "" 
+        services.deleteProduct(this.selected[0].productID) 
+        this.getProducts() 
       }
     },
     onRowSelected(items) {
-      this.selected = items;
-      console.log(items);
+      this.selected = items 
+      console.log(items) 
     },
     getProductByID() {
       if (this.productID == null) {
-        this.status = "Please enter product ID";
+        this.status = "Please enter product ID" 
       } else {
-        this.status = "";
+        this.status = "" 
         try {
           services.getProductByID(this.productID).then((response) => {
-            this.products = response;
-            console.log(this.products);
-          });
+            this.products = response 
+            console.log(this.products) 
+          }) 
         } catch (err) {
-          console.log(err);
+          console.log(err) 
         }
       }
     },
     setProductID() {
       if (!Array.isArray(this.selected) || !this.selected.length) {
-        this.status2 = "Please select a record to update";
+        this.status2 = "Please select a record to update"
       } else {
-        this.updateProduct(this.selected[0].productID);
+        this.updateProduct(this.selected[0].productID) 
       }
     },
     updateProduct(productID) {
       this.$store.commit("pProductID", {
         productID,
-      });
+      })
       this.$router.push({
         name: "UpdateProduct",
-      });
+      })
     },
   },
-  created() {
-    this.getProducts();
-  },
-
   computed: {
     rows() {
-      return this.products.length;
-    },
+      return this.products.length
+    }
   },
-};
+  created() {
+    this.getProducts()
+  }
+  
+}
 </script>
 
 <style scoped>
 .pagination {
-margin: 0px !important;
+margin: 0px !important 
 }
 </style>

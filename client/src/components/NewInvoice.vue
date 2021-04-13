@@ -1,7 +1,7 @@
 <template>
     <div>
         <img src="@/assets/addinvoice.png" width=750px heigth=150px alt="Add Invoice">
-        <b-container>
+        <b-container fluid="md">
             <b-form @submit.prevent="insertInvoice">
 
             <div class="form-group">

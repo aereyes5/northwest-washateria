@@ -2,7 +2,7 @@
     <div>
         <img src="@/assets/Employees.png" width=750px heigth=150px alt="Employees">
         <br>
-        <b-container>
+        <b-container fluid="md">
             <b-form-input placeholder="Search..." v-model="filter" type="search"></b-form-input>
             <p v-if="status2" class="danger font-italic font-weight-bold text-danger text-center">
             {{status2}}

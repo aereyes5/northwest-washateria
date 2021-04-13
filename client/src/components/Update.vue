@@ -1,5 +1,5 @@
 <template>
-  <b-container class="back">
+  <b-container class="back" fluid="md">
     <div>
       <br>
       <h1><span style="text-decoration:underline">Edit Account</span></h1><br>

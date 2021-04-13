@@ -1,5 +1,5 @@
 <template>
-  <b-container class="back">
+  <b-container class="back" fluid="md">
     <div>
       <img src="@/assets/editaccount.png" width=750px heigth=150px alt="Edit Account Info">
       <b-form>
