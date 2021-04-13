@@ -1,8 +1,7 @@
 <template>
   <b-container class="back" fluid="md">
     <div>
-      <br>
-      <h1><span style="text-decoration:underline">Edit Account</span></h1><br>
+        <img src="@/assets/editaccount.png" width=750px heigth=150px alt="Edit Account Info">
 
       <b-form @submit.prevent="update">
         <div class="form-row">
@@ -18,8 +17,11 @@
             </b-form-input>
           </div>
         </div><br>
-        <b-button v-b-modal.modal-1 variant="success" type="submit" id="save">Save</b-button>
-        <b-button id="back" v-bind:to="'Account'" variant="danger">Back</b-button>
+        <b-row align-h="center">
+          <b-button id="back" v-bind:to="'Account'" variant="danger">Back</b-button>
+          <b-button v-b-modal.modal-1 variant="success" type="submit" id="save">Save</b-button>
+        </b-row>
+
       </b-form>
     </div>
   </b-container>
