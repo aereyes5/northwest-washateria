@@ -35,7 +35,7 @@
 </template>
 
 <script>
-    import {required,decimal} from "vuelidate/lib/validators";
+    import {required,decimal, helpers} from "vuelidate/lib/validators";
     import services from '../services'
     export default {
         name: 'updateService',
@@ -54,7 +54,6 @@
                 serviceName:{
                     required,
                     isNameValid: helpers.regex('isNameValid',/^[a-z&0-9 ]*$/i)
-
                     },
                 servicePrice:{
                     required,
