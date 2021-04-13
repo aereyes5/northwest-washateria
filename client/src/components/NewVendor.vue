@@ -37,7 +37,7 @@
             <div class="form-group">
                 <b-form-input v-model="vendor.phoneNumber" placeholder="Enter Contact's Phone Number (e.g., 8325551212)" id="phoneNumber"></b-form-input>
                 <span v-if="!$v.vendor.phoneNumber.required && $v.vendor.phoneNumber.$dirty" class="text-danger">Contact's phone number is required</span>
-                <span v-if="(!$v.vendor.phoneNumber.numeric ||!$v.vendor.phoneNumber.minLength ||!$v.vendor.phoneNumber.maxLength) && $v.vendor.phoneNumber.$dirty" class="text-danger"
+                <span v-if="(!$v.vendor.phoneNumber.numeric || !$v.vendor.phoneNumber.minLength || !$v.vendor.phoneNumber.maxLength) && $v.vendor.phoneNumber.$dirty" class="text-danger"
                 >Please enter a valid phone number</span>
             </div>
             
@@ -81,7 +81,6 @@
             vendor:{
                 vendorName: {
                     required,
-                    alpha
                 },
                 type: {
                     required
@@ -90,8 +89,7 @@
                     required
                 },
                 vendorContact: {
-                    required,
-                    alpha
+                    required
                 },
                 phoneNumber: {
                     required,
@@ -113,8 +111,9 @@
                 })
             },
             async insertVendor() {
-                this.$v.$touch() 
-                if (!this.$v.$invalid) {
+                this.$v.$touch()
+                console.log(this.$v.$invalid)
+                if(!this.$v.$invalid){ 
                     try {
                         services.insertVendor(this.vendor).then(vendor => {
                             this.$router.push({
@@ -129,6 +128,7 @@
                     }
                 }
             }
+            
         },
         mounted() {
             this.getCountries()

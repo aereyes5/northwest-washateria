@@ -83,7 +83,6 @@
             vendor:{
                 vendorName: {
                     required,
-                    alpha
                 },
                 type: {
                     required
