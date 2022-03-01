@@ -1,5 +1,6 @@
 # northwest-washateria
 CIS 4375 Team 4
+
 This application will be used to create, retrieve, update, and delete data pertaining to the client's vendors, customers, transactions (invoices), product orders, and the products and services offered.
 Also, the client will be able to generate reports for their invoices and product orders from vendors. This will allow the client to keep track of the business' sales and expenses.
 
